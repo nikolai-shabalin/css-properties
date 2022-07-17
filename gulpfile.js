@@ -4,6 +4,7 @@ import twig  from 'gulp-twig';
 import browser from 'browser-sync';
 
 const properties = JSON.parse(fs.readFileSync('./site/data/properties.json'));
+const publicPath = './root';
 
 // Создание HTML-страниц
 const pages = () => {
@@ -13,13 +14,13 @@ const pages = () => {
         properties
       }
     }))
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest(publicPath));
 }
 
 // Создание стилей
 const styles = () => {
   return gulp.src('./site/style.css')
-    .pipe(gulp.dest('./build'))
+    .pipe(gulp.dest(publicPath))
     .pipe(browser.stream());
 }
 
@@ -27,7 +28,7 @@ const styles = () => {
 const server = (done) => {
   browser.init({
     server: {
-      baseDir: 'build'
+      baseDir: publicPath
     },
     cors: true,
     notify: false,
