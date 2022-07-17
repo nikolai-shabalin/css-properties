@@ -4,7 +4,7 @@ import twig  from 'gulp-twig';
 import browser from 'browser-sync';
 
 const properties = JSON.parse(fs.readFileSync('./site/data/properties.json'));
-const publicPath = './root';
+const publicPath = './build';
 
 // Создание HTML-страниц
 const pages = () => {
