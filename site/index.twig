@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <title>CSS-свойства</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <main class="main">
-            <h1 class="title">Список всех CSS-свойств</h1>
-
-            <ul class="properties">
-                {% for property in properties %}
-                    <li class="properties__item">
-                        <div class="properties__wrapper">
-                            <h2 class="properties__title">{{ property.name }}</h2>
-                            <time class="properties__date">{{ property.date|date("d.m.Y") }}</time>
-                        </div>
-                        {%  if property.specUrl %}<a class="properties__spec-link" href="{{ property.specUrl }}">Спецификация</a>{% endif %}
-                        {%  if property.mdnUrl %}<a class="properties__spec-link" href="{{ property.mdnUrl }}">MDN</a>{% endif %}
-                    </li>
-                {% endfor %}
-            </ul>
-        </main>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <title>CSS-свойства</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="main">
+  <h1 class="title">Список всех CSS-свойств</h1>
+  <ul class="properties">
+    {% for property in properties %}
+      <li class="properties__item">
+        <div class="properties__wrapper">
+          <h2 class="properties__title">{{ property.name }}</h2>
+          <time class="properties__date">{{ property.date|date("d.m.Y") }}</time>
+        </div>
+        {% if property.specUrl %}<a class="properties__spec-link" href="{{ property.specUrl }}">
+            Спецификация</a>{% endif %}
+        {% if property.mdnUrl %}<a class="properties__spec-link" href="{{ property.mdnUrl }}">MDN</a>{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</main>
+</body>
 </html>
