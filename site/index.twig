@@ -9,16 +9,19 @@
   <main class="main">
     <h1 class="title">Список всех CSS-свойств</h1>
     <ul class="properties">
-      {% for property in properties %}
-        <li class="properties__item" data-type="{{ property.type }}" data-date="{{ property.date }}">
-          <div class="properties__wrapper">
-            <h2 class="properties__title">{{ property.name }}</h2>
-            <time class="properties__date">{{ property.date|date("d.m.Y") }}</time>
-          </div>
-          {% if property.specUrl %}<a class="properties__link properties__link--spec" href="{{ property.specUrl }}">Спецификация</a>{% endif %}
-          {% if property.mdnUrl %}<a class="properties__link properties__link--mdn" href="{{ property.mdnUrl }}">MDN</a>{% endif %}
-          <a class="properties__link properties__link--caniuse" href="https://caniuse.com/?search={{ property.name }}">caniuse</a>
-        </li>
+      {% for key, properties in data|reverse %}
+        <h2>Добавлено в {{ key }}</h2>
+        {% for property in properties %}
+          <li class="properties__item" data-type="{{ property.type }}" data-date="{{ property.date }}">
+            <div class="properties__wrapper">
+              <h2 class="properties__title">{{ property.name }}</h2>
+              <time class="properties__date">{{ property.date|date("d.m.Y") }}</time>
+            </div>
+            {% if property.specUrl %}<a class="properties__link properties__link--spec" href="{{ property.specUrl }}">Спецификация</a>{% endif %}
+            {% if property.mdnUrl %}<a class="properties__link properties__link--mdn" href="{{ property.mdnUrl }}">MDN</a>{% endif %}
+            <a class="properties__link properties__link--caniuse" href="https://caniuse.com/?search={{ property.name }}">caniuse</a>
+          </li>
+        {% endfor %}
       {% endfor %}
     </ul>
   </main>

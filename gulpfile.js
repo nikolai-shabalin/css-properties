@@ -11,7 +11,7 @@ const pages = () => {
   return gulp.src('./site/index.twig')
     .pipe(twig({
       data: {
-        properties
+        data: properties
       }
     }))
     .pipe(gulp.dest(publicPath));
