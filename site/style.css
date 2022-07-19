@@ -38,5 +38,22 @@ body {
 }
 
 .properties__link {
-  margin-right: 10px;
+  margin-right: 5px;
+  color: #ffffff;
+  background-color: tomato;
+  border-radius: 5px;
+  padding: 3px 7px;
+  text-decoration: none;
+}
+
+.properties__link--spec {
+  background-color: darkblue;
+}
+
+.properties__link--mdn {
+  background-color: blueviolet;
+}
+
+.properties__link--caniuse {
+  background-color: mediumvioletred;
 }
