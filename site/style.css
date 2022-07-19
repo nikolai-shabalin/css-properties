@@ -1,17 +1,29 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
+  background: conic-gradient(from 90deg at 50% 50%, #C156C2 -7.97deg, #F25656 19.27deg, #FBD03B 112.8deg, #56C4F5 214.91deg, #C156C2 352.03deg, #F25656 379.27deg) fixed;
+  padding: 25px;
+  display: grid;
+  place-items: center;
 }
 
 .main {
   min-width: 320px;
   max-width: 960px;
   width: 100%;
-  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 25px 50px;
 }
 
 .title {
-  margin-bottom: 2em;
+  margin-bottom: 64px;
 }
 
 .properties {
@@ -31,7 +43,7 @@ body {
 }
 
 .properties__item {
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 .properties__item {
