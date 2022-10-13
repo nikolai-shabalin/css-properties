@@ -23,7 +23,11 @@ body {
 }
 
 .title {
-  margin-bottom: 64px;
+  margin-bottom: 2.5em;
+}
+
+.main h2 {
+  margin-top: 2em;
 }
 
 .properties {
