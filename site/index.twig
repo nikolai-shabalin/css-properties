@@ -14,7 +14,7 @@
         {% for property in properties %}
           <li class="properties__item" data-type="{{ property.type }}" data-date="{{ property.date }}">
             <div class="properties__wrapper">
-              <h2 class="properties__title">{{ property.name }}</h2>
+              <h3 class="properties__title">{{ property.name }}</h3>
               <time class="properties__date">{{ property.date|date("d.m.Y") }}</time>
             </div>
             {% if property.specUrl %}<a class="properties__link properties__link--spec" href="{{ property.specUrl }}">Спецификация</a>{% endif %}
