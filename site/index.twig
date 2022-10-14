@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>CSS-свойства</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,9 +18,11 @@
               <h3 class="properties__title">{{ property.name }}</h3>
               <time class="properties__date">{{ property.date|date("d.m.Y") }}</time>
             </div>
-            {% if property.specUrl %}<a class="properties__link properties__link--spec" href="{{ property.specUrl }}">Спецификация</a>{% endif %}
-            {% if property.mdnUrl %}<a class="properties__link properties__link--mdn" href="{{ property.mdnUrl }}">MDN</a>{% endif %}
-            <a class="properties__link properties__link--caniuse" href="https://caniuse.com/?search={{ property.name }}">caniuse</a>
+            <div class="properties__links">
+              {% if property.specUrl %}<a class="properties__link properties__link--spec" href="{{ property.specUrl }}">Спецификация</a>{% endif %}
+              {% if property.mdnUrl %}<a class="properties__link properties__link--mdn" href="{{ property.mdnUrl }}">MDN</a>{% endif %}
+              <a class="properties__link properties__link--caniuse" href="https://caniuse.com/?search={{ property.name }}">caniuse</a>
+            </div>
           </li>
         {% endfor %}
       </ul>
