@@ -15,11 +15,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.27.10",
+    "browser-sync": "2.27.10",
     "date-fns": "2.29.3",
-    "gulp": "^4.0.2",
+    "gulp": "4.0.2",
     "gulp-htmlmin": "5.0.1",
-    "gulp-twig": "^1.2.0"
+    "gulp-twig": "1.2.0"
   },
   "type": "module",
   "engines": {
