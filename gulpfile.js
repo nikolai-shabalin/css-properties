@@ -1,6 +1,7 @@
 import fs from 'fs';
 import gulp from 'gulp';
 import twig  from 'gulp-twig';
+import htmlmin from 'gulp-htmlmin';
 import browser from 'browser-sync';
 
 const properties = JSON.parse(fs.readFileSync('./site/data/properties.json'));
@@ -14,6 +15,7 @@ const pages = () => {
         data: properties
       }
     }))
+    .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest(publicPath));
 }
 
