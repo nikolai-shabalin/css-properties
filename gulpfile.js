@@ -3,6 +3,7 @@ import gulp from 'gulp';
 import twig  from 'gulp-twig';
 import htmlmin from 'gulp-htmlmin';
 import browser from 'browser-sync';
+import {deleteAsync} from 'del';
 
 const properties = JSON.parse(fs.readFileSync('./site/data/properties.json'));
 const publicPath = './build';
@@ -25,6 +26,18 @@ const styles = () => {
     .pipe(gulp.dest(publicPath))
     .pipe(browser.stream());
 }
+
+// Копирование всех фавиконок
+const copyFavicons = () => {
+  return gulp.src(['./site/favicon.ico', './site/favicons/*', './site/manifest.webmanifest'],{
+    base: 'site'
+  })
+    .pipe(gulp.dest(publicPath));
+}
+
+
+// Удаление папки build
+const clean = () => deleteAsync(publicPath);
 
 // Сервер
 const server = (done) => {
@@ -52,7 +65,12 @@ const watcher = () => {
 }
 
 // Таски
-export const build = gulp.series(pages, styles);
+export const build = gulp.series(
+  clean,
+  copyFavicons,
+  pages,
+  styles
+);
 export default gulp.series(
   gulp.parallel(build),
   server,
