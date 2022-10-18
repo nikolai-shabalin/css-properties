@@ -1,5 +1,7 @@
 import fs from 'fs';
 import gulp from 'gulp';
+import postcss from "gulp-postcss";
+import csso from "postcss-csso";
 import twig  from 'gulp-twig';
 import htmlmin from 'gulp-htmlmin';
 import browser from 'browser-sync';
@@ -23,6 +25,9 @@ const pages = () => {
 // Создание стилей
 const styles = () => {
   return gulp.src('./site/style.css')
+    .pipe(postcss([
+      csso()
+    ]))
     .pipe(gulp.dest(publicPath))
     .pipe(browser.stream());
 }
@@ -68,8 +73,8 @@ const watcher = () => {
 export const build = gulp.series(
   clean,
   copyFavicons,
-  pages,
-  styles
+  styles,
+  pages
 );
 export default gulp.series(
   gulp.parallel(build),
