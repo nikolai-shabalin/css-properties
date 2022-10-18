@@ -11,6 +11,8 @@ body {
   padding: clamp(5px, 1vw, 25px);
   display: grid;
   place-items: center;
+  font-size: clamp(16px, 5vw, 24px);
+  line-height: 1.4;
 }
 
 .main {
