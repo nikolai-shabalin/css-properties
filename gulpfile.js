@@ -66,7 +66,7 @@ const reload = (done) => {
 // Слежение за файлами
 const watcher = () => {
   gulp.watch('./site/index.twig', gulp.series(pages, reload));
-  gulp.watch('./site/style.css', gulp.series(styles));
+  gulp.watch('./site/style.css', gulp.series(styles, pages, reload));
 }
 
 // Таски
