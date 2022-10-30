@@ -76,6 +76,7 @@ export const build = gulp.series(
   styles,
   pages
 );
+
 export default gulp.series(
   gulp.parallel(build),
   server,

@@ -21,7 +21,7 @@
       <h2>Добавлено в {{ key }}</h2>
       <ul class="properties">
         {% for property in properties %}
-          <li class="properties__item" data-type="{{ property.type }}" data-date="{{ property.date }}">
+          <li class="properties__item">
             <div class="properties__wrapper">
               <h3 class="properties__title">{{ property.name }}</h3>
               <time class="properties__date">{{ property.date|date("d.m.Y") }}</time>
