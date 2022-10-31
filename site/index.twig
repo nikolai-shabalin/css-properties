@@ -23,7 +23,11 @@
         {% for property in properties %}
           <li class="properties__item">
             <div class="properties__wrapper">
-              <h3 class="properties__title">{{ property.name }}</h3>
+              {% if property.type == '@' %}
+                <h3 class="properties__title">{{ property.type }}{{ property.name }}</h3>
+              {% else %}
+                <h3 class="properties__title">{{ property.type }}: {{ property.name }}</h3>
+              {% endif %}
               <time class="properties__date">{{ property.date|date("d.m.Y") }}</time>
             </div>
             <div class="properties__links">
