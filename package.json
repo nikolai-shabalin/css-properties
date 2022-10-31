@@ -8,7 +8,6 @@
     "pull": "cd data && git pull",
     "build": "gulp build",
     "create:data": "node grab/createData.js",
-    "deploy": "gulp build && gulp deploy",
     "start": "gulp"
   },
   "keywords": [],
