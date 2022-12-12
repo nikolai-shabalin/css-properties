@@ -19,17 +19,17 @@ body {
   min-width: 320px;
   max-width: 960px;
   width: 100%;
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: clamp(0px, 5vw, 25px) clamp(10px, 5vw, 50px);
 }
 
-.title {
+.properties-of-year {
+  background-color: #ffffff;
+  padding: clamp(0px, 5vw, 25px) clamp(10px, 5vw, 50px);
+  border-radius: 10px;
   margin-bottom: 2.5em;
 }
 
-.main h2 {
-  margin-top: 2em;
+.title {
+  margin-bottom: 2em;
 }
 
 .properties {
