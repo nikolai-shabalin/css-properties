@@ -21,6 +21,27 @@ body {
   width: 100%;
 }
 
+.select-year {
+  list-style: none;
+  margin: 0;
+  margin-bottom: 2em;
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+  padding: clamp(0px, 5vw, 25px) clamp(10px, 5vw, 50px);
+  border-radius: 10px;
+  color: #000000;
+}
+
+.select-year a {
+  color: inherit;
+}
+
+.select-year a:hover {
+  text-decoration: none;
+}
+
 .properties-of-year {
   background-color: #ffffff;
   padding: clamp(0px, 5vw, 25px) clamp(10px, 5vw, 50px);
@@ -28,8 +49,12 @@ body {
   margin-bottom: 2.5em;
 }
 
+.properties-of-year h2 {
+  margin-top: 0.25em;
+}
+
 .title {
-  margin-bottom: 2em;
+  margin-bottom: 0.5em;
 }
 
 .properties {

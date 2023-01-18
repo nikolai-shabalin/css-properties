@@ -17,8 +17,17 @@
 <body>
   <main class="main">
     <h1 class="title">Список всех CSS-свойств</h1>
+
+    Выбери год:
+    <ul class="select-year">
+      {% for key, properties in data|reverse %}
+        <li>
+          <a href="#year-{{ key }}">{{ key }}</a>
+        </li>
+      {% endfor %}
+    </ul>
     {% for key, properties in data|reverse %}
-      <div class="properties-of-year">
+      <div class="properties-of-year" id="year-{{ key }}">
         <h2>Добавлено в {{ key }}</h2>
         <ul class="properties">
           {% for property in properties %}
