@@ -11,12 +11,12 @@ jobs:
 
     steps:
       - name: Check Out
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v3.3.0
         with:
           persist-credentials: false
 
       - name: Setup Node
-        uses: actions/setup-node@v3.5.1
+        uses: actions/setup-node@v3.6.0
         with:
           node-version: 16
 
