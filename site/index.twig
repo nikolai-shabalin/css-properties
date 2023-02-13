@@ -27,7 +27,7 @@
       {% endfor %}
     </ul>
     {% for key, properties in data|reverse %}
-      <div class="properties-of-year" id="year-{{ key }}">
+      <section class="properties-of-year" id="year-{{ key }}">
         <h2>Добавлено в {{ key }}</h2>
         <ul class="properties">
           {% for property in properties %}
@@ -48,7 +48,7 @@
             </li>
           {% endfor %}
         </ul>
-      </div>
+      </section>
     {% endfor %}
   </main>
 </body>
