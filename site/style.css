@@ -110,13 +110,16 @@ body {
   animation: octocat-wave 560ms ease-in-out;
 }
 
-.github-corner svg {
-  fill: white;
-  color: #151513;
+.github-corner {
   position: absolute;
   top: 0;
   border: 0;
   right: 0;
+}
+
+.github-corner svg {
+  fill: white;
+  color: #151513;
 }
 
 .github-corner .octo-arm {
