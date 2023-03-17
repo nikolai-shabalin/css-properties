@@ -88,58 +88,58 @@ body {
 
 .properties__link {
   color: #ffffff;
-  background-color: tomato;
+  background-color: #ff6347;
   border-radius: 5px;
   padding: 3px 7px;
   text-decoration: none;
 }
 
 .properties__link--spec {
-  background-color: darkblue;
+  background-color: #00008b;
 }
 
 .properties__link.properties__link--spec:hover {
-  background-color:  #fff;
-  color: darkblue;
-  outline: 1px solid darkblue;
-  transition: all .5s ease;
+  background-color: #ffffff;
+  color: #00008b;
+  outline: 1px solid #00008b;
+  transition-duration: 0.5s;
 }
 
 .properties__link.properties__link--spec:active {
-  outline-color: red;
-  color: red;
+  outline-color: #ff0000;
+  color: #ff0000;
 }
 
 .properties__link--mdn {
-  background-color: blueviolet;
+  background-color: #8a2be2;
 }
 
 .properties__link--mdn:hover {
-  background-color: #fff;
-  color: blueviolet;
-  outline: 1px solid blueviolet;
-  transition: all .5s ease;
+  background-color: #ffffff;
+  color: #8a2be2;
+  outline: 1px solid #8a2be2;
+  transition-duration: 0.5s;
 }
 
 .properties__link--mdn:active {
-  outline-color: red;
-  color: red;
+  outline-color: #ff0000;
+  color: #ff0000;
 }
 
 .properties__link--caniuse {
-  background-color: mediumvioletred;
+  background-color: #c71585;
 }
 
 .properties__link--caniuse:hover {
-  background-color: #fff;
-  color: mediumvioletred;
-  outline: 1px solid mediumvioletred;
-  transition: all .5s ease;
+  background-color: #ffffff;
+  color: #c71585;
+  outline: 1px solid #c71585;
+  transition-duration: 0.5s;
 }
 
 .properties__link--caniuse:active {
-  outline-color: red;
-  color: red;
+  outline-color: #ff0000;
+  color: #ff0000;
 }
 
 .github-corner:hover .octo-arm {
@@ -154,7 +154,7 @@ body {
 }
 
 .github-corner svg {
-  fill: white;
+  fill: #ffffff;
   color: #151513;
 }
 
