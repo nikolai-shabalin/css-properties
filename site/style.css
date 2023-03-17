@@ -98,12 +98,48 @@ body {
   background-color: darkblue;
 }
 
+.properties__link.properties__link--spec:hover {
+  background-color:  #fff;
+  color: darkblue;
+  outline: 1px solid darkblue;
+  transition: all .5s ease;
+}
+
+.properties__link.properties__link--spec:active {
+  outline-color: red;
+  color: red;
+}
+
 .properties__link--mdn {
   background-color: blueviolet;
 }
 
+.properties__link--mdn:hover {
+  background-color: #fff;
+  color: blueviolet;
+  outline: 1px solid blueviolet;
+  transition: all .5s ease;
+}
+
+.properties__link--mdn:active {
+  outline-color: red;
+  color: red;
+}
+
 .properties__link--caniuse {
   background-color: mediumvioletred;
+}
+
+.properties__link--caniuse:hover {
+  background-color: #fff;
+  color: mediumvioletred;
+  outline: 1px solid mediumvioletred;
+  transition: all .5s ease;
+}
+
+.properties__link--caniuse:active {
+  outline-color: red;
+  color: red;
 }
 
 .github-corner:hover .octo-arm {
