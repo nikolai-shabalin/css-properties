@@ -71,6 +71,10 @@ body {
   border-radius: 4px;
 }
 
+.properties__item:hover {
+  box-shadow: 0 1px 3px rgb(24 0 255 / 59%);
+}
+
 .properties__wrapper {
   display: flex;
 }
@@ -151,7 +155,6 @@ body {
   outline-color: #ff0000;
   color: #ff0000;
 }
-
 
 .github-corner:hover .octo-arm {
   animation: octocat-wave 560ms ease-in-out;
