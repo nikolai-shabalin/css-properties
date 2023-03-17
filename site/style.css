@@ -92,20 +92,24 @@ body {
   border-radius: 5px;
   padding: 3px 7px;
   text-decoration: none;
+  transition-duration: 0.5s;
 }
 
 .properties__link--spec {
   background-color: #00008b;
 }
 
-.properties__link.properties__link--spec:hover {
+.properties__link--spec:hover {
   background-color: #ffffff;
   color: #00008b;
   outline: 1px solid #00008b;
-  transition-duration: 0.5s;
 }
 
-.properties__link.properties__link--spec:active {
+.properties__link--spec:focus {
+  outline-style: groove;
+}
+
+.properties__link--spec:active {
   outline-color: #ff0000;
   color: #ff0000;
 }
@@ -118,7 +122,10 @@ body {
   background-color: #ffffff;
   color: #8a2be2;
   outline: 1px solid #8a2be2;
-  transition-duration: 0.5s;
+}
+
+.properties__link--mdn:focus {
+  outline-style: groove;
 }
 
 .properties__link--mdn:active {
@@ -134,13 +141,17 @@ body {
   background-color: #ffffff;
   color: #c71585;
   outline: 1px solid #c71585;
-  transition-duration: 0.5s;
+}
+
+.properties__link--caniuse:focus {
+  outline-style: groove;
 }
 
 .properties__link--caniuse:active {
   outline-color: #ff0000;
   color: #ff0000;
 }
+
 
 .github-corner:hover .octo-arm {
   animation: octocat-wave 560ms ease-in-out;
