@@ -96,7 +96,9 @@ body {
   border-radius: 5px;
   padding: 3px 7px;
   text-decoration: none;
-  transition-duration: 0.5s;
+  transition: background-color 0.3s ease,
+    color 0.3s ease,
+    outline-color 0.3s ease;
 }
 
 .properties__link--spec {
@@ -109,8 +111,8 @@ body {
   outline: 1px solid #00008b;
 }
 
-.properties__link--spec:focus {
-  outline-style: groove;
+.properties__link--spec:focus-visible {
+  outline-style: outset;
 }
 
 .properties__link--spec:active {
@@ -128,8 +130,8 @@ body {
   outline: 1px solid #8a2be2;
 }
 
-.properties__link--mdn:focus {
-  outline-style: groove;
+.properties__link--mdn:focus-visible {
+  outline-style: outset;
 }
 
 .properties__link--mdn:active {
@@ -147,8 +149,8 @@ body {
   outline: 1px solid #c71585;
 }
 
-.properties__link--caniuse:focus {
-  outline-style: groove;
+.properties__link--caniuse:focus-visible {
+  outline-style: outset;
 }
 
 .properties__link--caniuse:active {
@@ -177,13 +179,19 @@ body {
 }
 
 @keyframes octocat-wave {
+
   0%,
   100% {
-    transform: rotate(0); }
+    transform: rotate(0);
+  }
+
   20%,
   60% {
-    transform: rotate(-25deg); }
+    transform: rotate(-25deg);
+  }
+
   40%,
   80% {
-    transform: rotate(10deg); }
+    transform: rotate(10deg);
+  }
 }
