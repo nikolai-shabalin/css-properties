@@ -71,6 +71,10 @@ body {
   border-radius: 4px;
 }
 
+.properties__item:hover {
+  box-shadow: 0 1px 3px rgb(24 0 255 / 59%);
+}
+
 .properties__wrapper {
   display: flex;
 }
@@ -88,22 +92,70 @@ body {
 
 .properties__link {
   color: #ffffff;
-  background-color: tomato;
+  background-color: #ff6347;
   border-radius: 5px;
   padding: 3px 7px;
   text-decoration: none;
+  transition: background-color 0.3s ease,
+    color 0.3s ease,
+    outline-color 0.3s ease;
 }
 
 .properties__link--spec {
-  background-color: darkblue;
+  background-color: #00008b;
+}
+
+.properties__link--spec:hover {
+  background-color: #ffffff;
+  color: #00008b;
+  outline: 1px solid #00008b;
+}
+
+.properties__link--spec:focus-visible {
+  outline-style: outset;
+}
+
+.properties__link--spec:active {
+  outline-color: #ff0000;
+  color: #ff0000;
 }
 
 .properties__link--mdn {
-  background-color: blueviolet;
+  background-color: #8a2be2;
+}
+
+.properties__link--mdn:hover {
+  background-color: #ffffff;
+  color: #8a2be2;
+  outline: 1px solid #8a2be2;
+}
+
+.properties__link--mdn:focus-visible {
+  outline-style: outset;
+}
+
+.properties__link--mdn:active {
+  outline-color: #ff0000;
+  color: #ff0000;
 }
 
 .properties__link--caniuse {
-  background-color: mediumvioletred;
+  background-color: #c71585;
+}
+
+.properties__link--caniuse:hover {
+  background-color: #ffffff;
+  color: #c71585;
+  outline: 1px solid #c71585;
+}
+
+.properties__link--caniuse:focus-visible {
+  outline-style: outset;
+}
+
+.properties__link--caniuse:active {
+  outline-color: #ff0000;
+  color: #ff0000;
 }
 
 .github-corner:hover .octo-arm {
@@ -118,7 +170,7 @@ body {
 }
 
 .github-corner svg {
-  fill: white;
+  fill: #ffffff;
   color: #151513;
 }
 
@@ -127,13 +179,19 @@ body {
 }
 
 @keyframes octocat-wave {
+
   0%,
   100% {
-    transform: rotate(0); }
+    transform: rotate(0);
+  }
+
   20%,
   60% {
-    transform: rotate(-25deg); }
+    transform: rotate(-25deg);
+  }
+
   40%,
   80% {
-    transform: rotate(10deg); }
+    transform: rotate(10deg);
+  }
 }
