@@ -49,10 +49,6 @@ body {
   margin-bottom: 2.5em;
 }
 
-.properties-of-year:not(:first-of-type) {
-  content-visibility: auto;
-}
-
 .properties-of-year h2 {
   margin-top: 0.25em;
 }
