@@ -1,11 +1,9 @@
 {
   "name": "css-properties",
-  "version": "0.1.0-beta",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clone": "git clone https://github.com/mdn/browser-compat-data.git data",
-    "pull": "cd data && git pull",
     "build": "gulp build",
     "create:data": "node grab/createData.js",
     "start": "gulp"
