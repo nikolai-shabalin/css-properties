@@ -1,11 +1,11 @@
 {
   "name": "css-properties",
   "version": "2.0.0",
-  "description": "",
+  "description": "List of all CSS properties added to browsers",
   "main": "app.js",
   "scripts": {
     "build": "gulp build",
-    "create:data": "node grab/createData.js",
+    "create:data": "node app.js",
     "start": "gulp"
   },
   "keywords": [],
