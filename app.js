@@ -1,15 +1,5 @@
 import bcd from '@mdn/browser-compat-data' assert { type: 'json' };
 import fs from 'node:fs';
-/*
-{
-  "name": "text-shadow",
-  "date": "2003-10-24",
-  "mdnUrl": "https://developer.mozilla.org/docs/Web/CSS/text-shadow",
-  "specUrl": "https://drafts.csswg.org/css-text-decor/#text-shadow-property",
-  "year": "2003",
-  "type": "Свойство"
-},
-* */
 
 const {css, browsers } = bcd;
 let data = [];
