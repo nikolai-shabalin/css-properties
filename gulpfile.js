@@ -7,37 +7,38 @@ import htmlmin from 'gulp-htmlmin';
 import browser from 'browser-sync';
 import {deleteAsync} from 'del';
 
+const {src, dest, series, parallel, watch} = gulp;
 const properties = JSON.parse(fs.readFileSync('./site/data/properties.json'));
 const publicPath = './build';
 
 // Создание HTML-страниц
 const pages = () => {
-  return gulp.src('./site/index.twig')
+  return src('./site/index.twig')
     .pipe(twig({
       data: {
         data: properties
       }
     }))
     .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(gulp.dest(publicPath));
+    .pipe(dest(publicPath));
 }
 
 // Создание стилей
 const styles = () => {
-  return gulp.src('./site/style.css')
+  return src('./site/style.css')
     .pipe(postcss([
       csso()
     ]))
-    .pipe(gulp.dest(publicPath))
+    .pipe(dest(publicPath))
     .pipe(browser.stream());
 }
 
 // Копирование всех фавиконок
 const copyFavicons = () => {
-  return gulp.src(['./site/favicon.ico', './site/favicons/*', './site/manifest.webmanifest'],{
+  return src(['./site/favicon.ico', './site/favicons/*', './site/manifest.webmanifest'],{
     base: 'site'
   })
-    .pipe(gulp.dest(publicPath));
+    .pipe(dest(publicPath));
 }
 
 
@@ -65,20 +66,20 @@ const reload = (done) => {
 
 // Слежение за файлами
 const watcher = () => {
-  gulp.watch('./site/index.twig', gulp.series(pages, reload));
-  gulp.watch('./site/style.css', gulp.series(styles, pages, reload));
+  watch('./site/index.twig', series(pages, reload));
+  watch('./site/style.css', series(styles, pages, reload));
 }
 
 // Таски
-export const build = gulp.series(
+export const build = series(
   clean,
   copyFavicons,
   styles,
   pages
 );
 
-export default gulp.series(
-  gulp.parallel(build),
+export default series(
+  parallel(build),
   server,
   watcher
 )
