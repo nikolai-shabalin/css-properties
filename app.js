@@ -24,15 +24,15 @@ const getBrowserVersion = (browser) => {
 }
 
 const getMinDate = (browserVersionsSupportingProperty, name) => {
-  let releaseDates = [];
+  const releaseDates = [];
 
   for (let browserVersion of browserVersionsSupportingProperty) {
-    let { name, version } = browserVersion;
-    let releaseInfo = browsers[name]['releases'][version];
+    const { name, version } = browserVersion;
+    const releaseInfo = browsers[name]['releases'][version];
     if (!releaseInfo || !releaseInfo['release_date']) {
       continue;
     }
-    let releaseDate = releaseInfo['release_date'];
+    const releaseDate = releaseInfo['release_date'];
     releaseDates.push(releaseDate);
   }
 
@@ -41,7 +41,7 @@ const getMinDate = (browserVersionsSupportingProperty, name) => {
   }
 
   const minDate = releaseDates.reduce((minDate, current) => {
-    let currentDate = new Date(current);
+    const currentDate = new Date(current);
     return currentDate < minDate ? currentDate : minDate;
   }, new Date(releaseDates[0]));
   return minDate.toISOString().split('T')[0];
@@ -75,20 +75,12 @@ const getDate = ({status: {deprecated}, support: {chrome, firefox, safari}}, nam
   return minDate;
 }
 
-const renameType = (type) => {
-  switch (type) {
-    case 'at-rules':
-      return '@';
-    case 'properties':
-      return 'Свойство';
-    case 'selectors':
-      return 'Селектор';
-    case 'types':
-      return 'Тип';
-    default:
-      return type;
-  }
-}
+const renameType = (type) => ({
+  'at-rules': '@',
+  'properties': 'Свойство',
+  'selectors': 'Селектор',
+  'types': 'Тип'
+}[type] || type);
 
 for (const cssKey in css) {
   const type = renameType(cssKey);
@@ -114,10 +106,10 @@ for (const cssKey in css) {
   }
 }
 
-function sortDataByYear(data) {
-  let sortedData = {};
+const sortDataByYear = (data) => {
+  const sortedData = {};
   for (let item of data) {
-    let year = item.date.split('-')[0];
+    const year = item.date.split('-')[0];
     if (!sortedData[year]) {
       sortedData[year] = [];
     }
@@ -126,6 +118,6 @@ function sortDataByYear(data) {
   return sortedData;
 }
 
-let sortedData = sortDataByYear(data);
+const sortedData = sortDataByYear(data);
 
 fs.writeFileSync('./site/data/properties.json', JSON.stringify(sortedData));
