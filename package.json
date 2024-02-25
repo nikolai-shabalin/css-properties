@@ -1,30 +1,28 @@
 {
   "name": "css-properties",
-  "version": "0.1.0-beta",
-  "description": "",
-  "main": "index.js",
+  "version": "2.0.0",
+  "description": "List of all CSS properties added to browsers",
+  "main": "app.js",
   "scripts": {
-    "clone": "git clone https://github.com/mdn/browser-compat-data.git data",
-    "pull": "cd data && git pull",
     "build": "gulp build",
-    "create:data": "node grab/createData.js",
+    "create:data": "node app.js",
     "start": "gulp"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "2.27.11",
-    "date-fns": "2.29.3",
-    "del": "7.0.0",
+    "@mdn/browser-compat-data": "latest",
+    "browser-sync": "3.0.2",
+    "del": "7.1.0",
     "gulp": "4.0.2",
     "gulp-htmlmin": "5.0.1",
-    "gulp-postcss": "9.0.1",
+    "gulp-postcss": "10.0.0",
     "gulp-twig": "1.2.0",
     "postcss-csso": "6.0.1"
   },
   "type": "module",
   "engines": {
-    "node": "16"
+    "node": "20"
   }
 }
