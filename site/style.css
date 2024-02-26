@@ -23,6 +23,7 @@ body {
   place-items: center;
   font-size: clamp(16px, 5vw, 24px);
   line-height: 1.4;
+  text-size-adjust: 100%;
 }
 
 .main {
