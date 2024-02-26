@@ -91,78 +91,52 @@ body {
   margin-bottom: 0.5em;
 }
 
+/* LINKS */
 .properties__links {
   display: flex;
   column-gap: 8px;
 }
 
 .properties__link {
+  --link-color: #ff6347;
   color: #ffffff;
-  background-color: #ff6347;
   border-radius: 5px;
   padding: 3px 7px;
   text-decoration: none;
+  background-color: var(--link-color);
   transition: background-color 0.3s ease,
     color 0.3s ease,
     outline-color 0.3s ease;
 }
 
-.properties__link--spec {
-  background-color: #00008b;
-}
-
-.properties__link--spec:hover {
+.properties__link:hover {
   background-color: #ffffff;
-  color: #00008b;
-  outline: 1px solid #00008b;
+  color: var(--link-color);
+  outline: 1px solid var(--link-color);
 }
 
-.properties__link--spec:focus-visible {
+.properties__link:focus-visible {
   outline-style: outset;
 }
 
-.properties__link--spec:active {
+.properties__link:active {
   outline-color: #ff0000;
   color: #ff0000;
+}
+
+.properties__link--spec {
+  --link-color: #00008b;
 }
 
 .properties__link--mdn {
-  background-color: #8a2be2;
-}
-
-.properties__link--mdn:hover {
-  background-color: #ffffff;
-  color: #8a2be2;
-  outline: 1px solid #8a2be2;
-}
-
-.properties__link--mdn:focus-visible {
-  outline-style: outset;
-}
-
-.properties__link--mdn:active {
-  outline-color: #ff0000;
-  color: #ff0000;
+  --link-color: #8a2be2;
 }
 
 .properties__link--caniuse {
-  background-color: #c71585;
+  --link-color: #c71585;
 }
 
-.properties__link--caniuse:hover {
-  background-color: #ffffff;
-  color: #c71585;
-  outline: 1px solid #c71585;
-}
-
-.properties__link--caniuse:focus-visible {
-  outline-style: outset;
-}
-
-.properties__link--caniuse:active {
-  outline-color: #ff0000;
-  color: #ff0000;
-}
+/* Octocat */
 
 .github-corner:hover .octo-arm {
   animation: octocat-wave 560ms ease-in-out;
