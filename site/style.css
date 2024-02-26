@@ -26,15 +26,15 @@ body {
 }
 
 .main {
-  min-width: 320px;
-  max-width: 960px;
-  width: 100%;
+  min-inline-size: 320px;
+  max-inline-size: 960px;
+  inline-size: 100%;
 }
 
 .select-year {
   list-style: none;
   margin: 0;
-  margin-bottom: 2em;
+  margin-block-end: 2em;
   display: flex;
   gap: 0.5em;
   flex-wrap: wrap;
@@ -56,15 +56,15 @@ body {
   background-color: #ffffff;
   padding: clamp(0px, 5vw, 25px) clamp(10px, 5vw, 50px);
   border-radius: 10px;
-  margin-bottom: 2.5em;
+  margin-block-end: 2.5em;
 }
 
 .properties-of-year h2 {
-  margin-top: 0.25em;
+  margin-block-start: 0.25em;
 }
 
 .title {
-  margin-bottom: 0.5em;
+  margin-block-end: 0.5em;
 }
 
 .properties {
@@ -76,8 +76,8 @@ body {
 .properties__item {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   padding: 10px 20px 15px;
-  margin-top: 1.5em;
-  margin-bottom: .5em;
+  margin-block-start: 1.5em;
+  margin-block-end: .5em;
   border-radius: 4px;
 }
 
@@ -90,9 +90,9 @@ body {
 }
 
 .properties__title {
-  margin-right: 10px;
-  margin-top: 0;
-  margin-bottom: 0.5em;
+  margin-inline-end: 10px;
+  margin-block-start: 0;
+  margin-block-end: 0.5em;
 }
 
 /* LINKS */
@@ -148,9 +148,9 @@ body {
 
 .github-corner {
   position: absolute;
-  top: 0;
+  inset-block-start: 0;
   border: 0;
-  right: 0;
+  inset-inline-end: 0;
 }
 
 .github-corner svg {
