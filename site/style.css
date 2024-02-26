@@ -10,6 +10,10 @@
   border-radius: 0.125rem;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
@@ -159,7 +163,6 @@ body {
 }
 
 @keyframes octocat-wave {
-
   0%,
   100% {
     transform: rotate(0);
