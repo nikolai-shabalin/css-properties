@@ -12,6 +12,7 @@
 
 html {
   scroll-behavior: smooth;
+
 }
 
 body {
@@ -29,7 +30,8 @@ body {
 .main {
   min-inline-size: 320px;
   max-inline-size: 960px;
-  inline-size: 100%;
+  inline-size: fit-content;
+  margin-inline: auto;
 }
 
 .select-year {
@@ -58,6 +60,7 @@ body {
   padding: clamp(0px, 5vw, 25px) clamp(10px, 5vw, 50px);
   border-radius: 10px;
   margin-block-end: 2.5em;
+  scroll-margin-block-start: 15px;
 }
 
 .properties-of-year h2 {
