@@ -6,8 +6,8 @@ settings:
 
 devDependencies:
   '@mdn/browser-compat-data':
-    specifier: 5.5.15
-    version: 5.5.15
+    specifier: 5.5.16
+    version: 5.5.16
   browser-sync:
     specifier: 3.0.2
     version: 3.0.2
@@ -39,8 +39,8 @@ packages:
       regenerator-runtime: 0.14.1
     dev: true
 
-  /@mdn/browser-compat-data@5.5.15:
-    resolution: {integrity: sha512-BWm+TMK60HSepXOZcu39bDs/2sJZVetHO5w0mkuxhpkZvz0G5yGAoyimfaru8g5nK6LXXUIeX6Uk/SWzOfph3g==}
+  /@mdn/browser-compat-data@5.5.16:
+    resolution: {integrity: sha512-za4DOflM2h73Rs2ORnhS2IU73sVRjrN4x5ZmOZ8WgLCSOVuZ1+y1K0NQKy8xqaPW52ezN+ni2N2RBUKt532ULA==}
     dev: true
 
   /@nodelib/fs.scandir@2.1.5:
