@@ -15,7 +15,7 @@
     "@mdn/browser-compat-data": "5.5.18",
     "browser-sync": "3.0.2",
     "del": "7.1.0",
-    "gulp": "4.0.2",
+    "gulp": "5.0.0",
     "gulp-htmlmin": "5.0.1",
     "gulp-postcss": "10.0.0",
     "gulp-twig": "1.2.0",

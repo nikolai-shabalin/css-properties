@@ -1,5 +1,5 @@
 import fs from 'fs';
-import gulp from 'gulp';
+import {src, dest, series, parallel, watch} from 'gulp';
 import postcss from "gulp-postcss";
 import csso from "postcss-csso";
 import twig  from 'gulp-twig';
@@ -7,7 +7,6 @@ import htmlmin from 'gulp-htmlmin';
 import browser from 'browser-sync';
 import {deleteAsync} from 'del';
 
-const {src, dest, series, parallel, watch} = gulp;
 const properties = JSON.parse(fs.readFileSync('./site/data/properties.json'));
 const publicPath = './build';
 
