@@ -6,8 +6,8 @@ settings:
 
 devDependencies:
   '@mdn/browser-compat-data':
-    specifier: 5.5.18
-    version: 5.5.18
+    specifier: 5.5.19
+    version: 5.5.19
   browser-sync:
     specifier: 3.0.2
     version: 3.0.2
@@ -51,8 +51,8 @@ packages:
       is-negated-glob: 1.0.0
     dev: true
 
-  /@mdn/browser-compat-data@5.5.18:
-    resolution: {integrity: sha512-G3Py1J3B5NgMJktE+m+COnNlzHmccyyKAueOnivX6tecFyCzRGZCzc525n2uRGNMa3F7AqKa+Re4IvzV3Z4EYw==}
+  /@mdn/browser-compat-data@5.5.19:
+    resolution: {integrity: sha512-ntKBZtwWCy4XvJosdTJKqIMdmzgbxjopfoiMxgpzsml3dXqA7MIHCE/amidfQc06a6KvmMrpiVuYHIBt2feDog==}
     dev: true
 
   /@nodelib/fs.scandir@2.1.5:
