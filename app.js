@@ -115,6 +115,11 @@ const sortDataByYear = (data) => {
     }
     sortedData[year].push(item);
   }
+
+  for (let year in sortedData) {
+    sortedData[year].sort((a, b) => b.date.localeCompare(a.date));
+  }
+
   return sortedData;
 }
 
