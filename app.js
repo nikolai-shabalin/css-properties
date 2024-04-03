@@ -23,7 +23,7 @@ const getBrowserVersion = (browser) => {
   return null;
 }
 
-const getMinDate = (browserVersionsSupportingProperty, name) => {
+const getMinDate = (browserVersionsSupportingProperty) => {
   const releaseDates = [];
 
   for (let browserVersion of browserVersionsSupportingProperty) {
