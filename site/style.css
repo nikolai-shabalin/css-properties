@@ -68,7 +68,11 @@ body {
 }
 
 .title {
-  margin-block-end: 0.5em;
+  margin-block-end: 0.1em;
+}
+
+.last-update {
+  margin-block-start: 0;
 }
 
 .properties {
