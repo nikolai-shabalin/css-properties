@@ -30,7 +30,7 @@ importers:
         specifier: 1.2.0
         version: 1.2.0
       postcss-lightningcss:
-        specifier: ^1.0.0
+        specifier: 1.0.0
         version: 1.0.0(postcss@8.4.35)
 
 packages:
