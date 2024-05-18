@@ -28,7 +28,7 @@ body {
 .main {
   margin-inline: 20px;
   min-inline-size: 280px;
-  max-inline-size: 960px;
+  max-inline-size: 780px;
 
   @media (width >= 1000px) {
     margin-inline: auto;
