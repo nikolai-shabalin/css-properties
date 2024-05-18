@@ -1,7 +1,7 @@
 import fs from 'fs';
 import {src, dest, series, parallel, watch} from 'gulp';
 import postcss from "gulp-postcss";
-import csso from "postcss-csso";
+import lightningcss from 'postcss-lightningcss';
 import twig  from 'gulp-twig';
 import htmlmin from 'gulp-htmlmin';
 import browser from 'browser-sync';
@@ -26,7 +26,11 @@ const pages = () => {
 const styles = () => {
   return src('./site/style.css')
     .pipe(postcss([
-      csso()
+      lightningcss({
+        lightningcssOptions: {
+          minify: true,
+        },
+      })
     ]))
     .pipe(dest(publicPath))
     .pipe(browser.stream());

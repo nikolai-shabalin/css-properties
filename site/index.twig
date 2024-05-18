@@ -24,7 +24,6 @@
   </a>
   <main class="main">
     <h1 class="title">Список всех CSS-свойств</h1>
-    <p class="last-update">обновлено {{ published_at|date("d.m.y") }}</p>
 
     Выбери год:
     <ul class="select-year">
@@ -39,19 +38,17 @@
         <h2>Добавлено в {{ key }}</h2>
         <ul class="properties">
           {% for property in properties %}
-            <li class="properties__item">
-              <div class="properties__wrapper">
-                {% if property.type == '@' %}
-                  <h3 class="properties__title">{{ property.type }}{{ property.name }}</h3>
-                {% else %}
-                  <h3 class="properties__title">{{ property.type }}: {{ property.name }}</h3>
-                {% endif %}
-                <time class="properties__date">{{ property.date|date("d.m.Y") }}</time>
-              </div>
-              <div class="properties__links">
-                {% if property.specUrl %}<a class="properties__link properties__link--spec" href="{{ property.specUrl }}">Спецификация</a>{% endif %}
-                {% if property.mdnUrl %}<a class="properties__link properties__link--mdn" href="{{ property.mdnUrl }}">MDN</a>{% endif %}
-                <a class="properties__link properties__link--caniuse" href="https://caniuse.com/?search={{ property.name }}">caniuse</a>
+            <li>
+              {% if property.type == '@' %}
+                <h3>{{ property.type }}{{ property.name }}</h3>
+              {% else %}
+                <h3>{{ property.type }}: {{ property.name }}</h3>
+              {% endif %}
+              <time>{{ property.date|date("d.m.Y") }}</time>
+              <div>
+                {% if property.specUrl %}<a href="{{ property.specUrl }}">Спецификация</a>{% endif %}
+                {% if property.mdnUrl %}<a href="{{ property.mdnUrl }}">MDN</a>{% endif %}
+                <a href="https://caniuse.com/?search={{ property.name }}">caniuse</a>
               </div>
             </li>
           {% endfor %}
