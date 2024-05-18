@@ -19,7 +19,7 @@
     "gulp-htmlmin": "5.0.1",
     "gulp-postcss": "10.0.0",
     "gulp-twig": "1.2.0",
-    "postcss-csso": "6.0.1"
+    "postcss-lightningcss": "^1.0.0"
   },
   "type": "module",
   "engines": {
