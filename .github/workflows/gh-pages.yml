@@ -21,7 +21,7 @@ jobs:
           node-version: 20
 
       - name: Installing Dependencies
-        run: npm i
+        run: npm ci
 
       - name: Building
         run: npm run build
