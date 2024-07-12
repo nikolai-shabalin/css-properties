@@ -20,6 +20,9 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Installing Dependencies
         run: pnpm i
 
