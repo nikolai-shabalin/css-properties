@@ -92,14 +92,14 @@ body {
     background-color: var(--color-background-item);
     display: grid;
     row-gap: 16px;
-    grid-template-columns: 1fr min-content;
+    grid-template-columns: [full-start] 1fr  min-content [full-end];
 
   h3 {
     margin-block: unset;
   }
 
   div {
-    grid-column: 1 / -1;
+    grid-column: full;
     display: flex;
     flex-wrap: wrap;
     gap: 8px 16px;
