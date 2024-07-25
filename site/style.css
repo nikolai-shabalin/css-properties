@@ -77,15 +77,6 @@ body {
   }
 }
 
-/* .properties {
-  list-style: none;
-  margin: unset;
-  padding: unset;
-  display: flex;
-  flex-direction: column;
-  row-gap: 16px;
-} */
-
 .property {
     border-radius: 8px;
     padding: 16px;
