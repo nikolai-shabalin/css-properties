@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@mdn/browser-compat-data':
-        specifier: 5.5.43
-        version: 5.5.43
+        specifier: 5.5.45
+        version: 5.5.45
       browser-sync:
         specifier: 3.0.2
         version: 3.0.2
@@ -47,8 +47,8 @@ packages:
     resolution: {integrity: sha512-kjotm7XJrJ6v+7knhPaRgaT6q8F8K2jiafwYdNHLzmV0uGLuZY43FK6smNSHUPrhq5kX2slCUy+RGG/xGqmIKA==}
     engines: {node: '>=10.13.0'}
 
-  '@mdn/browser-compat-data@5.5.43':
-    resolution: {integrity: sha512-tnAfo9j9tCOyjHB9nTkDcTHtpwMT+oBUSL7sBsGHxpZ/wQ2uRByHawaFcNgqFVogN20V9LsSfsGQ9EB5Px13rg==}
+  '@mdn/browser-compat-data@5.5.45':
+    resolution: {integrity: sha512-ZSQFGihUPlFxG2S9sUWS2tjDKQNTVVEgN62Au5yFcnbYsC183T1JrLz6I5H467Hw8WMCjwRuOEFQSpBW6IvZCg==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1419,7 +1419,7 @@ snapshots:
     dependencies:
       is-negated-glob: 1.0.0
 
-  '@mdn/browser-compat-data@5.5.43': {}
+  '@mdn/browser-compat-data@5.5.45': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
