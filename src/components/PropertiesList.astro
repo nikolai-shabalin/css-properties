@@ -1,0 +1,29 @@
+---
+import Property from "../components/Property.astro";
+---
+
+<section class="propties-list">
+  <h2>Добавлено в 2023</h2>
+
+  <Property />
+  <Property />
+  <Property />
+</section>
+
+<style>
+  .propties-list {
+    --properties-list-color: oklch(0.658 0.186 281.032 / 0.12);
+
+    background-color: var(--properties-list-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-block-end: 32px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+
+    h2 {
+      margin-block: unset;
+    }
+  }
+</style>

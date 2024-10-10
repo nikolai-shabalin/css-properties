@@ -1,0 +1,20 @@
+---
+import { data } from '../data/createData';
+import Github from '../components/Github.astro';
+import PropertiesList from '../components/PropertiesList.astro';
+---
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Все CSS возможности в браузерах</title>
+    <link rel="stylesheet" href="/src/styles/global.css">
+    <meta name="description" content="Полный список всех CSS-свойств с указанием года добавления, спецификаций и поддержки в браузерах. Последние обновления и новые CSS-свойства для веб-разработчиков.">
+    <meta name="keywords" content="css, properties, at-rules, types, selectors, browsers">
+  </head>
+  <body>
+    <main>
+      <PropertiesList />
+    </main>
+    <Github />
+  </body>
+</html>

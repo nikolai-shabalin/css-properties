@@ -1,0 +1,27 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+*:focus-visible {
+  outline: 3px solid black;
+  outline-offset: 0.25rem;
+  border-radius: 0.125rem;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  font-size: 20px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  color: #333333;
+  background-color: #fefefe;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}

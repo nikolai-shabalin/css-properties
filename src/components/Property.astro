@@ -1,0 +1,43 @@
+<article class="property">
+  <h3>@scope</h3>
+  <time datetime="2023-10-10">10.10.2023</time>
+  <div>
+    <a href="https://drafts.csswg.org/css-cascade-6/#scoped-styles">Спецификация</a>
+    <a href="https://developer.mozilla.org/docs/Web/CSS/@scope">MDN</a>
+    <a href="https://caniuse.com/?search=scope">caniuse</a>
+  </div>
+</article>
+
+<style>
+  .property {    
+    --property-color: oklch(1 0 89.876 / 0.6);
+    --property-color-button: linear-gradient(73.27deg, oklch(0.432 0.299 264.052) -25.49%, oklch(0.616 0.288 311.143) 97.39%);
+    border-radius: 8px;
+    padding: 16px;
+    background-color: var(--property-color);
+    display: grid;
+    row-gap: 16px;
+    grid-template-columns: [full-start] 1fr min-content [full-end];
+
+    h3 {
+      margin-block: unset;
+    }
+
+    div {
+      grid-column: full;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    a {
+      background: var(--property-color-button);
+      color: oklch(1 0 89.876);
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: unset;
+      display: inline-block;
+    }
+  }
+</style>

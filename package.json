@@ -4,11 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "engines": {
-    "node": "20"
+    "node": "22.9.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "@mdn/browser-compat-data": "5.6.4",
+    "astro": "4.15.10"
   }
 }
