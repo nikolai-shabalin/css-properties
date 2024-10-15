@@ -1,10 +1,19 @@
+---
+const { name, date, mdnUrl, specUrl } = Astro.props;
+
+const formatDate = (date) => {
+  const [day, month, year] = date.split(".");
+  return `${year}-${month}-${day}`;
+};
+---
+
 <article class="property">
-  <h3>@scope</h3>
-  <time datetime="2023-10-10">10.10.2023</time>
+  <h3>{name}</h3>
+  <time datetime={formatDate(date)}>{date}</time>
   <div>
-    <a href="https://drafts.csswg.org/css-cascade-6/#scoped-styles">Спецификация</a>
-    <a href="https://developer.mozilla.org/docs/Web/CSS/@scope">MDN</a>
-    <a href="https://caniuse.com/?search=scope">caniuse</a>
+    {specUrl && <a href={specUrl}>Спецификация</a>}
+    {mdnUrl && <a href={mdnUrl}>MDN</a>}
+    <a href="https://caniuse.com/?search={title}">caniuse</a>
   </div>
 </article>
 

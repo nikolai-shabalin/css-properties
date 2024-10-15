@@ -12,11 +12,11 @@
   "author": "",
   "license": "ISC",
   "engines": {
-    "node": "22.9.0"
+    "node": "20.17.0"
   },
   "type": "module",
   "dependencies": {
-    "@mdn/browser-compat-data": "5.6.4",
-    "astro": "4.15.10"
+    "@mdn/browser-compat-data": "5.6.6",
+    "astro": "4.16.3"
   }
 }
