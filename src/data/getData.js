@@ -1,6 +1,7 @@
 import bcd from '@mdn/browser-compat-data' assert { type: "json" };
 import fs from 'node:fs';
 
+// TODO: добыть подствойства
 const { css, browsers } = bcd;
 let data = [];
 
