@@ -16,7 +16,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@mdn/browser-compat-data": "5.6.6",
-    "astro": "4.16.3"
+    "@mdn/browser-compat-data": "5.6.8",
+    "astro": "4.16.6"
   }
 }
