@@ -11,17 +11,13 @@
 }
 
 body {
+  background:
+    linear-gradient(179.87deg,oklch(50.52% .734 291.04/.12) 0.11%,oklch(24.08% .52 303.7/0) 99.89%) 
+    fixed;
   font-family: system-ui, sans-serif;
   font-size: 20px;
   line-height: 1.6;
   margin: 0;
   padding: 0;
   color: #333333;
-  background-color: #fefefe;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
 }

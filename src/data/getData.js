@@ -1,9 +1,10 @@
 import bcd from '@mdn/browser-compat-data' assert { type: "json" };
+import { log } from 'node:console';
 import fs from 'node:fs';
 
 // TODO: добыть подствойства
 const { css, browsers } = bcd;
-let data = [];
+export let data = [];
 
 const getSpecUrl = (properties, propertyName) => {
     const specUrl = properties[propertyName]['__compat']['spec_url'];
@@ -28,4 +29,4 @@ for (const categoryKey in css) {
     }
 }
 
-export default data;
+console.log(data.length);

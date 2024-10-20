@@ -1,11 +1,14 @@
 ---
 import Property from "../components/Property.astro";
+import { data } from '../data/getData.js';
 ---
 
 <section class="propties-list">
   <h2>Добавлено в 2023</h2>
 
-  <Property name="@scope" date="10.10.2023" specUrl="https://drafts.csswg.org/css-cascade-6/#scoped-styles" mdnUrl="https://developer.mozilla.org/docs/Web/CSS/@scope"/>
+  {data.map((item) => (
+    <Property {...item} />
+  ))}
 </section>
 
 <style>
@@ -19,6 +22,8 @@ import Property from "../components/Property.astro";
     display: flex;
     flex-direction: column;
     row-gap: 16px;
+    width: min(100%, 960px);
+    margin-inline: auto;
 
     h2 {
       margin-block: unset;
