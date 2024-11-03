@@ -1,4 +1,4 @@
-import bcd from '@mdn/browser-compat-data' assert { type: 'json' };
+import bcd from '@mdn/browser-compat-data' with { type: 'json' };
 import fs from 'node:fs';
 
 const {css, browsers } = bcd;
