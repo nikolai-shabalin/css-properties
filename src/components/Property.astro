@@ -1,5 +1,5 @@
 ---
-const { name, date, mdnUrl, specUrl } = Astro.props;
+const {name, date, mdnUrl, specUrl} = Astro.props;
 
 const formatDate = (date) => {
   const [day, month, year] = date.split(".");
@@ -17,7 +17,7 @@ const formatDate = (date) => {
 </article>
 
 <style>
-  .property {    
+  .property {
     --property-color: oklch(1 0 89.876 / 0.6);
     --property-color-button: linear-gradient(73.27deg, oklch(0.432 0.299 264.052) -25.49%, oklch(0.616 0.288 311.143) 97.39%);
     border-radius: 8px;

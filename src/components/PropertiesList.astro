@@ -3,7 +3,7 @@ import Property from "../components/Property.astro";
 import { data } from '../data/getData.js';
 ---
 
-<section class="propties-list">
+<section class="properties-list">
   <h2>Добавлено в 2023</h2>
 
   {data.map((item) => (
@@ -12,7 +12,7 @@ import { data } from '../data/getData.js';
 </section>
 
 <style>
-  .propties-list {
+  .properties-list {
     --properties-list-color: oklch(0.658 0.186 281.032 / 0.12);
 
     background-color: var(--properties-list-color);
