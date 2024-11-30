@@ -6,13 +6,16 @@
   "scripts": {
     "build": "gulp build",
     "create:data": "node app.js",
-    "start": "gulp"
+    "start": "gulp",
+    "start:astro": "astro dev",
+    "build:astro": "astro build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@mdn/browser-compat-data": "5.6.20",
+    "astro": "4.16.16",
     "browser-sync": "3.0.3",
     "del": "8.0.0",
     "gulp": "5.0.0",
