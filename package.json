@@ -15,14 +15,7 @@
   "license": "ISC",
   "devDependencies": {
     "@mdn/browser-compat-data": "5.6.20",
-    "astro": "4.16.16",
-    "browser-sync": "3.0.3",
-    "del": "8.0.0",
-    "gulp": "5.0.0",
-    "gulp-htmlmin": "5.0.1",
-    "gulp-postcss": "10.0.0",
-    "gulp-twig": "1.2.0",
-    "postcss-lightningcss": "1.0.1"
+    "astro": "4.16.16"
   },
   "type": "module",
   "engines": {
