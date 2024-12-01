@@ -4,11 +4,10 @@
   "description": "List of all CSS properties added to browsers",
   "main": "app.js",
   "scripts": {
-    "build": "gulp build",
     "create:data": "node app.js",
-    "start": "gulp",
-    "start:astro": "astro dev",
-    "build:astro": "astro build"
+    "dev": "astro dev",
+    "build": "astro build",
+    "astro": "astro"
   },
   "keywords": [],
   "author": "",
