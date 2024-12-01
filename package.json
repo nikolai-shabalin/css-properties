@@ -10,7 +10,10 @@
     "preview": "astro preview"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "name": "Nikolai Shabalin",
+    "email": "dev.nikolai.shabalin@gmail.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "@astrojs/check": "0.9.4",
