@@ -4,10 +4,10 @@
   "description": "List of all CSS properties added to browsers",
   "main": "app.js",
   "scripts": {
-    "create:data": "node app.js",
+    "create:data": "node src/data/createData.js",
     "dev": "astro dev",
     "build": "astro check && astro build",
-    "astro": "astro"
+    "preview": "astro preview"
   },
   "keywords": [],
   "author": "",
