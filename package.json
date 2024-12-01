@@ -1,25 +1,22 @@
 {
   "name": "css-properties",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "List of all CSS properties added to browsers",
   "main": "app.js",
   "scripts": {
-    "build": "gulp build",
-    "create:data": "node app.js",
-    "start": "gulp"
+    "create:data": "node src/data/createData.js",
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@astrojs/check": "0.9.4",
     "@mdn/browser-compat-data": "5.6.20",
-    "browser-sync": "3.0.3",
-    "del": "8.0.0",
-    "gulp": "5.0.0",
-    "gulp-htmlmin": "5.0.1",
-    "gulp-postcss": "10.0.0",
-    "gulp-twig": "1.2.0",
-    "postcss-lightningcss": "1.0.1"
+    "astro": "4.16.16",
+    "typescript": "5.7.2"
   },
   "type": "module",
   "engines": {

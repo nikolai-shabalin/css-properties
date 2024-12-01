@@ -125,4 +125,4 @@ const sortDataByYear = (data) => {
 
 const sortedData = sortDataByYear(data);
 
-fs.writeFileSync('./site/data/properties.json', JSON.stringify(sortedData));
+fs.writeFileSync('./src/data/data.js', `export const data = ${JSON.stringify(sortedData)}`);

@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import Github from '../components/Github.astro';
+import SelectYear from '../components/SelectYear.astro';
+import Properties from '../components/Properties.astro';
+import {data} from '../data/data.js';
+
+const listYears = Object.keys(data).reverse();
+---
+
+<Base>
+  <main class="main">
+    <h1 class="title">Список всех CSS-свойств</h1>
+    <SelectYear listYears={listYears} />
+    <Properties properties={data} />
+  </main>
+  <Github />
+</Base>
+
+<style>
+  .main {
+    grid-area: content;
+  }
+</style>

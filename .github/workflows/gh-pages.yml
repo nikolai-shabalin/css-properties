@@ -29,11 +29,11 @@ jobs:
         run: pnpm i
 
       - name: Building
-        run: npm run build
+        run: pnpm build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          folder: ./build
+          folder: ./dist
           branch: gh-pages
