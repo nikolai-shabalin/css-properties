@@ -3,7 +3,15 @@ import Property from './Property.astro';
 
 interface Props {
   properties: Record<string, Property[]>;
-};
+}
+
+interface Property {
+  type: string;
+  name: string;
+  date: string;
+  specUrl?: string;
+  mdnUrl?: string;
+}
 
 const {properties} = Astro.props;
 ---
