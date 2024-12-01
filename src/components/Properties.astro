@@ -1,0 +1,34 @@
+---
+import Property from './Property.astro';
+
+interface Props {
+  properties: Record<string, Property[]>;
+};
+
+const {properties} = Astro.props;
+---
+
+{Object.entries(properties).reverse().map(([key, properties]) => (
+  <section class="properties-of-year" id={`year-${key}`}>
+    <h2>Добавлено в {key}</h2>
+    {properties.map((property) => (
+      <Property property={property} />
+    ))}
+  </section>
+))}
+
+<style>
+  .properties-of-year {
+    background-color: var(--color-background-section);
+    border-radius: 8px;
+    padding: 20px;
+    margin-block-end: 32px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+
+    h2 {
+      margin-block: unset;
+    }
+  }
+</style>

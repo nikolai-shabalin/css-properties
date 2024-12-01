@@ -1,0 +1,32 @@
+---
+const {listYears} = Astro.props;
+interface Props {
+  listYears: string[];
+}
+---
+
+Выбери год:
+<ul class="select-year">
+  {listYears.map((year) => (
+    <li>
+      <a href={`#year-${year}`}>{year}</a>
+    </li>
+  ))}
+</ul>
+
+<style>
+.select-year {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  background-color: var(--color-background-section);
+  border-radius: 8px;
+  padding: 20px;
+  margin-block-end: 32px;
+
+  a {
+    color: oklch(0 0 0);
+  }
+}
+</style>
