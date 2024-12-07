@@ -13,7 +13,7 @@ const { property } = Astro.props;
 ---
 <article class="property">
   <h3>{property.type === '@' ? `${property.type}${property.name}` : `${property.type}: ${property.name}`}</h3>
-  <time>{new Date(property.date).toLocaleDateString('ru-RU')}</time>
+  <time datetime={property.date}>{new Date(property.date).toLocaleDateString('ru-RU')}</time>
   <div>
     {property.specUrl && <a href={property.specUrl}>Спецификация</a>}
     {property.mdnUrl && <a href={property.mdnUrl}>MDN</a>}
