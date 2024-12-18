@@ -1,18 +1,22 @@
 ---
+export type PropertyProp = {
+  name: string;
+  date: string;
+  type: string;
+  parent?: string | null;
+  specUrl?: string;
+  mdnUrl?: string;
+  year: string;
+}
+
 interface Props {
-  property: {
-    type: string;
-    name: string;
-    date: string;
-    specUrl?: string;
-    mdnUrl?: string;
-  };
+  property: PropertyProp;
 }
 
 const { property } = Astro.props;
 ---
 <article class="property">
-  <h3>{property.type === '@' ? `${property.type}${property.name}` : `${property.type}: ${property.name}`}</h3>
+  <h3>{property.parent ? `${property.parent}: ${property.name}` : (property.type === '@' ? `${property.type}${property.name}` : `${property.type}: ${property.name}`)}</h3>
   <time datetime={property.date}>{new Date(property.date).toLocaleDateString('ru-RU')}</time>
   <div>
     {property.specUrl && <a href={property.specUrl}>Спецификация</a>}
@@ -27,11 +31,17 @@ const { property } = Astro.props;
     padding: 16px;
     background-color: var(--color-background-item);
     display: grid;
-    row-gap: 16px;
-    grid-template-columns: [full-start] 1fr  min-content [full-end];
+    row-gap: 8px;
+    grid-template-columns: [full-start] 1fr [full-end];
 
     h3 {
       margin-block: unset;
+      margin-block-end: 8px;
+      word-break: break-word;
+    }
+
+    time {
+      grid-row: 1 / 2;
     }
 
     div {
