@@ -46,14 +46,18 @@ const extractData = (properties, parent = null) => {
     if (!date) continue;
 
     const year = date.split("-")[0];
+
+    const name = propertyName.includes('_') && compat.description
+      ? compat.description.replace(/<\/?code>|&lt;|&gt;/g, '')
+      : propertyName;
+
     const entry = {
-      name: propertyName,
+      name,
       date,
       type: parent ? "Значение" : "Свойство",
       parent: parent || null,
       mdnUrl: compat.mdn_url || null,
-      specUrl: compat.spec_url || null,
-      year: date.split('-')[0]
+      specUrl: compat.spec_url || null
     };
 
     if (!groupedData[year]) {
@@ -73,4 +77,4 @@ for (const year in groupedData) {
   groupedData[year].sort((a, b) => b.date.localeCompare(a.date));
 }
 
-fs.writeFileSync('./data.js', `export const data = ${JSON.stringify(groupedData)};`);
+fs.writeFileSync('./src/data/data.js', `export const data = ${JSON.stringify(groupedData)};`);
