@@ -1,0 +1,43 @@
+<section class="era">
+  Выбери CSS эпоху:
+  <button type="button" data-era="CSS3">CSS3</button>
+  <button type="button" data-era="CSS4">CSS4</button>
+  <button type="button" data-era="CSS5">CSS5</button>
+  <button type="button" data-action="reset">Отменить выбор</button>
+</section>
+
+<script>
+    const EAR_YEARS = {
+      CSS3: [2009, 2010, 2011, 2012],
+      CSS4: [2013, 2014, 2015, 2016, 2017, 2018],
+      CSS5: [2019, 2020, 2021, 2022, 2023, 2024]
+    };
+    const eraSection = document.querySelector('.era');
+    const sections = document.querySelectorAll('.properties-of-year');
+
+    eraSection.addEventListener('click', event => {
+      const button = event.target;
+
+      if (button.tagName === 'BUTTON') {
+        if (button.dataset.action === 'reset') {
+          sections.forEach(section => {
+            section.style.display = 'flex';
+          });
+          return;
+        }
+
+        const era = button.dataset.era;
+        const years = EAR_YEARS[era] || [];
+
+        sections.forEach(section => {
+          const sectionYear = parseInt(section.id.replace('year-', ''), 10);
+          if (years.includes(sectionYear)) {
+            section.style.display = 'flex';
+          } else {
+            section.style.display = 'none';
+          }
+        });
+      }
+    });
+
+</script>
