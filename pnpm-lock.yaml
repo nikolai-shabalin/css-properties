@@ -12,8 +12,8 @@ importers:
         specifier: 0.9.4
         version: 0.9.4(typescript@5.7.2)
       '@mdn/browser-compat-data':
-        specifier: 5.6.25
-        version: 5.6.25
+        specifier: 5.6.26
+        version: 5.6.26
       astro:
         specifier: 5.0.3
         version: 5.0.3(@types/node@20.12.12)(lightningcss@1.25.1)(rollup@4.27.4)(typescript@5.7.2)(yaml@2.6.1)
@@ -492,8 +492,8 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
 
-  '@mdn/browser-compat-data@5.6.25':
-    resolution: {integrity: sha512-fvisUCC7JKWBmtpmnCMQk66AeHFUWNaKTGL7Z2NRDOKJ3kHMEnN23lmrurheWWXZ2sZ1YhpECmqKleDFW1OQeQ==}
+  '@mdn/browser-compat-data@5.6.26':
+    resolution: {integrity: sha512-7NdgdOR7lkzrN70zGSULmrcvKyi/aJjpTJRCbuy8IZuHiLkPTvsr10jW0MJgWzK2l2wTmhdQvegTw6yNU5AVNQ==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2184,7 +2184,7 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
-  '@mdn/browser-compat-data@5.6.25': {}
+  '@mdn/browser-compat-data@5.6.26': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
