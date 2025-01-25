@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Github from '../components/Github.astro';
 import SelectYear from '../components/SelectYear.astro';
+import CssEra from '../components/CssEra.astro';
 import Properties from '../components/Properties.astro';
 import {data} from '../data/data.js';
 
@@ -12,6 +13,7 @@ const listYears = Object.keys(data).reverse();
   <main class="main">
     <h1 class="title">Список всех CSS-свойств</h1>
     <SelectYear listYears={listYears} />
+    <CssEra />
     <Properties properties={data} />
   </main>
   <Github />
