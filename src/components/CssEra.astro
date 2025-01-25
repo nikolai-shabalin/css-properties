@@ -42,13 +42,14 @@
   const eraSection = document.querySelector('.era');
   const sections = document.querySelectorAll('.properties-of-year');
 
-  eraSection.addEventListener('click', event => {
-    const button = event.target;
+  eraSection.addEventListener('click', (event) => {
+    const button = event.target as HTMLElement;
 
     if (button.tagName === 'BUTTON') {
       if (button.dataset.action === 'reset') {
-        sections.forEach(section => {
-          section.style.display = 'flex';
+        sections.forEach((section) => {
+          const htmlSection = section as HTMLElement;
+          htmlSection.style.display = 'flex';
         });
         return;
       }
@@ -56,12 +57,13 @@
       const era = button.dataset.era;
       const years = EAR_YEARS[era] || [];
 
-      sections.forEach(section => {
-        const sectionYear = parseInt(section.id.replace('year-', ''), 10);
+      sections.forEach((section) => {
+        const htmlSection = section as HTMLElement;
+        const sectionYear = parseInt(htmlSection.id.replace('year-', ''), 10);
         if (years.includes(sectionYear)) {
-          section.style.display = 'flex';
+          htmlSection.style.display = 'flex';
         } else {
-          section.style.display = 'none';
+          htmlSection.style.display = 'none';
         }
       });
     }
