@@ -17,8 +17,8 @@
   "license": "ISC",
   "devDependencies": {
     "@astrojs/check": "0.9.4",
-    "@mdn/browser-compat-data": "5.6.33",
-    "astro": "5.1.8",
+    "@mdn/browser-compat-data": "5.6.35",
+    "astro": "5.2.5",
     "typescript": "5.7.3"
   },
   "type": "module",
