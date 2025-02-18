@@ -12,11 +12,11 @@ importers:
         specifier: 0.9.4
         version: 0.9.4(typescript@5.7.3)
       '@mdn/browser-compat-data':
-        specifier: 5.6.39
-        version: 5.6.39
+        specifier: 5.6.40
+        version: 5.6.40
       astro:
-        specifier: 5.2.5
-        version: 5.2.5(@types/node@20.12.12)(lightningcss@1.25.1)(rollup@4.27.4)(typescript@5.7.3)(yaml@2.6.1)
+        specifier: 5.3.0
+        version: 5.3.0(@types/node@20.12.12)(lightningcss@1.25.1)(rollup@4.27.4)(typescript@5.7.3)(yaml@2.6.1)
       typescript:
         specifier: 5.7.3
         version: 5.7.3
@@ -360,8 +360,8 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
 
-  '@mdn/browser-compat-data@5.6.39':
-    resolution: {integrity: sha512-I1hQdh954CCzYdu45u/UzO8feeOxqSGFj8BQkQzVN7amWiIy8byg3xXPY3DjNjiMMtsxz1y+HhcKlLUTfoJ/kA==}
+  '@mdn/browser-compat-data@5.6.40':
+    resolution: {integrity: sha512-cEprODy3K3rHUvHjbjcNyXrz/vK9qVB8gu3Wue9+9DaLVv9v5pKmR+FKs4ZYeQb5pMNp//MuONGnrDHm55H63A==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -598,8 +598,8 @@ packages:
   array-iterate@2.0.1:
     resolution: {integrity: sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==}
 
-  astro@5.2.5:
-    resolution: {integrity: sha512-AYXyYkc+c5xbKTm48FyQA91y81nXyNPAaoyafR0LUugE4lAwuvIUcXDBfMzmbuP1lGRvsE33G2oypv6gbGaPFg==}
+  astro@5.3.0:
+    resolution: {integrity: sha512-e88l/Yk/6enR/ZDddLbqtM+oblBFk5mneNSmNesyVYGL/6Dj4UA67GPAZOk79VxT5dbLlclZSyyw/wlxN1aj3A==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -2138,7 +2138,7 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
-  '@mdn/browser-compat-data@5.6.39': {}
+  '@mdn/browser-compat-data@5.6.40': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -2370,7 +2370,7 @@ snapshots:
 
   array-iterate@2.0.1: {}
 
-  astro@5.2.5(@types/node@20.12.12)(lightningcss@1.25.1)(rollup@4.27.4)(typescript@5.7.3)(yaml@2.6.1):
+  astro@5.3.0(@types/node@20.12.12)(lightningcss@1.25.1)(rollup@4.27.4)(typescript@5.7.3)(yaml@2.6.1):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.5.1
