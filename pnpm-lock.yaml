@@ -12,8 +12,8 @@ importers:
         specifier: 0.9.4
         version: 0.9.4(typescript@5.8.2)
       '@mdn/browser-compat-data':
-        specifier: 6.0.1
-        version: 6.0.1
+        specifier: 6.0.2
+        version: 6.0.2
       astro:
         specifier: 5.5.5
         version: 5.5.5(rollup@4.38.0)(typescript@5.8.2)(yaml@2.7.1)
@@ -360,8 +360,8 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
 
-  '@mdn/browser-compat-data@6.0.1':
-    resolution: {integrity: sha512-vyjFN6B6xieb3nvpY3hOy7Io9nIq36i7N2KF5MnjLxB5O3jJaIF/qV4CVqzdqeAFMghXWegNI5Fd0BsvuSX2NA==}
+  '@mdn/browser-compat-data@6.0.2':
+    resolution: {integrity: sha512-xmNSe29Rk5xeTvZCLbRecO80BMFs1tglyEw/gbHD9XPUNcRYkvxNMwKaFYbj5C2O6D6kWNgIeip1VnEb7Gc40Q==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1985,7 +1985,7 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
-  '@mdn/browser-compat-data@6.0.1': {}
+  '@mdn/browser-compat-data@6.0.2': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
