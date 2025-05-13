@@ -12,8 +12,8 @@ importers:
         specifier: 0.9.4
         version: 0.9.4(typescript@5.8.3)
       '@mdn/browser-compat-data':
-        specifier: 6.0.13
-        version: 6.0.13
+        specifier: 6.0.14
+        version: 6.0.14
       astro:
         specifier: 5.7.4
         version: 5.7.4(rollup@4.40.2)(typescript@5.8.3)(yaml@2.7.1)
@@ -363,8 +363,8 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
 
-  '@mdn/browser-compat-data@6.0.13':
-    resolution: {integrity: sha512-RSYYaex/5lC4mim5pMTKHxfSpWf7Oc4r8Vk4exFVvt/KzIj7GacXAiYu5WfGnIWrBaa0KaSPda7oanQiFwjbeg==}
+  '@mdn/browser-compat-data@6.0.14':
+    resolution: {integrity: sha512-WyNFl0UDRo/gUgp6bwvW/N0zv2DDQlmJB6G9svGBi9VSTXSww2IJj1PKwhlcXVQSD0B2fzL9bIFyCMJl4A1aLA==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1326,8 +1326,8 @@ packages:
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
 
-  semver@7.7.1:
-    resolution: {integrity: sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==}
+  semver@7.7.2:
+    resolution: {integrity: sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -2064,7 +2064,7 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
-  '@mdn/browser-compat-data@6.0.13': {}
+  '@mdn/browser-compat-data@6.0.14': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -2336,7 +2336,7 @@ snapshots:
       picomatch: 4.0.2
       prompts: 2.4.2
       rehype: 13.0.2
-      semver: 7.7.1
+      semver: 7.7.2
       shiki: 3.4.0
       tinyexec: 0.3.2
       tinyglobby: 0.2.13
@@ -3365,13 +3365,13 @@ snapshots:
     dependencies:
       queue-microtask: 1.2.3
 
-  semver@7.7.1: {}
+  semver@7.7.2: {}
 
   sharp@0.33.5:
     dependencies:
       color: 4.2.3
       detect-libc: 2.0.4
-      semver: 7.7.1
+      semver: 7.7.2
     optionalDependencies:
       '@img/sharp-darwin-arm64': 0.33.5
       '@img/sharp-darwin-x64': 0.33.5
@@ -3474,7 +3474,7 @@ snapshots:
 
   typescript-auto-import-cache@0.3.5:
     dependencies:
-      semver: 7.7.1
+      semver: 7.7.2
 
   typescript@5.8.3: {}
 
@@ -3633,7 +3633,7 @@ snapshots:
   volar-service-typescript@0.0.62(@volar/language-service@2.4.13):
     dependencies:
       path-browserify: 1.0.1
-      semver: 7.7.1
+      semver: 7.7.2
       typescript-auto-import-cache: 0.3.5
       vscode-languageserver-textdocument: 1.0.12
       vscode-nls: 5.2.0
