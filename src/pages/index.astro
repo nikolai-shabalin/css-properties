@@ -1,9 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 import Github from '../components/Github.astro';
+import ScrollToTop from '../components/ScrollToTop.astro';
 import SelectYear from '../components/SelectYear.astro';
 import CssEra from '../components/CssEra.astro';
 import Properties from '../components/Properties.astro';
+import YearlyChart from '../components/YearlyChart.astro';
+import Hero from '../components/Hero.astro';
 import {data} from '../data/data.js';
 
 const listYears = Object.keys(data).reverse();
@@ -11,16 +14,41 @@ const listYears = Object.keys(data).reverse();
 
 <Base>
   <main class="main">
-    <h1 class="title">Список всех CSS-свойств</h1>
-    <SelectYear listYears={listYears} />
-    <CssEra />
+    <Hero />
+
+    <YearlyChart />
+
+    <section class="controls">
+      <SelectYear listYears={listYears} />
+      <CssEra />
+    </section>
+
     <Properties properties={data} />
   </main>
   <Github />
+  <ScrollToTop />
 </Base>
 
 <style>
   .main {
-    grid-area: content;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .controls {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  /* Адаптивность */
+  @media (width <= 768px) {
+    .controls {
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
   }
 </style>

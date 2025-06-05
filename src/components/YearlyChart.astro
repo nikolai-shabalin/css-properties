@@ -1,0 +1,291 @@
+---
+import { data } from '../data/data.js';
+
+// Подготавливаем данные для графика
+const years = Object.keys(data).sort((a, b) => parseInt(b) - parseInt(a));
+const yearData = years.map(year => ({
+  year: parseInt(year),
+  count: data[year].length,
+  features: data[year]
+}));
+
+// Находим максимальное количество для масштабирования
+const maxCount = Math.max(...yearData.map(item => item.count));
+---
+
+<section class="yearly-chart">
+  <div class="chart-header">
+    <h2 class="chart-title">CSS-фичи по годам</h2>
+    <p class="chart-subtitle">Эволюция CSS с {years[0]} по {years[years.length - 1]} годы</p>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-content">
+      <div class="chart-bars">
+        {yearData.map((item, index) => (
+          <div
+            class="bar-container"
+            data-year={item.year}
+            data-count={item.count}
+            style={`--bar-height: ${(item.count / maxCount) * 100}%; --delay: ${index * 0.05}s`}
+          >
+            <div class="bar">
+              <div class="bar-fill"></div>
+            </div>
+            <div class="bar-label">
+              <span class="year">{item.year}</span>
+              <span class="count">{item.count}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="chart-stats">
+      <div class="stat">
+        <span class="stat-label">Всего лет:</span>
+        <span class="stat-value">{years.length}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Всего фич:</span>
+        <span class="stat-value">{Object.values(data).flat().length}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Самый активный год:</span>
+        <span class="stat-value">{yearData.reduce((max, item) => item.count > max.count ? item : max).year}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .yearly-chart {
+    margin-bottom: 4rem;
+    padding: 3rem 2rem;
+    background: var(--color-background-overlay);
+    border-radius: var(--border-radius-xl);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgb(148 163 184 / 20%);
+    box-shadow: var(--shadow-xl);
+    position: relative;
+    overflow: visible;
+  }
+
+  .chart-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .chart-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .chart-subtitle {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    margin: 0;
+  }
+
+  .chart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .chart-content {
+    position: relative;
+    height: 300px;
+    background: rgb(255 255 255 / 2%);
+    border-radius: var(--border-radius-lg);
+    padding: 3rem 2rem 2rem;
+    border: 1px solid rgb(148 163 184 / 10%);
+    overflow: visible;
+  }
+
+  .chart-bars {
+    display: flex;
+    align-items: end;
+    height: 100%;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 2rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) transparent;
+  }
+
+  .chart-bars::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .chart-bars::-webkit-scrollbar-track {
+    background: rgb(148 163 184 / 10%);
+    border-radius: 3px;
+  }
+
+  .chart-bars::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 3px;
+  }
+
+  .bar-container {
+    flex: 0 0 auto;
+    min-width: 40px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .bar-container:hover {
+    transform: translateY(-2px);
+  }
+
+  .bar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: end;
+    position: relative;
+  }
+
+  .bar-fill {
+    width: 100%;
+    height: var(--bar-height);
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-secondary) 100%
+    );
+    border-radius: 4px 4px 0 0;
+    opacity: 100%;
+    position: relative;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .bar-fill::before {
+    content: attr(data-count);
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text);
+    opacity: 0%;
+    transition: opacity 0.3s ease;
+  }
+
+  .bar-container:hover .bar-fill::before {
+    opacity: 100%;
+  }
+
+  .bar-container:hover .bar-fill {
+    box-shadow: 0 4px 12px rgb(79 70 229 / 30%);
+  }
+
+  .bar-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+    min-height: 2.5rem;
+  }
+
+  .year {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text);
+    text-align: center;
+  }
+
+  .count {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  .chart-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    padding: 1.5rem;
+    background: rgb(255 255 255 / 2%);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid rgb(148 163 184 / 10%);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+
+
+  /* Темная тема */
+  @media (prefers-color-scheme: dark) {
+    .yearly-chart {
+      border: 1px solid rgb(71 85 105 / 30%);
+    }
+
+    .chart-content,
+    .chart-stats {
+      border: 1px solid rgb(71 85 105 / 20%);
+    }
+  }
+
+  /* Адаптивность */
+</style>
+
+<script>
+  // Добавляем интерактивность к графику
+  document.addEventListener('DOMContentLoaded', () => {
+    const bars = document.querySelectorAll('.bar-container');
+
+    bars.forEach(bar => {
+      if (!(bar instanceof HTMLElement)) return;
+
+      const year = bar.dataset.year;
+      const count = bar.dataset.count;
+
+      // Показываем количество при наведении
+      bar.addEventListener('mouseenter', () => {
+        const fill = bar.querySelector('.bar-fill');
+        if (fill && count) {
+          fill.setAttribute('data-count', count);
+        }
+      });
+
+      // Добавляем клик для будущей функциональности (переход к году)
+      bar.addEventListener('click', () => {
+        // Здесь можно добавить логику для перехода к определенному году
+        console.log(`Clicked on year ${year} with ${count} features`);
+      });
+    });
+  });
+</script>

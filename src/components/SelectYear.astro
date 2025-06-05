@@ -5,30 +5,154 @@ interface Props {
 }
 ---
 
-Выбери год:
-<ul class="select-year">
-  {listYears.map((year) => (
-    <li>
-      <a href={`#year-${year}`}>{year}</a>
-    </li>
-  ))}
-</ul>
+<div class="year-selector">
+  <h2 class="selector-title">
+    🕒 Быстрая навигация по годам
+  </h2>
+
+  <div class="years-grid">
+    {listYears.map((year, index) => (
+      <a href={`#year-${year}`} class="year-link">
+        <span class="year-number">{year}</span>
+      </a>
+    ))}
+  </div>
+</div>
 
 <style>
-.select-year {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-  background-color: var(--color-background-section);
-  padding: 20px;
-  border-radius: max(
-    0px,
-    min(8px, calc((100vw - 4px - 780px) * 9999))
-  );
-
-  a {
-    color: var(--color-text);
+  .year-selector {
+    background: var(--color-background-section);
+    backdrop-filter: blur(20px);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid rgb(148 163 184 / 20%);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    position: sticky;
+    top: 2rem;
+    z-index: 10;
   }
-}
+
+  .selector-title {
+    margin: 0 0 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .years-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .year-link {
+    background: var(--color-background-item);
+    color: var(--color-text);
+    text-decoration: none;
+    padding: 0.75rem;
+    border-radius: var(--border-radius-md);
+    text-align: center;
+    font-weight: 600;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal), background var(--transition-normal), color var(--transition-normal), border-color var(--transition-normal);
+    border: 1px solid rgb(148 163 184 / 15%);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .year-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgb(79 70 229 / 10%), transparent);
+    transition: left var(--transition-normal);
+  }
+
+  .year-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    background: var(--color-primary);
+    color: var(--color-text-white);
+    border-color: var(--color-primary);
+  }
+
+  .year-link:hover::before {
+    left: 100%;
+  }
+
+  .year-link:active {
+    transform: translateY(0);
+  }
+
+  .year-number {
+    font-size: 1rem;
+    display: block;
+  }
+
+  /* Темная тема */
+  @media (prefers-color-scheme: dark) {
+    .year-selector {
+      border: 1px solid rgb(71 85 105 / 30%);
+    }
+
+    .year-link {
+      border: 1px solid rgb(71 85 105 / 30%);
+    }
+
+    .year-link:hover {
+      border-color: var(--color-primary);
+    }
+  }
+
+  /* Адаптивность */
+  @media (width <= 768px) {
+    .year-selector {
+      padding: 1.5rem;
+      position: static;
+      margin-bottom: 1rem;
+    }
+
+    .selector-title {
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+    }
+
+    .title-icon {
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.25rem;
+    }
+
+    .years-grid {
+      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+      gap: 0.5rem;
+    }
+
+    .year-link {
+      padding: 0.5rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (width <= 480px) {
+    .year-selector {
+      padding: 1rem;
+    }
+
+    .selector-title {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.5rem;
+    }
+
+    .years-grid {
+      grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    }
+  }
 </style>
