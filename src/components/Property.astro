@@ -18,21 +18,28 @@ const { property } = Astro.props;
 <article class="property">
   <h3>{property.parent ? `${property.parent}: ${property.name}` : (property.type === '@' ? `${property.type}${property.name}` : `${property.type}: ${property.name}`)}</h3>
   <time datetime={property.date}>{new Date(property.date).toLocaleDateString('ru-RU')}</time>
-  <div>
-    {property.specUrl && <a href={property.specUrl}>Спецификация</a>}
-    {property.mdnUrl && <a href={property.mdnUrl}>MDN</a>}
-    <a href={`https://caniuse.com/?search=${property.name}`}>caniuse</a>
-  </div>
+  <nav aria-label="Ссылки">
+    <ul>
+      {property.specUrl && (
+        <li><a href={property.specUrl}>Спецификация</a></li>
+      )}
+      {property.mdnUrl && (
+        <li><a href={property.mdnUrl}>MDN</a></li>
+      )}
+      <li><a href={`https://caniuse.com/?search=${property.name}`}>caniuse</a></li>
+    </ul>
+  </nav>
 </article>
 
 <style>
   .property {
-    border-radius: 8px;
-    padding: 16px;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
     background-color: var(--color-background-item);
     display: grid;
-    row-gap: 8px;
+    row-gap: 0.5rem;
     grid-template-columns: [full-start] 1fr [full-end];
+    box-shadow: 0 1px 4px hsl(0deg 0% 0% / 8%);
 
     h3 {
       margin-block: unset;
@@ -44,8 +51,14 @@ const { property } = Astro.props;
       grid-row: 1 / 2;
     }
 
-    div {
+    nav {
       grid-column: full;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
       display: flex;
       flex-wrap: wrap;
       gap: 8px 16px;
@@ -53,13 +66,17 @@ const { property } = Astro.props;
 
     a {
       background: var(--color-background-button);
-      color: oklch(100% 0 89.876deg);
+      color: #fff;
       font-weight: 500;
-      padding: 8px 16px;
-      border-radius: 8px;
-      text-decoration: unset;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
       display: inline-block;
+      transition: opacity 0.2s ease;
+    }
+
+    a:hover {
+      opacity: 85%;
     }
   }
-
 </style>

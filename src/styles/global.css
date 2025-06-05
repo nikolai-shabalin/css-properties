@@ -1,25 +1,26 @@
 :root {
-  --color-outline: oklch(0% 0 0deg);
+  --font-family: 'Inter', ui-system, sans-serif;
+  --color-outline: hsl(200deg 80% 50%);
   --color-background-page:
-    linear-gradient(179.87deg,
-    oklch(50.52% 0.734 291.04deg / 12%) 0.11%,
-    oklch(24.08% 0.520 303.70deg / 0%) 99.89%);
-  --color-background-section: oklch(65.8% 0.186 281.032deg / 12%);
-  --color-background-item: oklch(100% 0 89.876deg / 60%);
-  --color-background-button: linear-gradient(73.27deg, oklch(43.2% 0.299 264.052deg) -25.49%, oklch(61.6% 0.288 311.143deg) 97.39%);
-  --color-text: oklch(0% 0 0deg);
-  --color-octocat: #151513;
+    linear-gradient(180deg,
+    hsl(210deg 40% 98%) 0%,
+    hsl(210deg 40% 92%) 100%);
+  --color-background-section: hsl(0deg 0% 100%);
+  --color-background-item: hsl(210deg 40% 97%);
+  --color-background-button: linear-gradient(135deg, hsl(200deg 80% 60%), hsl(230deg 80% 60%));
+  --color-text: hsl(210deg 20% 20%);
+  --color-octocat: #24292e;
   --color-octocat-background: #fff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-outline: oklch(80% 0.02 280deg);
-    --color-background-page: #222;
-    --color-background-section: oklch(25% 0.02 280deg / 70%);
-    --color-background-item: oklch(30% 0.02 280deg / 80%);
-    --color-background-button: linear-gradient(73.27deg, oklch(35% 0.12 260deg) -25.49%, oklch(40% 0.15 300deg) 97.39%);
-    --color-text: oklch(95% 0.005 280deg);
+  --color-outline: hsl(200deg 80% 70%);
+  --color-background-page: hsl(220deg 15% 15%);
+  --color-background-section: hsl(220deg 15% 20%);
+  --color-background-item: hsl(220deg 15% 25%);
+  --color-background-button: linear-gradient(135deg, hsl(200deg 80% 50%), hsl(230deg 80% 50%));
+  --color-text: hsl(210deg 20% 90%);
     --color-octocat: #e8e8e8;
     --color-octocat-background: #333;
   }
@@ -43,12 +44,13 @@ html {
 
 body {
   margin: 0;
-  font-family: ui-system, sans-serif;
+  font-family: var(--font-family);
   background: var(--color-background-page) fixed;
   color: var(--color-text);
-  font-size: 20px;
-  line-height: 1.3;
+  font-size: 18px;
+  line-height: 1.6;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 780px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 840px) minmax(0, 1fr);
   grid-template-areas: ". content .";
+  padding: 1rem;
 }
