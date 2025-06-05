@@ -1,7 +1,7 @@
 ---
 
 ---
-<div class="scroll-to-top-fab animate-float">
+<div class="scroll-to-top-fab">
   <button class="scroll-to-top-button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Прокрутить наверх">
     <span class="scroll-icon">⬆️</span>
     <span class="scroll-text">Наверх</span>
@@ -14,8 +14,7 @@
     bottom: 2rem;
     left: 2rem;
     z-index: 1000;
-    animation-duration: 4s;
-    animation-delay: 1s;
+    animation: float 3s ease-in-out infinite;
   }
   
   .scroll-to-top-button {
@@ -31,7 +30,7 @@
     font-size: 0.875rem;
     cursor: pointer;
     box-shadow: var(--shadow-xl);
-    transition: all var(--transition-normal);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal), background var(--transition-normal);
     border: 1px solid rgba(148, 163, 184, 0.2);
     backdrop-filter: blur(20px);
     position: relative;

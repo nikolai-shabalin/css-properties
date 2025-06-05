@@ -5,6 +5,8 @@ import ScrollToTop from '../components/ScrollToTop.astro';
 import SelectYear from '../components/SelectYear.astro';
 import CssEra from '../components/CssEra.astro';
 import Properties from '../components/Properties.astro';
+import YearlyChart from '../components/YearlyChart.astro';
+import Hero from '../components/Hero.astro';
 import {data} from '../data/data.js';
 
 const listYears = Object.keys(data).reverse();
@@ -12,28 +14,9 @@ const listYears = Object.keys(data).reverse();
 
 <Base>
   <main class="main">
-    <header class="hero">
-      <div class="hero-content">
-        <h1 class="title animate-fade-in">
-          <span class="title-gradient">CSS Properties</span>
-          <span class="title-accent">✨</span>
-        </h1>
-        <p class="subtitle animate-slide-in">
-          Полный справочник CSS-свойств с датами их появления и ссылками на документацию. 
-          Изучите эволюцию веб-стилей от истоков до наших дней.
-        </p>
-        <div class="stats animate-fade-in">
-          <div class="stat-item">
-            <span class="stat-number">{Object.values(data).flat().length}</span>
-            <span class="stat-label">свойств</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">{Object.keys(data).length}</span>
-            <span class="stat-label">лет истории</span>
-          </div>
-        </div>
-      </div>
-    </header>
+    <Hero />
+    
+    <YearlyChart />
     
     <section class="controls">
       <SelectYear listYears={listYears} />
@@ -52,109 +35,6 @@ const listYears = Object.keys(data).reverse();
     padding: 2rem 0;
   }
   
-  .hero {
-    text-align: center;
-    margin-bottom: 4rem;
-    padding: 3rem 2rem;
-    background: var(--color-background-overlay);
-    border-radius: var(--border-radius-xl);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    box-shadow: var(--shadow-xl);
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(
-      from 0deg at 50% 50%,
-      transparent 0deg,
-      rgba(79, 70, 229, 0.03) 60deg,
-      transparent 120deg,
-      rgba(14, 165, 233, 0.03) 180deg,
-      transparent 240deg,
-      rgba(245, 158, 11, 0.02) 300deg,
-      transparent 360deg
-    );
-    animation: float 12s ease-in-out infinite;
-    pointer-events: none;
-  }
-  
-  .hero-content {
-    position: relative;
-    z-index: 1;
-  }
-  
-  .title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    margin: 0 0 1rem 0;
-    line-height: 1.1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  
-  .title-gradient {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: var(--shadow-glow);
-  }
-  
-  .title-accent {
-    font-size: 0.8em;
-    animation: pulse 2s infinite;
-  }
-  
-  .subtitle {
-    font-size: 1.25rem;
-    color: var(--color-text-light);
-    margin: 0 0 2rem 0;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
-  }
-  
-  .stats {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    flex-wrap: wrap;
-  }
-  
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .stat-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    line-height: 1;
-  }
-  
-  .stat-label {
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 500;
-  }
-  
   .controls {
     display: flex;
     flex-direction: column;
@@ -162,38 +42,10 @@ const listYears = Object.keys(data).reverse();
     margin-bottom: 3rem;
   }
   
-  /* Темная тема */
-  @media (prefers-color-scheme: dark) {
-    .hero {
-      border: 1px solid rgba(71, 85, 105, 0.3);
-    }
-  }
-  
   /* Адаптивность */
   @media (max-width: 768px) {
     .main {
       padding: 1rem 0;
-    }
-    
-    .hero {
-      margin-bottom: 2rem;
-      padding: 2rem 1rem;
-    }
-    
-    .title {
-      font-size: 2.5rem;
-    }
-    
-    .subtitle {
-      font-size: 1.1rem;
-    }
-    
-    .stats {
-      gap: 2rem;
-    }
-    
-    .stat-number {
-      font-size: 2rem;
     }
     
     .controls {

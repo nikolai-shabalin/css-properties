@@ -31,7 +31,7 @@ function getPropertyIcon(type: string, name: string) {
 const propertyIcon = getPropertyIcon(property.type, property.name);
 ---
 
-<article class="property animate-fade-in">
+<article class="property">
   <div class="property-content">
     <div class="property-header">
       <div class="property-icon">{propertyIcon}</div>
@@ -65,41 +65,40 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
         </time>
       </div>
     </div>
-  </div>
-  
-  <div class="property-links">
-    {property.specUrl && (
-      <a href={property.specUrl} class="property-link spec-link" target="_blank" rel="noopener">
-        <span class="link-icon">📄</span>
-        <span>Спецификация</span>
+    
+    <div class="property-links">
+      {property.specUrl && (
+        <a href={property.specUrl} class="property-link spec-link" target="_blank" rel="noopener">
+          <span class="link-icon">📄</span>
+          <span>Спецификация</span>
+        </a>
+      )}
+      {property.mdnUrl && (
+        <a href={property.mdnUrl} class="property-link mdn-link" target="_blank" rel="noopener">
+          <span class="link-icon">📚</span>
+          <span>MDN</span>
+        </a>
+      )}
+      <a href={`https://caniuse.com/?search=${property.name}`} class="property-link caniuse-link" target="_blank" rel="noopener">
+        <span class="link-icon">🌐</span>
+        <span>Can I Use</span>
       </a>
-    )}
-    {property.mdnUrl && (
-      <a href={property.mdnUrl} class="property-link mdn-link" target="_blank" rel="noopener">
-        <span class="link-icon">📚</span>
-        <span>MDN</span>
-      </a>
-    )}
-    <a href={`https://caniuse.com/?search=${property.name}`} class="property-link caniuse-link" target="_blank" rel="noopener">
-      <span class="link-icon">🌐</span>
-      <span>Can I Use</span>
-    </a>
+    </div>
   </div>
 </article>
 
 <style>
   .property {
     background: var(--color-background-item);
-    border-radius: var(--border-radius-lg);
-    padding: 1.5rem;
-    box-shadow: var(--shadow-md);
     border: 1px solid rgba(148, 163, 184, 0.15);
-    transition: all var(--transition-normal);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     height: 100%;
     position: relative;
-    overflow: hidden;
   }
   
   .property::before {
@@ -116,8 +115,8 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
   
   .property:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-xl);
-    border-color: rgba(79, 70, 229, 0.2);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(79, 70, 229, 0.3);
   }
   
   .property:hover::before {
@@ -125,6 +124,7 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
   }
   
   .property-content {
+    padding: 1.5rem;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -134,20 +134,20 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
   
   .property-icon {
     font-size: 1.5rem;
     background: var(--color-primary);
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: var(--border-radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: var(--shadow-md);
     flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
   }
   
   .property-info {
@@ -156,33 +156,19 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
   }
   
   .property-name {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 600;
-    line-height: 1.4;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.25rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--color-text);
+    line-height: 1.3;
     word-break: break-word;
   }
   
-  .property-parent {
+  .property-parent,
+  .property-at,
+  .property-type {
     color: var(--color-text-muted);
     font-weight: 500;
-    font-size: 0.9em;
-  }
-  
-  .property-type {
-    color: var(--color-primary);
-    font-weight: 600;
-    font-size: 0.9em;
-  }
-  
-  .property-at {
-    color: var(--color-accent);
-    font-weight: 700;
-    font-size: 1.1em;
   }
   
   .property-separator {
@@ -215,7 +201,7 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
     flex-wrap: wrap;
     gap: 0.75rem;
     margin-top: auto;
-    padding-top: 0.5rem;
+    padding-top: 1rem;
   }
   
   .property-link {
@@ -227,7 +213,7 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 500;
-    transition: all var(--transition-fast);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
     border: 1px solid transparent;
   }
   
