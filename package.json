@@ -6,8 +6,10 @@
   "scripts": {
     "create:data": "node src/data/createData.js",
     "dev": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview"
+    "build": "pnpm run lint:css && astro check && astro build",
+    "preview": "astro preview",
+    "lint:css": "stylelint \"src/**/*.{css,astro}\"",
+    "lint:css:fix": "stylelint \"src/**/*.{css,astro}\" --fix"
   },
   "keywords": [],
   "author": {
@@ -19,6 +21,9 @@
     "@astrojs/check": "0.9.4",
     "@mdn/browser-compat-data": "6.0.17",
     "astro": "5.7.13",
+    "postcss-html": "^1.8.0",
+    "stylelint": "^16.20.0",
+    "stylelint-config-standard": "^38.0.0",
     "typescript": "5.8.3"
   },
   "type": "module",

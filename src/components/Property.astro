@@ -37,7 +37,7 @@ const { property } = Astro.props;
     h3 {
       margin-block: unset;
       margin-block-end: 8px;
-      word-break: break-word;
+      overflow-wrap: break-word;
     }
 
     time {
@@ -53,7 +53,7 @@ const { property } = Astro.props;
 
     a {
       background: var(--color-background-button);
-      color: oklch(1 0 89.876);
+      color: oklch(100% 0 89.876deg);
       font-weight: 500;
       padding: 8px 16px;
       border-radius: 8px;
