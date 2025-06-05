@@ -27,9 +27,15 @@
   .era button {
     padding: 0.5rem 1rem;
     color: var(--color-text);
+    border: 1px solid var(--color-text);
     border-radius: 0.25rem;
     cursor: pointer;
     background-color: transparent;
+    transition: background-color 0.2s ease;
+  }
+
+  .era button:hover {
+    background-color: var(--color-background-item);
   }
 </style>
 
@@ -42,30 +48,34 @@
   const eraSection = document.querySelector('.era');
   const sections = document.querySelectorAll('.properties-of-year');
 
-  eraSection.addEventListener('click', (event) => {
-    const button = event.target as HTMLElement;
+  if (eraSection) {
+    eraSection.addEventListener('click', (event) => {
+      const button = event.target;
 
-    if (button.tagName === 'BUTTON') {
-      if (button.dataset.action === 'reset') {
-        sections.forEach((section) => {
-          const htmlSection = section as HTMLElement;
-          htmlSection.style.display = 'flex';
-        });
-        return;
-      }
-
-      const era = button.dataset.era;
-      const years = EAR_YEARS[era] || [];
-
-      sections.forEach((section) => {
-        const htmlSection = section as HTMLElement;
-        const sectionYear = parseInt(htmlSection.id.replace('year-', ''), 10);
-        if (years.includes(sectionYear)) {
-          htmlSection.style.display = 'flex';
-        } else {
-          htmlSection.style.display = 'none';
+      if (button && button.tagName === 'BUTTON') {
+        const htmlButton = button;
+        if (htmlButton.dataset.action === 'reset') {
+          sections.forEach((section) => {
+            section.style.display = 'flex';
+          });
+          return;
         }
-      });
-    }
-  });
+
+        const era = htmlButton.dataset.era;
+        if (era && EAR_YEARS[era]) {
+          const years = EAR_YEARS[era];
+
+          sections.forEach((section) => {
+            const htmlSection = section;
+            const sectionYear = parseInt(htmlSection.id.replace('year-', ''), 10);
+            if (years.includes(sectionYear)) {
+              htmlSection.style.display = 'flex';
+            } else {
+              htmlSection.style.display = 'none';
+            }
+          });
+        }
+      }
+    });
+  }
 </script>
