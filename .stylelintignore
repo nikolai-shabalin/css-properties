@@ -1,0 +1,15 @@
+# Игнорируем временные файлы и папки сборки
+node_modules/
+dist/
+build/
+.astro/
+
+# Игнорируем файлы конфигурации
+*.config.js
+*.config.mjs
+*.config.ts
+
+# Игнорируем CSS файлы библиотек
+vendor/
+lib/
+assets/fonts/

@@ -1,16 +1,15 @@
 :root {
-  --color-outline: oklch(0 0 0);
+  --color-outline: oklch(0% 0 0deg);
   --color-background-page:
     linear-gradient(179.87deg,
-    oklch(50.52% 0.734 291.04 / 0.12) 0.11%,
-    oklch(24.08% 0.520 303.70 / 0) 99.89%);
-  --color-background-section: oklch(0.658 0.186 281.032 / 0.12);
-  --color-background-item: oklch(1 0 89.876 / 0.6);
-  --color-background-button: linear-gradient(73.27deg, oklch(0.432 0.299 264.052) -25.49%, oklch(0.616 0.288 311.143) 97.39%);
-  --color-text: oklch(0 0 0);
-
+    oklch(50.52% 0.734 291.04deg / 12%) 0.11%,
+    oklch(24.08% 0.520 303.70deg / 0%) 99.89%);
+  --color-background-section: oklch(65.8% 0.186 281.032deg / 12%);
+  --color-background-item: oklch(100% 0 89.876deg / 60%);
+  --color-background-button: linear-gradient(73.27deg, oklch(43.2% 0.299 264.052deg) -25.49%, oklch(61.6% 0.288 311.143deg) 97.39%);
+  --color-text: oklch(0% 0 0deg);
   --color-octocat: #151513;
-  --color-octocat-background: #ffffff;
+  --color-octocat-background: #fff;
 }
 
 *,
