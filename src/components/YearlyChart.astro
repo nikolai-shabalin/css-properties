@@ -18,13 +18,13 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     <h2 class="chart-title">CSS-фичи по годам</h2>
     <p class="chart-subtitle">Эволюция CSS с {years[0]} по {years[years.length - 1]} годы</p>
   </div>
-  
+
   <div class="chart-container">
     <div class="chart-content">
       <div class="chart-bars">
         {yearData.map((item, index) => (
-          <div 
-            class="bar-container" 
+          <div
+            class="bar-container"
             data-year={item.year}
             data-count={item.count}
             style={`--bar-height: ${(item.count / maxCount) * 100}%; --delay: ${index * 0.05}s`}
@@ -40,7 +40,7 @@ const maxCount = Math.max(...yearData.map(item => item.count));
         ))}
       </div>
     </div>
-    
+
     <div class="chart-stats">
       <div class="stat">
         <span class="stat-label">Всего лет:</span>
@@ -70,12 +70,12 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     position: relative;
     overflow: visible;
   }
-  
+
   .chart-header {
     text-align: center;
     margin-bottom: 3rem;
   }
-  
+
   .chart-title {
     font-size: 2rem;
     font-weight: 700;
@@ -85,19 +85,19 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  
+
   .chart-subtitle {
     font-size: 1rem;
     color: var(--color-text-light);
     margin: 0;
   }
-  
+
   .chart-container {
     display: flex;
     flex-direction: column;
     gap: 2rem;
   }
-  
+
   .chart-content {
     position: relative;
     height: 300px;
@@ -107,7 +107,7 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     border: 1px solid rgba(148, 163, 184, 0.1);
     overflow: visible;
   }
-  
+
   .chart-bars {
     display: flex;
     align-items: end;
@@ -118,21 +118,21 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     scrollbar-width: thin;
     scrollbar-color: var(--color-primary) transparent;
   }
-  
+
   .chart-bars::-webkit-scrollbar {
     height: 6px;
   }
-  
+
   .chart-bars::-webkit-scrollbar-track {
     background: rgba(148, 163, 184, 0.1);
     border-radius: 3px;
   }
-  
+
   .chart-bars::-webkit-scrollbar-thumb {
     background: var(--color-primary);
     border-radius: 3px;
   }
-  
+
   .bar-container {
     flex: 0 0 auto;
     min-width: 40px;
@@ -144,11 +144,11 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     cursor: pointer;
     transition: transform 0.2s ease;
   }
-  
+
   .bar-container:hover {
     transform: translateY(-2px);
   }
-  
+
   .bar {
     width: 100%;
     height: 100%;
@@ -156,7 +156,7 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     align-items: end;
     position: relative;
   }
-  
+
   .bar-fill {
     width: 100%;
     height: var(--bar-height);
@@ -170,7 +170,7 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     position: relative;
     transition: box-shadow 0.3s ease;
   }
-  
+
   .bar-fill::before {
     content: attr(data-count);
     position: absolute;
@@ -183,19 +183,19 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   .bar-container:hover .bar-fill::before {
     opacity: 1;
   }
-  
+
   .bar-container:hover .bar-fill {
     box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
   }
-  
+
   .bar-container:hover .bar-fill {
     box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
   }
-  
+
   .bar-label {
     display: flex;
     flex-direction: column;
@@ -204,20 +204,20 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     margin-top: 0.5rem;
     min-height: 2.5rem;
   }
-  
+
   .year {
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--color-text);
     text-align: center;
   }
-  
+
   .count {
     font-size: 0.7rem;
     color: var(--color-text-muted);
     font-weight: 500;
   }
-  
+
   .chart-stats {
     display: flex;
     justify-content: center;
@@ -228,14 +228,14 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     border-radius: var(--border-radius-lg);
     border: 1px solid rgba(148, 163, 184, 0.1);
   }
-  
+
   .stat {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
   }
-  
+
   .stat-label {
     font-size: 0.85rem;
     color: var(--color-text-muted);
@@ -243,92 +243,41 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     letter-spacing: 0.05em;
     font-weight: 500;
   }
-  
+
   .stat-value {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--color-primary);
   }
-  
 
-  
+
+
   /* Темная тема */
   @media (prefers-color-scheme: dark) {
     .yearly-chart {
       border: 1px solid rgba(71, 85, 105, 0.3);
     }
-    
+
     .chart-content,
     .chart-stats {
       border: 1px solid rgba(71, 85, 105, 0.2);
     }
   }
-  
+
   /* Адаптивность */
-  @media (max-width: 768px) {
-    .yearly-chart {
-      padding: 2rem 1rem;
-      margin-bottom: 2rem;
-    }
-    
-    .chart-title {
-      font-size: 1.5rem;
-    }
-    
-    .chart-subtitle {
-      font-size: 0.9rem;
-    }
-    
-    .chart-content {
-      height: 250px;
-      padding: 2.5rem 1.5rem 1.5rem 1.5rem;
-    }
-    
-    .chart-bars {
-      gap: 0.3rem;
-    }
-    
-    .bar-container {
-      min-width: 30px;
-    }
-    
-    .chart-stats {
-      gap: 2rem;
-      padding: 1rem;
-    }
-    
-    .stat-value {
-      font-size: 1.25rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .chart-stats {
-      gap: 1.5rem;
-    }
-    
-    .stat {
-      flex: 1;
-      min-width: 80px;
-    }
-    
-    .stat-label {
-      font-size: 0.75rem;
-    }
-  }
 </style>
 
 <script>
   // Добавляем интерактивность к графику
   document.addEventListener('DOMContentLoaded', () => {
     const bars = document.querySelectorAll('.bar-container');
-    
+
     bars.forEach(bar => {
       if (!(bar instanceof HTMLElement)) return;
-      
+
       const year = bar.dataset.year;
       const count = bar.dataset.count;
-      
+
       // Показываем количество при наведении
       bar.addEventListener('mouseenter', () => {
         const fill = bar.querySelector('.bar-fill');
@@ -336,7 +285,7 @@ const maxCount = Math.max(...yearData.map(item => item.count));
           fill.setAttribute('data-count', count);
         }
       });
-      
+
       // Добавляем клик для будущей функциональности (переход к году)
       bar.addEventListener('click', () => {
         // Здесь можно добавить логику для перехода к определенному году
@@ -344,4 +293,4 @@ const maxCount = Math.max(...yearData.map(item => item.count));
       });
     });
   });
-</script> 
+</script>

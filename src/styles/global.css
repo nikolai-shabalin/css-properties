@@ -10,7 +10,7 @@
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
-  
+
   /* Фоны для светлой темы */
   --color-background-page: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   --color-background-overlay: rgba(255, 255, 255, 0.8);
@@ -18,26 +18,26 @@
   --color-background-item: rgba(255, 255, 255, 0.95);
   --color-background-button: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
   --color-background-button-hover: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-  
+
   /* Текст для светлой темы */
   --color-text: #1e293b;
   --color-text-light: #475569;
   --color-text-white: #ffffff;
   --color-text-muted: #64748b;
-  
+
   /* Тени */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-glow: 0 0 20px rgba(79, 70, 229, 0.15);
-  
+
   /* Границы */
   --border-radius-sm: 0.375rem;
   --border-radius-md: 0.5rem;
   --border-radius-lg: 0.75rem;
   --border-radius-xl: 1rem;
-  
+
   /* Переходы */
   --transition-fast: 0.15s ease-in-out;
   --transition-normal: 0.3s ease-in-out;
@@ -51,12 +51,12 @@
     --color-background-overlay: rgba(15, 23, 42, 0.8);
     --color-background-section: rgba(30, 41, 59, 0.8);
     --color-background-item: rgba(51, 65, 85, 0.9);
-    
+
     /* Текст для темной темы */
     --color-text: #f1f5f9;
     --color-text-light: #cbd5e1;
     --color-text-muted: #94a3b8;
-    
+
     /* Тени для темной темы */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
@@ -92,26 +92,11 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   font-weight: 400;
-  display: grid;
-  grid-template-columns: 1fr min(90%, 1200px) 1fr;
-  grid-template-areas: ". content .";
   min-height: 100vh;
   position: relative;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(79, 70, 229, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: -1;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Анимации */
@@ -191,14 +176,16 @@ body::before {
   background: var(--color-primary-dark);
 }
 
-/* Адаптивность */
+/* Обновляем медиа-запрос */
 @media (max-width: 768px) {
   body {
-    grid-template-columns: 1fr;
-    grid-template-areas: "content";
+    padding: 0;
+  }
+
+  main {
     padding: 0 1rem;
   }
-  
+
   html {
     font-size: 14px;
   }

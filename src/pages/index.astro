@@ -15,14 +15,14 @@ const listYears = Object.keys(data).reverse();
 <Base>
   <main class="main">
     <Hero />
-    
+
     <YearlyChart />
-    
+
     <section class="controls">
       <SelectYear listYears={listYears} />
       <CssEra />
     </section>
-    
+
     <Properties properties={data} />
   </main>
   <Github />
@@ -31,23 +31,21 @@ const listYears = Object.keys(data).reverse();
 
 <style>
   .main {
-    grid-area: content;
-    padding: 2rem 0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
   }
-  
+
   .controls {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     margin-bottom: 3rem;
   }
-  
+
   /* Адаптивность */
   @media (max-width: 768px) {
-    .main {
-      padding: 1rem 0;
-    }
-    
     .controls {
       gap: 1.5rem;
       margin-bottom: 2rem;
