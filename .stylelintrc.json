@@ -1,0 +1,33 @@
+{
+  "extends": "stylelint-config-standard",
+  "customSyntax": "postcss-html",
+  "overrides": [
+    {
+      "files": ["*.css"],
+      "customSyntax": "postcss"
+    },
+    {
+      "files": ["*.astro"],
+      "customSyntax": "postcss-html"
+    }
+  ],
+  "rules": {
+    "comment-empty-line-before": [
+      "always",
+      {
+        "ignore": ["stylelint-commands", "after-comment"]
+      }
+    ],
+    "custom-property-empty-line-before": [
+      "always",
+      {
+        "except": ["after-custom-property", "first-nested"],
+        "ignore": ["after-comment", "inside-single-line-block"]
+      }
+    ],
+    "color-hex-length": "short",
+    "lightness-notation": "percentage",
+    "hue-degree-notation": "angle",
+    "alpha-value-notation": "percentage"
+  }
+} 
