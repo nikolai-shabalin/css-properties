@@ -15,11 +15,14 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Setup Node.js and pnpm
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'pnpm'
+
+      - name: Install pnpm
+        run: npm install -g pnpm@latest
 
       - name: Install dependencies and build
         run: |
