@@ -10,30 +10,168 @@ interface PropertiesAstroProps {
 const { properties } = Astro.props as PropertiesAstroProps;
 ---
 
-{Object.entries(properties).reverse().map(([key, properties]) => (
-  <section class="properties-of-year" id={`year-${key}`}>
-    <h2>Добавлено в {key}</h2>
-    {properties.map((property:PropertyProp) => (
-      <Property property={property} />
-    ))}
+{Object.entries(properties).reverse().map(([key, properties], index) => (
+  <section class="properties-of-year animate-fade-in" id={`year-${key}`} style={`animation-delay: ${index * 0.1}s`}>
+    <header class="year-header">
+      <h2 class="year-title">
+        <span class="year-number">{key}</span>
+        <span class="year-label">год</span>
+      </h2>
+      <div class="year-stats">
+        <span class="properties-count">{properties.length} свойств</span>
+      </div>
+    </header>
+    
+    <div class="properties-grid">
+      {properties.map((property: PropertyProp, propIndex: number) => (
+        <div class="property-wrapper" style={`animation-delay: ${(index * 0.1) + (propIndex * 0.05)}s`}>
+          <Property property={property} />
+        </div>
+      ))}
+    </div>
   </section>
 ))}
 
 <style>
   .properties-of-year {
-    background-color: var(--color-background-section);
-    border-radius: max(
-      0px,
-      min(8px, calc((100vw - 4px - 780px) * 9999))
-    );
-    padding: 20px;
-    margin-block-end: 32px;
+    background: var(--color-background-section);
+    backdrop-filter: blur(20px);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .properties-of-year::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+    border-radius: var(--border-radius-xl) var(--border-radius-xl) 0 0;
+  }
+  
+  .properties-of-year:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  .year-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(148, 163, 184, 0.1);
+  }
+  
+  .year-title {
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  
+  .year-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+  }
+  
+  .year-label {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  .year-stats {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .properties-count {
+    background: var(--color-primary);
+    color: var(--color-text-white);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-lg);
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .properties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  
+  .property-wrapper {
+    animation: fadeIn 0.6s ease-out both;
     display: flex;
     flex-direction: column;
-    row-gap: 16px;
-
-    h2 {
-      margin-block: unset;
+    height: 100%;
+  }
+  
+  /* Темная тема */
+  @media (prefers-color-scheme: dark) {
+    .properties-of-year {
+      border: 1px solid rgba(71, 85, 105, 0.3);
+    }
+    
+    .year-header {
+      border-bottom: 2px solid rgba(71, 85, 105, 0.2);
+    }
+  }
+  
+  /* Адаптивность */
+  @media (max-width: 768px) {
+    .properties-of-year {
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .year-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .year-number {
+      font-size: 2rem;
+    }
+    
+    .properties-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .properties-of-year {
+      padding: 1rem;
+    }
+    
+    .year-header {
+      margin-bottom: 1rem;
+    }
+    
+    .year-number {
+      font-size: 1.75rem;
     }
   }
 </style>

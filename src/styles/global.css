@@ -1,27 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 :root {
-  --color-outline: oklch(0% 0 0deg);
-  --color-background-page:
-    linear-gradient(179.87deg,
-    oklch(50.52% 0.734 291.04deg / 12%) 0.11%,
-    oklch(24.08% 0.520 303.70deg / 0%) 99.89%);
-  --color-background-section: oklch(65.8% 0.186 281.032deg / 12%);
-  --color-background-item: oklch(100% 0 89.876deg / 60%);
-  --color-background-button: linear-gradient(73.27deg, oklch(43.2% 0.299 264.052deg) -25.49%, oklch(61.6% 0.288 311.143deg) 97.39%);
-  --color-text: oklch(0% 0 0deg);
-  --color-octocat: #151513;
-  --color-octocat-background: #fff;
+  /* Основная цветовая палитра */
+  --color-primary: #4f46e5;
+  --color-primary-light: #6366f1;
+  --color-primary-dark: #3730a3;
+  --color-secondary: #0ea5e9;
+  --color-accent: #f59e0b;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  
+  /* Фоны для светлой темы */
+  --color-background-page: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --color-background-overlay: rgba(255, 255, 255, 0.8);
+  --color-background-section: rgba(255, 255, 255, 0.9);
+  --color-background-item: rgba(255, 255, 255, 0.95);
+  --color-background-button: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  --color-background-button-hover: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  
+  /* Текст для светлой темы */
+  --color-text: #1e293b;
+  --color-text-light: #475569;
+  --color-text-white: #ffffff;
+  --color-text-muted: #64748b;
+  
+  /* Тени */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 20px rgba(79, 70, 229, 0.15);
+  
+  /* Границы */
+  --border-radius-sm: 0.375rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  --border-radius-xl: 1rem;
+  
+  /* Переходы */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+  --transition-slow: 0.5s ease-in-out;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-outline: oklch(80% 0.02 280deg);
-    --color-background-page: #222;
-    --color-background-section: oklch(25% 0.02 280deg / 70%);
-    --color-background-item: oklch(30% 0.02 280deg / 80%);
-    --color-background-button: linear-gradient(73.27deg, oklch(35% 0.12 260deg) -25.49%, oklch(40% 0.15 300deg) 97.39%);
-    --color-text: oklch(95% 0.005 280deg);
-    --color-octocat: #e8e8e8;
-    --color-octocat-background: #333;
+    /* Фоны для темной темы */
+    --color-background-page: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --color-background-overlay: rgba(15, 23, 42, 0.8);
+    --color-background-section: rgba(30, 41, 59, 0.8);
+    --color-background-item: rgba(51, 65, 85, 0.9);
+    
+    /* Текст для темной темы */
+    --color-text: #f1f5f9;
+    --color-text-light: #cbd5e1;
+    --color-text-muted: #94a3b8;
+    
+    /* Тени для темной темы */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.3);
   }
 }
 
@@ -32,23 +73,133 @@
 }
 
 *:focus-visible {
-  outline: 3px solid var(--color-outline);
-  outline-offset: 0.2rem;
-  border-radius: 0.125rem;
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
 }
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
   margin: 0;
-  font-family: ui-system, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: var(--color-background-page) fixed;
+  background-attachment: fixed;
   color: var(--color-text);
-  font-size: 20px;
-  line-height: 1.3;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 780px) minmax(0, 1fr);
+  grid-template-columns: 1fr min(90%, 1200px) 1fr;
   grid-template-areas: ". content .";
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(79, 70, 229, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Утилитарные классы */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.6s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background-overlay);
+  border-radius: var(--border-radius-md);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: var(--border-radius-md);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-areas: "content";
+    padding: 0 1rem;
+  }
+  
+  html {
+    font-size: 14px;
+  }
 }

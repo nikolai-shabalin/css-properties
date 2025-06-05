@@ -14,52 +14,299 @@ interface Props {
 }
 
 const { property } = Astro.props;
+
+// Функция для получения иконки по типу свойства
+function getPropertyIcon(type: string, name: string) {
+  if (type === '@') return '📋';
+  if (name.includes('color') || name.includes('background')) return '🎨';
+  if (name.includes('font') || name.includes('text')) return '📝';
+  if (name.includes('animation') || name.includes('transition')) return '⚡';
+  if (name.includes('grid') || name.includes('flex')) return '📐';
+  if (name.includes('border') || name.includes('outline')) return '🔳';
+  if (name.includes('margin') || name.includes('padding')) return '📏';
+  if (name.includes('position') || name.includes('top') || name.includes('left')) return '📍';
+  return '⚙️';
+}
+
+const propertyIcon = getPropertyIcon(property.type, property.name);
 ---
-<article class="property">
-  <h3>{property.parent ? `${property.parent}: ${property.name}` : (property.type === '@' ? `${property.type}${property.name}` : `${property.type}: ${property.name}`)}</h3>
-  <time datetime={property.date}>{new Date(property.date).toLocaleDateString('ru-RU')}</time>
-  <div>
-    {property.specUrl && <a href={property.specUrl}>Спецификация</a>}
-    {property.mdnUrl && <a href={property.mdnUrl}>MDN</a>}
-    <a href={`https://caniuse.com/?search=${property.name}`}>caniuse</a>
+
+<article class="property animate-fade-in">
+  <div class="property-content">
+    <div class="property-header">
+      <div class="property-icon">{propertyIcon}</div>
+      <div class="property-info">
+        <h3 class="property-name">
+          {property.parent ? (
+            <>
+              <span class="property-parent">{property.parent}</span>
+              <span class="property-separator">→</span>
+              <span class="property-main">{property.name}</span>
+            </>
+          ) : property.type === '@' ? (
+            <>
+              <span class="property-at">@</span>
+              <span class="property-main">{property.name}</span>
+            </>
+          ) : (
+            <>
+              <span class="property-type">{property.type}</span>
+              <span class="property-separator">:</span>
+              <span class="property-main">{property.name}</span>
+            </>
+          )}
+        </h3>
+        <time class="property-date" datetime={property.date}>
+          {new Date(property.date).toLocaleDateString('ru-RU', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+          })}
+        </time>
+      </div>
+    </div>
+  </div>
+  
+  <div class="property-links">
+    {property.specUrl && (
+      <a href={property.specUrl} class="property-link spec-link" target="_blank" rel="noopener">
+        <span class="link-icon">📄</span>
+        <span>Спецификация</span>
+      </a>
+    )}
+    {property.mdnUrl && (
+      <a href={property.mdnUrl} class="property-link mdn-link" target="_blank" rel="noopener">
+        <span class="link-icon">📚</span>
+        <span>MDN</span>
+      </a>
+    )}
+    <a href={`https://caniuse.com/?search=${property.name}`} class="property-link caniuse-link" target="_blank" rel="noopener">
+      <span class="link-icon">🌐</span>
+      <span>Can I Use</span>
+    </a>
   </div>
 </article>
 
 <style>
   .property {
-    border-radius: 8px;
-    padding: 16px;
-    background-color: var(--color-background-item);
-    display: grid;
-    row-gap: 8px;
-    grid-template-columns: [full-start] 1fr [full-end];
-
-    h3 {
-      margin-block: unset;
-      margin-block-end: 8px;
-      overflow-wrap: break-word;
+    background: var(--color-background-item);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    transition: all var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .property::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+  }
+  
+  .property:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: rgba(79, 70, 229, 0.2);
+  }
+  
+  .property:hover::before {
+    opacity: 1;
+  }
+  
+  .property-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .property-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .property-icon {
+    font-size: 1.5rem;
+    background: var(--color-primary);
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    flex-shrink: 0;
+  }
+  
+  .property-info {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .property-name {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    word-break: break-word;
+  }
+  
+  .property-parent {
+    color: var(--color-text-muted);
+    font-weight: 500;
+    font-size: 0.9em;
+  }
+  
+  .property-type {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.9em;
+  }
+  
+  .property-at {
+    color: var(--color-accent);
+    font-weight: 700;
+    font-size: 1.1em;
+  }
+  
+  .property-separator {
+    color: var(--color-text-muted);
+    font-weight: 400;
+    margin: 0 0.25rem;
+  }
+  
+  .property-main {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+  
+  .property-date {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .property-date::before {
+    content: '📅';
+    font-size: 0.8em;
+  }
+  
+  .property-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+  
+  .property-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-md);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    border: 1px solid transparent;
+  }
+  
+  .spec-link {
+    background: var(--color-primary);
+    color: var(--color-text-white);
+  }
+  
+  .spec-link:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .mdn-link {
+    background: var(--color-secondary);
+    color: var(--color-text-white);
+  }
+  
+  .mdn-link:hover {
+    background: #0284c7;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .caniuse-link {
+    background: var(--color-accent);
+    color: var(--color-text-white);
+  }
+  
+  .caniuse-link:hover {
+    background: #d97706;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .link-icon {
+    font-size: 0.9em;
+  }
+  
+  /* Темная тема */
+  @media (prefers-color-scheme: dark) {
+    .property {
+      border: 1px solid rgba(71, 85, 105, 0.3);
     }
-
-    time {
-      grid-row: 1 / 2;
-    }
-
-    div {
-      grid-column: full;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 16px;
-    }
-
-    a {
-      background: var(--color-background-button);
-      color: oklch(100% 0 89.876deg);
-      font-weight: 500;
-      padding: 8px 16px;
-      border-radius: 8px;
-      text-decoration: unset;
-      display: inline-block;
+    
+    .property:hover {
+      border-color: rgba(99, 102, 241, 0.4);
     }
   }
-
+  
+  /* Адаптивность */
+  @media (max-width: 480px) {
+    .property {
+      padding: 1rem;
+    }
+    
+    .property-header {
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    
+    .property-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1.25rem;
+    }
+    
+    .property-name {
+      font-size: 1rem;
+    }
+    
+    .property-links {
+      gap: 0.5rem;
+    }
+    
+    .property-link {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.8rem;
+    }
+  }
 </style>
