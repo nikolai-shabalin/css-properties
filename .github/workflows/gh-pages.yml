@@ -10,30 +10,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check Out
-        uses: actions/checkout@v4.1.1
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
-      - name: Setup Node
-        uses: actions/setup-node@v4.0.2
+      - name: Setup Node.js and pnpm
+        uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: 'pnpm'
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
+      - name: Install dependencies and build
+        run: |
+          pnpm install
+          pnpm build
 
-      - name: Installing Dependencies
-        run: pnpm i
-
-      - name: Building
-        run: pnpm build
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.5.0
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          folder: ./dist
           branch: gh-pages
+          folder: dist
