@@ -37,7 +37,7 @@ const { properties } = Astro.props as PropertiesAstroProps;
     background: var(--color-background-section);
     backdrop-filter: blur(20px);
     border-radius: var(--border-radius-xl);
-    border: 1px solid rgba(148, 163, 184, 0.2);
+    border: 1px solid rgb(148 163 184 / 20%);
     padding: 2rem;
     margin-bottom: 2rem;
     box-shadow: var(--shadow-lg);
@@ -68,7 +68,7 @@ const { properties } = Astro.props as PropertiesAstroProps;
     align-items: center;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid rgba(148, 163, 184, 0.1);
+    border-bottom: 2px solid rgb(148 163 184 / 10%);
   }
   
   .year-title {
@@ -82,7 +82,6 @@ const { properties } = Astro.props as PropertiesAstroProps;
     font-size: 2.5rem;
     font-weight: 700;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     line-height: 1;
@@ -128,16 +127,16 @@ const { properties } = Astro.props as PropertiesAstroProps;
   /* Темная тема */
   @media (prefers-color-scheme: dark) {
     .properties-of-year {
-      border: 1px solid rgba(71, 85, 105, 0.3);
+      border: 1px solid rgb(71 85 105 / 30%);
     }
     
     .year-header {
-      border-bottom: 2px solid rgba(71, 85, 105, 0.2);
+      border-bottom: 2px solid rgb(71 85 105 / 20%);
     }
   }
   
   /* Адаптивность */
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     .properties-of-year {
       padding: 1.5rem;
       margin-bottom: 1.5rem;
@@ -160,7 +159,7 @@ const { properties } = Astro.props as PropertiesAstroProps;
     }
   }
   
-  @media (max-width: 480px) {
+  @media (width <= 480px) {
     .properties-of-year {
       padding: 1rem;
     }

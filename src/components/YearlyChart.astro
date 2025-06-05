@@ -65,7 +65,7 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     background: var(--color-background-overlay);
     border-radius: var(--border-radius-xl);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(148, 163, 184, 0.2);
+    border: 1px solid rgb(148 163 184 / 20%);
     box-shadow: var(--shadow-xl);
     position: relative;
     overflow: visible;
@@ -79,9 +79,8 @@ const maxCount = Math.max(...yearData.map(item => item.count));
   .chart-title {
     font-size: 2rem;
     font-weight: 700;
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 0.5rem;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -101,10 +100,10 @@ const maxCount = Math.max(...yearData.map(item => item.count));
   .chart-content {
     position: relative;
     height: 300px;
-    background: rgba(255, 255, 255, 0.02);
+    background: rgb(255 255 255 / 2%);
     border-radius: var(--border-radius-lg);
-    padding: 3rem 2rem 2rem 2rem;
-    border: 1px solid rgba(148, 163, 184, 0.1);
+    padding: 3rem 2rem 2rem;
+    border: 1px solid rgb(148 163 184 / 10%);
     overflow: visible;
   }
 
@@ -124,7 +123,7 @@ const maxCount = Math.max(...yearData.map(item => item.count));
   }
 
   .chart-bars::-webkit-scrollbar-track {
-    background: rgba(148, 163, 184, 0.1);
+    background: rgb(148 163 184 / 10%);
     border-radius: 3px;
   }
 
@@ -166,7 +165,7 @@ const maxCount = Math.max(...yearData.map(item => item.count));
       var(--color-secondary) 100%
     );
     border-radius: 4px 4px 0 0;
-    opacity: 1;
+    opacity: 100%;
     position: relative;
     transition: box-shadow 0.3s ease;
   }
@@ -180,20 +179,16 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     font-size: 0.75rem;
     font-weight: 600;
     color: var(--color-text);
-    opacity: 0;
+    opacity: 0%;
     transition: opacity 0.3s ease;
   }
 
   .bar-container:hover .bar-fill::before {
-    opacity: 1;
+    opacity: 100%;
   }
 
   .bar-container:hover .bar-fill {
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
-  }
-
-  .bar-container:hover .bar-fill {
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    box-shadow: 0 4px 12px rgb(79 70 229 / 30%);
   }
 
   .bar-label {
@@ -224,9 +219,9 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     gap: 3rem;
     flex-wrap: wrap;
     padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.02);
+    background: rgb(255 255 255 / 2%);
     border-radius: var(--border-radius-lg);
-    border: 1px solid rgba(148, 163, 184, 0.1);
+    border: 1px solid rgb(148 163 184 / 10%);
   }
 
   .stat {
@@ -255,12 +250,12 @@ const maxCount = Math.max(...yearData.map(item => item.count));
   /* Темная тема */
   @media (prefers-color-scheme: dark) {
     .yearly-chart {
-      border: 1px solid rgba(71, 85, 105, 0.3);
+      border: 1px solid rgb(71 85 105 / 30%);
     }
 
     .chart-content,
     .chart-stats {
-      border: 1px solid rgba(71, 85, 105, 0.2);
+      border: 1px solid rgb(71 85 105 / 20%);
     }
   }
 

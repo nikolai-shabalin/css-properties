@@ -44,14 +44,14 @@
     background: var(--color-background-section);
     backdrop-filter: blur(20px);
     border-radius: var(--border-radius-xl);
-    border: 1px solid rgba(148, 163, 184, 0.2);
+    border: 1px solid rgb(148 163 184 / 20%);
     padding: 2rem;
     box-shadow: var(--shadow-lg);
     margin-bottom: 2rem;
   }
   
   .eras-title {
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 1.5rem;
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--color-text);
@@ -80,7 +80,7 @@
   
   .era-button {
     background: var(--color-background-item);
-    border: 1px solid rgba(148, 163, 184, 0.15);
+    border: 1px solid rgb(148 163 184 / 15%);
     border-radius: var(--border-radius-lg);
     padding: 1.25rem;
     cursor: pointer;
@@ -100,7 +100,7 @@
     left: 0;
     right: 0;
     height: 3px;
-    opacity: 0;
+    opacity: 0%;
     transition: opacity var(--transition-normal);
   }
   
@@ -110,7 +110,7 @@
   }
   
   .era-button:hover::before {
-    opacity: 1;
+    opacity: 100%;
   }
   
   .era-button:active {
@@ -123,7 +123,7 @@
   }
   
   .era-button.active::before {
-    opacity: 1;
+    opacity: 100%;
   }
   
   .css3::before {
@@ -193,16 +193,16 @@
   /* Темная тема */
   @media (prefers-color-scheme: dark) {
     .css-eras {
-      border: 1px solid rgba(71, 85, 105, 0.3);
+      border: 1px solid rgb(71 85 105 / 30%);
     }
     
     .era-button {
-      border: 1px solid rgba(71, 85, 105, 0.3);
+      border: 1px solid rgb(71 85 105 / 30%);
     }
   }
   
   /* Адаптивность */
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     .css-eras {
       padding: 1.5rem;
     }
@@ -235,7 +235,7 @@
     }
   }
   
-  @media (max-width: 480px) {
+  @media (width <= 480px) {
     .css-eras {
       padding: 1rem;
     }

@@ -33,7 +33,7 @@ import {data} from '../data/data.js';
     background: var(--color-background-overlay);
     border-radius: var(--border-radius-xl);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(148, 163, 184, 0.2);
+    border: 1px solid rgb(148 163 184 / 20%);
     box-shadow: var(--shadow-xl);
     position: relative;
     overflow: hidden;
@@ -49,11 +49,11 @@ import {data} from '../data/data.js';
     background: conic-gradient(
       from 0deg at 50% 50%,
       transparent 0deg,
-      rgba(79, 70, 229, 0.03) 60deg,
+      rgb(79 70 229 / 3%) 60deg,
       transparent 120deg,
-      rgba(14, 165, 233, 0.03) 180deg,
+      rgb(14 165 233 / 3%) 180deg,
       transparent 240deg,
-      rgba(245, 158, 11, 0.02) 300deg,
+      rgb(245 158 11 / 2%) 300deg,
       transparent 360deg
     );
     pointer-events: none;
@@ -67,7 +67,7 @@ import {data} from '../data/data.js';
   .title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
-    margin: 0 0 1rem 0;
+    margin: 0 0 1rem;
     line-height: 1.1;
     display: flex;
     align-items: center;
@@ -78,7 +78,6 @@ import {data} from '../data/data.js';
   
   .title-gradient {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: var(--shadow-glow);
@@ -91,7 +90,7 @@ import {data} from '../data/data.js';
   .subtitle {
     font-size: 1.25rem;
     color: var(--color-text-light);
-    margin: 0 0 2rem 0;
+    margin: 0 0 2rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
@@ -130,12 +129,12 @@ import {data} from '../data/data.js';
   /* Темная тема */
   @media (prefers-color-scheme: dark) {
     .hero {
-      border: 1px solid rgba(71, 85, 105, 0.3);
+      border: 1px solid rgb(71 85 105 / 30%);
     }
   }
   
   /* Адаптивность */
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     .hero {
       margin-bottom: 2rem;
       padding: 2rem 1rem;

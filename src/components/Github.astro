@@ -32,7 +32,7 @@
     font-size: 0.875rem;
     box-shadow: var(--shadow-xl);
     transition: transform var(--transition-normal), box-shadow var(--transition-normal), background var(--transition-normal);
-    border: 1px solid rgba(148, 163, 184, 0.2);
+    border: 1px solid rgb(148 163 184 / 20%);
     backdrop-filter: blur(20px);
     position: relative;
     overflow: hidden;
@@ -45,13 +45,13 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 10%), transparent);
     transition: left var(--transition-normal);
   }
   
   .github-link:hover {
     transform: translateY(-4px) scale(1.05);
-    box-shadow: var(--shadow-xl), 0 0 30px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-xl), 0 0 30px rgb(0 0 0 / 20%);
   }
   
   .github-link:hover::before {
@@ -69,26 +69,26 @@
   }
   
   .github-text {
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, sans-serif;
     letter-spacing: 0.025em;
   }
   
   /* Темная тема */
   @media (prefers-color-scheme: dark) {
     .github-link {
-      background: rgba(51, 65, 85, 0.9);
+      background: rgb(51 65 85 / 90%);
       color: var(--color-text);
-      border: 1px solid rgba(71, 85, 105, 0.3);
+      border: 1px solid rgb(71 85 105 / 30%);
     }
     
     .github-link:hover {
-      background: rgba(71, 85, 105, 0.9);
-      box-shadow: var(--shadow-xl), 0 0 30px rgba(79, 70, 229, 0.3);
+      background: rgb(71 85 105 / 90%);
+      box-shadow: var(--shadow-xl), 0 0 30px rgb(79 70 229 / 30%);
     }
   }
   
   /* Адаптивность */
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     .github-fab {
       bottom: 1rem;
       right: 1rem;
@@ -106,7 +106,7 @@
     }
   }
   
-  @media (max-width: 480px) {    
+  @media (width <= 480px) {    
     .github-link {
       padding: 0.5rem;
       border-radius: 50%;

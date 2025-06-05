@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
+
   /* Основная цветовая палитра */
   --color-primary: #4f46e5;
   --color-primary-light: #6366f1;
@@ -13,24 +14,24 @@
 
   /* Фоны для светлой темы */
   --color-background-page: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  --color-background-overlay: rgba(255, 255, 255, 0.8);
-  --color-background-section: rgba(255, 255, 255, 0.9);
-  --color-background-item: rgba(255, 255, 255, 0.95);
+  --color-background-overlay: rgb(255 255 255 / 80%);
+  --color-background-section: rgb(255 255 255 / 90%);
+  --color-background-item: rgb(255 255 255 / 95%);
   --color-background-button: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
   --color-background-button-hover: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
 
   /* Текст для светлой темы */
   --color-text: #1e293b;
   --color-text-light: #475569;
-  --color-text-white: #ffffff;
+  --color-text-white: #fff;
   --color-text-muted: #64748b;
 
   /* Тени */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --shadow-glow: 0 0 20px rgba(79, 70, 229, 0.15);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 5%);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -1px rgb(0 0 0 / 6%);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 10px 10px -5px rgb(0 0 0 / 4%);
+  --shadow-glow: 0 0 20px rgb(79 70 229 / 15%);
 
   /* Границы */
   --border-radius-sm: 0.375rem;
@@ -46,11 +47,12 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+
     /* Фоны для темной темы */
     --color-background-page: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    --color-background-overlay: rgba(15, 23, 42, 0.8);
-    --color-background-section: rgba(30, 41, 59, 0.8);
-    --color-background-item: rgba(51, 65, 85, 0.9);
+    --color-background-overlay: rgb(15 23 42 / 80%);
+    --color-background-section: rgb(30 41 59 / 80%);
+    --color-background-item: rgb(51 65 85 / 90%);
 
     /* Текст для темной темы */
     --color-text: #f1f5f9;
@@ -58,11 +60,11 @@
     --color-text-muted: #94a3b8;
 
     /* Тени для темной темы */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
-    --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.3);
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 30%);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 30%), 0 2px 4px -1px rgb(0 0 0 / 20%);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 30%), 0 4px 6px -2px rgb(0 0 0 / 20%);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 40%), 0 10px 10px -5px rgb(0 0 0 / 30%);
+    --shadow-glow: 0 0 20px rgb(99 102 241 / 30%);
   }
 }
 
@@ -85,7 +87,7 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: var(--color-background-page) fixed;
   background-attachment: fixed;
   color: var(--color-text);
@@ -100,24 +102,26 @@ body {
 }
 
 /* Анимации */
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
-    opacity: 0;
+    opacity: 0%;
     transform: translateY(20px);
   }
+
   to {
-    opacity: 1;
+    opacity: 100%;
     transform: translateY(0);
   }
 }
 
-@keyframes slideIn {
+@keyframes slide-in {
   from {
-    opacity: 0;
+    opacity: 0%;
     transform: translateX(-20px);
   }
+
   to {
-    opacity: 1;
+    opacity: 100%;
     transform: translateX(0);
   }
 }
@@ -126,6 +130,7 @@ body {
   0%, 100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.05);
   }
@@ -133,8 +138,9 @@ body {
 
 @keyframes float {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -142,11 +148,11 @@ body {
 
 /* Утилитарные классы */
 .animate-fade-in {
-  animation: fadeIn 0.6s ease-out;
+  animation: fade-in 0.6s ease-out;
 }
 
 .animate-slide-in {
-  animation: slideIn 0.6s ease-out;
+  animation: slide-in 0.6s ease-out;
 }
 
 .animate-pulse {
@@ -177,7 +183,7 @@ body {
 }
 
 /* Обновляем медиа-запрос */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   body {
     padding: 0;
   }

@@ -15,6 +15,9 @@
     left: 2rem;
     z-index: 1000;
     animation: float 3s ease-in-out infinite;
+    opacity: 0%;
+    visibility: hidden;
+    transition: opacity var(--transition-normal), visibility var(--transition-normal);
   }
   
   .scroll-to-top-button {
@@ -23,7 +26,6 @@
     gap: 0.75rem;
     background: var(--color-accent);
     color: var(--color-text-white);
-    border: none;
     padding: 1rem 1.5rem;
     border-radius: var(--border-radius-xl);
     font-weight: 600;
@@ -31,11 +33,11 @@
     cursor: pointer;
     box-shadow: var(--shadow-xl);
     transition: transform var(--transition-normal), box-shadow var(--transition-normal), background var(--transition-normal);
-    border: 1px solid rgba(148, 163, 184, 0.2);
+    border: 1px solid rgb(148 163 184 / 20%);
     backdrop-filter: blur(20px);
     position: relative;
     overflow: hidden;
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, sans-serif;
   }
   
   .scroll-to-top-button::before {
@@ -45,13 +47,13 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 20%), transparent);
     transition: left var(--transition-normal);
   }
   
   .scroll-to-top-button:hover {
     transform: translateY(-4px) scale(1.05);
-    box-shadow: var(--shadow-xl), 0 0 30px rgba(245, 158, 11, 0.3);
+    box-shadow: var(--shadow-xl), 0 0 30px rgb(245 158 11 / 30%);
     background: #d97706;
   }
   
@@ -76,16 +78,16 @@
   /* Темная тема */
   @media (prefers-color-scheme: dark) {
     .scroll-to-top-button {
-      border: 1px solid rgba(71, 85, 105, 0.3);
+      border: 1px solid rgb(71 85 105 / 30%);
     }
     
     .scroll-to-top-button:hover {
-      box-shadow: var(--shadow-xl), 0 0 30px rgba(245, 158, 11, 0.4);
+      box-shadow: var(--shadow-xl), 0 0 30px rgb(245 158 11 / 40%);
     }
   }
   
   /* Адаптивность */
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     .scroll-to-top-fab {
       bottom: 1rem;
       left: 1rem;
@@ -102,7 +104,7 @@
     }
   }
   
-  @media (max-width: 480px) {
+  @media (width <= 480px) {
     .scroll-to-top-button {
       padding: 0.75rem;
       border-radius: 50%;
@@ -120,15 +122,9 @@
     }
   }
   
-  /* Показывать кнопку только когда пользователь прокрутил вниз */
-  .scroll-to-top-fab {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity var(--transition-normal), visibility var(--transition-normal);
-  }
-  
+  /* Показывать кнопку только когда пользователь прокрутил вниз */ 
   .scroll-to-top-fab.visible {
-    opacity: 1;
+    opacity: 100%;
     visibility: visible;
   }
 </style>
