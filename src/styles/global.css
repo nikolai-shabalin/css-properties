@@ -13,6 +13,20 @@
   --color-octocat-background: #ffffff;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-outline: oklch(0.8 0.02 280);
+    --color-background-page: #222222;
+    --color-background-section: oklch(0.25 0.02 280 / 0.7);
+    --color-background-item: oklch(0.3 0.02 280 / 0.8);
+    --color-background-button: linear-gradient(73.27deg, oklch(0.35 0.12 260) -25.49%, oklch(0.4 0.15 300) 97.39%);
+    --color-text: oklch(0.95 0.005 280);
+
+    --color-octocat: #e8e8e8;
+    --color-octocat-background: #333333;
+  }
+}
+
 *,
 *::before,
 *::after {
