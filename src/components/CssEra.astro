@@ -50,13 +50,14 @@
 
   if (eraSection) {
     eraSection.addEventListener('click', (event) => {
-      const button = event.target;
+      const button = event.target as HTMLElement;
 
       if (button && button.tagName === 'BUTTON') {
-        const htmlButton = button;
+        const htmlButton = button as HTMLButtonElement;
         if (htmlButton.dataset.action === 'reset') {
           sections.forEach((section) => {
-            section.style.display = 'flex';
+            const htmlSection = section as HTMLElement;
+            htmlSection.style.display = 'flex';
           });
           return;
         }
@@ -66,7 +67,7 @@
           const years = EAR_YEARS[era];
 
           sections.forEach((section) => {
-            const htmlSection = section;
+            const htmlSection = section as HTMLElement;
             const sectionYear = parseInt(htmlSection.id.replace('year-', ''), 10);
             if (years.includes(sectionYear)) {
               htmlSection.style.display = 'flex';
