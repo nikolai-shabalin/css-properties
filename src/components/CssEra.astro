@@ -300,17 +300,24 @@
         const era = buttonElement.dataset.era;
         if (era && EAR_YEARS[era]) {
           const years = EAR_YEARS[era];
+          let firstVisibleSection: Element | null = null;
 
           sections.forEach((section) => {
             const htmlSection = section as HTMLElement;
             const sectionYear = parseInt(htmlSection.id.replace('year-', ''), 10);
             if (years.includes(sectionYear)) {
               htmlSection.style.display = 'flex';
-              htmlSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              if (!firstVisibleSection) {
+                firstVisibleSection = section;
+              }
             } else {
               htmlSection.style.display = 'none';
             }
           });
+
+          if (firstVisibleSection) {
+            (firstVisibleSection as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         }
       }
     });
