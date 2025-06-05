@@ -10,7 +10,7 @@ interface PropertiesAstroProps {
 const { properties } = Astro.props as PropertiesAstroProps;
 ---
 
-{Object.entries(properties).reverse().map(([key, properties], index) => (
+{Object.entries(properties).reverse().map(([key, properties]) => (
   <section class="properties-of-year" id={`year-${key}`}>
     <header class="year-header">
       <h2 class="year-title">
@@ -21,9 +21,9 @@ const { properties } = Astro.props as PropertiesAstroProps;
         <span class="properties-count">{properties.length} свойств</span>
       </div>
     </header>
-    
+
     <div class="properties-grid">
-      {properties.map((property: PropertyProp, propIndex: number) => (
+      {properties.map((property: PropertyProp) => (
         <div class="property-wrapper">
           <Property property={property} />
         </div>
@@ -45,7 +45,7 @@ const { properties } = Astro.props as PropertiesAstroProps;
     position: relative;
     overflow: hidden;
   }
-  
+
   .properties-of-year::before {
     content: '';
     position: absolute;
@@ -56,12 +56,11 @@ const { properties } = Astro.props as PropertiesAstroProps;
     background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-accent));
     border-radius: var(--border-radius-xl) var(--border-radius-xl) 0 0;
   }
-  
+
   .properties-of-year:hover {
-    transform: translateY(-2px);
     box-shadow: var(--shadow-xl);
   }
-  
+
   .year-header {
     display: flex;
     justify-content: space-between;
@@ -70,14 +69,14 @@ const { properties } = Astro.props as PropertiesAstroProps;
     padding-bottom: 1rem;
     border-bottom: 2px solid rgb(148 163 184 / 10%);
   }
-  
+
   .year-title {
     margin: 0;
     display: flex;
     align-items: baseline;
     gap: 1rem;
   }
-  
+
   .year-number {
     font-size: 2.5rem;
     font-weight: 700;
@@ -86,7 +85,7 @@ const { properties } = Astro.props as PropertiesAstroProps;
     -webkit-text-fill-color: transparent;
     line-height: 1;
   }
-  
+
   .year-label {
     font-size: 1rem;
     color: var(--color-text-muted);
@@ -94,13 +93,13 @@ const { properties } = Astro.props as PropertiesAstroProps;
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
-  
+
   .year-stats {
     display: flex;
     align-items: center;
     gap: 1rem;
   }
-  
+
   .properties-count {
     background: var(--color-primary);
     color: var(--color-text-white);
@@ -110,64 +109,64 @@ const { properties } = Astro.props as PropertiesAstroProps;
     font-weight: 600;
     box-shadow: var(--shadow-md);
   }
-  
+
   .properties-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     align-items: stretch;
   }
-  
+
   .property-wrapper {
     display: flex;
     flex-direction: column;
     height: 100%;
   }
-  
+
   /* Темная тема */
   @media (prefers-color-scheme: dark) {
     .properties-of-year {
       border: 1px solid rgb(71 85 105 / 30%);
     }
-    
+
     .year-header {
       border-bottom: 2px solid rgb(71 85 105 / 20%);
     }
   }
-  
+
   /* Адаптивность */
   @media (width <= 768px) {
     .properties-of-year {
       padding: 1.5rem;
       margin-bottom: 1.5rem;
     }
-    
+
     .year-header {
       flex-direction: column;
       align-items: flex-start;
       gap: 1rem;
       margin-bottom: 1.5rem;
     }
-    
+
     .year-number {
       font-size: 2rem;
     }
-    
+
     .properties-grid {
       grid-template-columns: 1fr;
       gap: 1rem;
     }
   }
-  
+
   @media (width <= 480px) {
     .properties-of-year {
       padding: 1rem;
     }
-    
+
     .year-header {
       margin-bottom: 1rem;
     }
-    
+
     .year-number {
       font-size: 1.75rem;
     }
