@@ -32,58 +32,53 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
 ---
 
 <article class="property">
-  <div class="property-content">
-    <div class="property-header">
-      <div class="property-icon">{propertyIcon}</div>
-      <div class="property-info">
-        <h3 class="property-name">
-          {property.parent ? (
-            <>
-              <span class="property-parent">{property.parent}</span>
-              <span class="property-separator">→</span>
-              <span class="property-main">{property.name}</span>
-            </>
-          ) : property.type === '@' ? (
-            <>
-              <span class="property-at">@</span>
-              <span class="property-main">{property.name}</span>
-            </>
-          ) : (
-            <>
-              <span class="property-type">{property.type}</span>
-              <span class="property-separator">:</span>
-              <span class="property-main">{property.name}</span>
-            </>
-          )}
-        </h3>
-        <time class="property-date" datetime={property.date}>
-          {new Date(property.date).toLocaleDateString('ru-RU', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric'
-          })}
-        </time>
-      </div>
+  <div class="property-header">
+    <div class="property-icon">{propertyIcon}</div>
+    <div class="property-info">
+      <h3 class="property-name">
+        {property.parent ? (
+          <>
+            <span class="property-parent">{property.parent}</span>
+            <span class="property-separator">→</span>
+            <span class="property-main">{property.name}</span>
+          </>
+        ) : property.type === '@' ? (
+          <>
+            <span class="property-at">@</span>
+            <span class="property-main">{property.name}</span>
+          </>
+        ) : (
+          <>
+            <span class="property-type">{property.type}</span>
+            <span class="property-separator">:</span>
+            <span class="property-main">{property.name}</span>
+          </>
+        )}
+      </h3>
+      <time class="property-date" datetime={property.date}>
+        {new Date(property.date).toLocaleDateString('ru-RU', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        })}
+      </time>
     </div>
-    
-    <div class="property-links">
-      {property.specUrl && (
-        <a href={property.specUrl} class="property-link spec-link" target="_blank" rel="noopener">
-          <span class="link-icon">📄</span>
-          <span>Спецификация</span>
-        </a>
-      )}
-      {property.mdnUrl && (
-        <a href={property.mdnUrl} class="property-link mdn-link" target="_blank" rel="noopener">
-          <span class="link-icon">📚</span>
-          <span>MDN</span>
-        </a>
-      )}
-      <a href={`https://caniuse.com/?search=${property.name}`} class="property-link caniuse-link" target="_blank" rel="noopener">
-        <span class="link-icon">🌐</span>
-        <span>Can I Use</span>
+  </div>
+  
+  <div class="property-links">
+    {property.specUrl && (
+      <a href={property.specUrl} class="property-link spec-link" target="_blank" rel="noopener">
+        📄 Спецификация
       </a>
-    </div>
+    )}
+    {property.mdnUrl && (
+      <a href={property.mdnUrl} class="property-link mdn-link" target="_blank" rel="noopener">
+        📚 MDN
+      </a>
+    )}
+    <a href={`https://caniuse.com/?search=${property.name}`} class="property-link caniuse-link" target="_blank" rel="noopener">
+      🌐 Can I Use
+    </a>
   </div>
 </article>
 
@@ -99,14 +94,13 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
     flex-direction: column;
     height: 100%;
     position: relative;
+    padding: 1.5rem;
   }
   
   .property::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    inset: 0 0 auto 0;
     height: 3px;
     background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
     opacity: 0%;
@@ -121,13 +115,6 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
   
   .property:hover::before {
     opacity: 100%;
-  }
-  
-  .property-content {
-    padding: 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
   }
   
   .property-header {
@@ -248,10 +235,6 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
     background: #d97706;
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
-  }
-  
-  .link-icon {
-    font-size: 0.9em;
   }
   
   /* Темная тема */

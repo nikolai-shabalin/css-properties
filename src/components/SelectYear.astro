@@ -7,10 +7,9 @@ interface Props {
 
 <div class="year-selector">
   <h2 class="selector-title">
-    <span class="title-icon">🕒</span>
-    Быстрая навигация по годам
+    🕒 Быстрая навигация по годам
   </h2>
-  
+
   <div class="years-grid">
     {listYears.map((year, index) => (
       <a href={`#year-${year}`} class="year-link">
@@ -32,7 +31,7 @@ interface Props {
     top: 2rem;
     z-index: 10;
   }
-  
+
   .selector-title {
     margin: 0 0 1.5rem;
     font-size: 1.25rem;
@@ -42,25 +41,13 @@ interface Props {
     align-items: center;
     gap: 0.75rem;
   }
-  
-  .title-icon {
-    font-size: 1.5rem;
-    background: var(--color-primary);
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: var(--border-radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-md);
-  }
-  
+
   .years-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     gap: 0.75rem;
   }
-  
+
   .year-link {
     background: var(--color-background-item);
     color: var(--color-text);
@@ -75,7 +62,7 @@ interface Props {
     position: relative;
     overflow: hidden;
   }
-  
+
   .year-link::before {
     content: '';
     position: absolute;
@@ -86,7 +73,7 @@ interface Props {
     background: linear-gradient(90deg, transparent, rgb(79 70 229 / 10%), transparent);
     transition: left var(--transition-normal);
   }
-  
+
   .year-link:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
@@ -94,35 +81,35 @@ interface Props {
     color: var(--color-text-white);
     border-color: var(--color-primary);
   }
-  
+
   .year-link:hover::before {
     left: 100%;
   }
-  
+
   .year-link:active {
     transform: translateY(0);
   }
-  
+
   .year-number {
     font-size: 1rem;
     display: block;
   }
-  
+
   /* Темная тема */
   @media (prefers-color-scheme: dark) {
     .year-selector {
       border: 1px solid rgb(71 85 105 / 30%);
     }
-    
+
     .year-link {
       border: 1px solid rgb(71 85 105 / 30%);
     }
-    
+
     .year-link:hover {
       border-color: var(--color-primary);
     }
   }
-  
+
   /* Адаптивность */
   @media (width <= 768px) {
     .year-selector {
@@ -130,40 +117,40 @@ interface Props {
       position: static;
       margin-bottom: 1rem;
     }
-    
+
     .selector-title {
       font-size: 1.125rem;
       margin-bottom: 1rem;
     }
-    
+
     .title-icon {
       width: 2rem;
       height: 2rem;
       font-size: 1.25rem;
     }
-    
+
     .years-grid {
       grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
       gap: 0.5rem;
     }
-    
+
     .year-link {
       padding: 0.5rem;
       font-size: 0.9rem;
     }
   }
-  
+
   @media (width <= 480px) {
     .year-selector {
       padding: 1rem;
     }
-    
+
     .selector-title {
       flex-direction: column;
       text-align: center;
       gap: 0.5rem;
     }
-    
+
     .years-grid {
       grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
     }
