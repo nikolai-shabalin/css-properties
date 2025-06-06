@@ -31,40 +31,37 @@ function getPropertyIcon(type: string, name: string) {
 const propertyIcon = getPropertyIcon(property.type, property.name);
 ---
 
-<article class="property">
-  <div class="property-header">
-    <div class="property-icon">{propertyIcon}</div>
-    <div class="property-info">
-      <h3 class="property-name">
-        {property.parent ? (
-          <>
-            <span class="property-parent">{property.parent}</span>
-            <span class="property-separator">→</span>
-            <span class="property-main">{property.name}</span>
-          </>
-        ) : property.type === '@' ? (
-          <>
-            <span class="property-at">@</span>
-            <span class="property-main">{property.name}</span>
-          </>
-        ) : (
-          <>
-            <span class="property-type">{property.type}</span>
-            <span class="property-separator">:</span>
-            <span class="property-main">{property.name}</span>
-          </>
-        )}
-      </h3>
-      <time class="property-date" datetime={property.date}>
-        {new Date(property.date).toLocaleDateString('ru-RU', {
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric'
-        })}
-      </time>
-    </div>
+<article class="property" style={{ '--icon': `'${propertyIcon}'` }}>
+  <div class="property-info">
+    <h3 class="property-name">
+      {property.parent ? (
+        <>
+          <span class="property-parent">{property.parent}</span>
+          <span class="property-separator">→</span>
+          <span class="property-main">{property.name}</span>
+        </>
+      ) : property.type === '@' ? (
+        <>
+          <span class="property-at">@</span>
+          <span class="property-main">{property.name}</span>
+        </>
+      ) : (
+        <>
+          <span class="property-type">{property.type}</span>
+          <span class="property-separator">:</span>
+          <span class="property-main">{property.name}</span>
+        </>
+      )}
+    </h3>
+    <time class="property-date" datetime={property.date}>
+      {new Date(property.date).toLocaleDateString('ru-RU', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      })}
+    </time>
   </div>
-  
+
   <div class="property-links">
     {property.specUrl && (
       <a href={property.specUrl} class="property-link spec-link" target="_blank" rel="noopener">
@@ -90,13 +87,14 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
     box-shadow: var(--shadow-sm);
     transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: 1fr;
+    gap: 2rem 1rem;
     position: relative;
     padding: 1.5rem;
   }
-  
+
   .property::before {
     content: '';
     position: absolute;
@@ -106,25 +104,9 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
     opacity: 0%;
     transition: opacity var(--transition-normal);
   }
-  
-  .property:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: rgb(79 70 229 / 30%);
-  }
-  
-  .property:hover::before {
-    opacity: 100%;
-  }
-  
-  .property-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .property-icon {
+
+  .property::after {
+    content: var(--icon);
     font-size: 1.5rem;
     background: var(--color-primary);
     width: 2.5rem;
@@ -135,13 +117,24 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
     justify-content: center;
     flex-shrink: 0;
     box-shadow: var(--shadow-sm);
+    order: -1;
   }
-  
+
+  .property:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgb(79 70 229 / 30%);
+  }
+
+  .property:hover::before {
+    opacity: 100%;
+  }
+
   .property-info {
     flex: 1;
     min-width: 0;
   }
-  
+
   .property-name {
     font-size: 1rem;
     font-weight: 600;
@@ -150,25 +143,25 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
     line-height: 1.3;
     overflow-wrap: break-word;
   }
-  
+
   .property-parent,
   .property-at,
   .property-type {
     color: var(--color-text-muted);
     font-weight: 500;
   }
-  
+
   .property-separator {
     color: var(--color-text-muted);
     font-weight: 400;
     margin: 0 0.25rem;
   }
-  
+
   .property-main {
     color: var(--color-text);
     font-weight: 600;
   }
-  
+
   .property-date {
     color: var(--color-text-light);
     font-size: 0.875rem;
@@ -177,20 +170,20 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
     align-items: center;
     gap: 0.5rem;
   }
-  
+
   .property-date::before {
     content: '📅';
     font-size: 0.8em;
   }
-  
+
   .property-links {
+    grid-column: 1/-1;
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
     margin-top: auto;
-    padding-top: 1rem;
   }
-  
+
   .property-link {
     display: inline-flex;
     align-items: center;
@@ -203,76 +196,72 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
     transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
     border: 1px solid transparent;
   }
-  
+
   .spec-link {
     background: var(--color-primary);
     color: var(--color-text-white);
   }
-  
+
   .spec-link:hover {
     background: var(--color-primary-dark);
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
   }
-  
+
   .mdn-link {
     background: var(--color-secondary);
     color: var(--color-text-white);
   }
-  
+
   .mdn-link:hover {
     background: #0284c7;
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
   }
-  
+
   .caniuse-link {
     background: var(--color-accent);
     color: var(--color-text-white);
   }
-  
+
   .caniuse-link:hover {
     background: #d97706;
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
   }
-  
+
   /* Темная тема */
   @media (prefers-color-scheme: dark) {
     .property {
       border: 1px solid rgb(71 85 105 / 30%);
     }
-    
+
     .property:hover {
       border-color: rgb(99 102 241 / 40%);
     }
   }
-  
+
   /* Адаптивность */
   @media (width <= 480px) {
     .property {
+      column-gap: 0.75rem;
       padding: 1rem;
     }
-    
-    .property-header {
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-    
-    .property-icon {
+
+    .property::after {
       width: 2.5rem;
       height: 2.5rem;
       font-size: 1.25rem;
     }
-    
+
     .property-name {
       font-size: 1rem;
     }
-    
+
     .property-links {
       gap: 0.5rem;
     }
-    
+
     .property-link {
       padding: 0.375rem 0.75rem;
       font-size: 0.8rem;
