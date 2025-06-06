@@ -1,5 +1,5 @@
 <div align="center">
-    <img width="880" height="394" src="./assets/hello.png" alt="css logo" />
+    <img width="1085" height="427" src="./assets/hello.png" alt="css logo" />
 </div>
 
 # css-properties
