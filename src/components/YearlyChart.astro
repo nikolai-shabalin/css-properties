@@ -110,7 +110,8 @@ const maxCount = Math.max(...yearData.map(item => item.count));
   .chart-bars {
     display: flex;
     align-items: end;
-    height: 100%;
+    height: calc(100% + 30px);
+    padding-top: 30px;
     gap: 0.5rem;
     overflow-x: auto;
     padding-bottom: 2rem;
