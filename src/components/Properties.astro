@@ -24,9 +24,7 @@ const { properties } = Astro.props as PropertiesAstroProps;
 
     <div class="properties-grid">
       {properties.map((property: PropertyProp) => (
-        <div class="property-wrapper">
-          <Property property={property} />
-        </div>
+        <Property property={property} />
       ))}
     </div>
   </section>
@@ -115,12 +113,6 @@ const { properties } = Astro.props as PropertiesAstroProps;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     align-items: stretch;
-  }
-
-  .property-wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
   }
 
   /* Темная тема */
