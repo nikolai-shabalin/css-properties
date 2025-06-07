@@ -28,6 +28,7 @@
     "color-hex-length": "short",
     "lightness-notation": "percentage",
     "hue-degree-notation": "angle",
-    "alpha-value-notation": "percentage"
+    "alpha-value-notation": "percentage",
+    "selector-class-pattern": null
   }
-} 
+}

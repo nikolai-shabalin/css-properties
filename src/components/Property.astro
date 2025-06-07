@@ -15,7 +15,6 @@ interface Props {
 
 const { property } = Astro.props;
 
-// Функция для получения иконки по типу свойства
 function getPropertyIcon(type: string, name: string) {
   if (type === '@') return '📋';
   if (name.includes('color') || name.includes('background')) return '🎨';
@@ -29,26 +28,23 @@ function getPropertyIcon(type: string, name: string) {
 }
 
 const propertyIcon = getPropertyIcon(property.type, property.name);
+
+const isAtType = property.type === '@';
+const hasParent = Boolean(property.parent);
+
+const prefixContent = hasParent ? property.parent : !isAtType ? property.type : null;
+const prefixModifier = hasParent ? 'parent' : !isAtType ? 'type' : '';
+const prefixClass = prefixContent ? `property-name__prefix property-name__prefix--${prefixModifier}` : '';
 ---
 
 <article class="property" style={{ '--icon': `'${propertyIcon}'` }}>
   <div class="property-info">
     <h3 class="property-name">
-      {property.parent ? (
-        <>
-          <span class="property-parent">{property.parent}</span>
-          <span class="property-separator">→</span>
-          <span class="property-main">{property.name}</span>
-        </>
-      ) : property.type === '@' ? (
-        <span class="property-main">{property.name}</span>
-      ) : (
-        <>
-          <span class="property-type">{property.type}</span>
-          <span class="property-separator">:</span>
-          <span class="property-main">{property.name}</span>
-        </>
-      )}
+      {prefixContent && <span class={prefixClass}>{prefixContent}</span>}
+      <span class="property-name__main">
+        {isAtType ? '@' : ''}
+        {property.name}
+      </span>
     </h3>
     <time class="property-date" datetime={property.date}>
       {new Date(property.date).toLocaleDateString('ru-RU', {
@@ -133,27 +129,32 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
   }
 
   .property-name {
-    font-size: 1rem;
     font-weight: 600;
     margin: 0 0 0.5rem;
     color: var(--color-text);
     line-height: 1.3;
-    overflow-wrap: break-word;
   }
 
-  .property-parent,
-  .property-type {
+  .property-name__prefix {
     color: var(--color-text-muted);
     font-weight: 500;
+    position: relative;
   }
 
-  .property-separator {
+  .property-name__prefix::after {
     color: var(--color-text-muted);
     font-weight: 400;
-    margin: 0 0.25rem;
   }
 
-  .property-main {
+  .property-name__prefix--parent::after {
+    content: '→';
+  }
+
+  .property-name__prefix--type::after {
+    content: ':';
+  }
+
+  .property-name__main {
     color: var(--color-text);
     font-weight: 600;
   }
