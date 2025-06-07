@@ -41,10 +41,7 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
           <span class="property-main">{property.name}</span>
         </>
       ) : property.type === '@' ? (
-        <>
-          <span class="property-at">@</span>
-          <span class="property-main">{property.name}</span>
-        </>
+        <span class="property-main">{property.name}</span>
       ) : (
         <>
           <span class="property-type">{property.type}</span>
@@ -145,7 +142,6 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
   }
 
   .property-parent,
-  .property-at,
   .property-type {
     color: var(--color-text-muted);
     font-weight: 500;
