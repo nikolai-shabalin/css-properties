@@ -15,8 +15,8 @@ importers:
         specifier: 6.0.22
         version: 6.0.22
       astro:
-        specifier: 5.9.1
-        version: 5.9.1(@types/node@22.15.30)(rollup@4.42.0)(typescript@5.8.3)(yaml@2.8.0)
+        specifier: 5.9.2
+        version: 5.9.2(@types/node@22.15.30)(rollup@4.42.0)(typescript@5.8.3)(yaml@2.8.0)
       postcss-html:
         specifier: ^1.8.0
         version: 1.8.0
@@ -40,6 +40,9 @@ packages:
 
   '@astrojs/compiler@2.12.1':
     resolution: {integrity: sha512-WDSyVIiz7sNcJcCJxJFITu6XjfGhJ50Z0auyaWsrM+xb07IlhBLFtQuDkNy0caVHWNcKTM2LISAaHhgkRqGAVg==}
+
+  '@astrojs/compiler@2.12.2':
+    resolution: {integrity: sha512-w2zfvhjNCkNMmMMOn5b0J8+OmUaBL1o40ipMvqcG6NRpdC+lKxmTi48DT8Xw0SzJ3AfmeFLB45zXZXtmbsjcgw==}
 
   '@astrojs/internal-helpers@0.6.1':
     resolution: {integrity: sha512-l5Pqf6uZu31aG+3Lv8nl/3s4DbUzdlxTWDof4pEpto6GUJNhhCbelVi9dEyurOVyqaelwmS9oSyOWOENSfgo9A==}
@@ -664,8 +667,8 @@ packages:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
 
-  astro@5.9.1:
-    resolution: {integrity: sha512-wxoJcTbuDZNFSv6EaL0PAlrp0Wx6VnOAULCXvy0scsV70oWMeUkdxuBxfO54JxO5Qgyvwj9h99y6E0elqOpGtA==}
+  astro@5.9.2:
+    resolution: {integrity: sha512-K/zZlQOWMpamfLDOls5jvG7lrsjH1gkk3ESRZyZDCkVBtKHMF4LbjwCicm/iBb3mX3V/PerqRYzLbOy3/4JLCQ==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -2121,6 +2124,8 @@ snapshots:
 
   '@astrojs/compiler@2.12.1': {}
 
+  '@astrojs/compiler@2.12.2': {}
+
   '@astrojs/internal-helpers@0.6.1': {}
 
   '@astrojs/language-server@2.15.4(typescript@5.8.3)':
@@ -2663,9 +2668,9 @@ snapshots:
 
   astral-regex@2.0.0: {}
 
-  astro@5.9.1(@types/node@22.15.30)(rollup@4.42.0)(typescript@5.8.3)(yaml@2.8.0):
+  astro@5.9.2(@types/node@22.15.30)(rollup@4.42.0)(typescript@5.8.3)(yaml@2.8.0):
     dependencies:
-      '@astrojs/compiler': 2.12.1
+      '@astrojs/compiler': 2.12.2
       '@astrojs/internal-helpers': 0.6.1
       '@astrojs/markdown-remark': 6.3.2
       '@astrojs/telemetry': 3.3.0
