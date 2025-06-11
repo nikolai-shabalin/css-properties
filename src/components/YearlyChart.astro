@@ -23,12 +23,7 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     <div class="chart-content">
       <div class="chart-bars">
         {yearData.map((item, index) => (
-          <div
-            class="bar-container"
-            data-year={item.year}
-            data-count={item.count}
-            style={`--bar-height: ${(item.count / maxCount) * 100}%; --delay: ${index * 0.05}s`}
-          >
+          <a href={`#year-${item.year}`} class="bar-container" data-year={item.year} data-count={item.count} style={`--bar-height: ${(item.count / maxCount) * 100}%; --delay: ${index * 0.05}s`}>
             <div class="bar">
               <div class="bar-fill"></div>
             </div>
@@ -36,7 +31,7 @@ const maxCount = Math.max(...yearData.map(item => item.count));
               <span class="year">{item.year}</span>
               <span class="count">{item.count}</span>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
@@ -143,6 +138,8 @@ const maxCount = Math.max(...yearData.map(item => item.count));
     position: relative;
     cursor: pointer;
     transition: transform 0.2s ease;
+    text-decoration: none;
+    color: inherit;
   }
 
   .bar-container:hover {
