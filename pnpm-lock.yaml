@@ -12,8 +12,8 @@ importers:
         specifier: 0.9.4
         version: 0.9.4(typescript@5.8.3)
       '@mdn/browser-compat-data':
-        specifier: 6.0.23
-        version: 6.0.23
+        specifier: 6.0.24
+        version: 6.0.24
       astro:
         specifier: 5.9.4
         version: 5.9.4(@types/node@24.0.3)(rollup@4.43.0)(typescript@5.8.3)(yaml@2.8.0)
@@ -405,8 +405,8 @@ packages:
   '@keyv/serialize@1.0.3':
     resolution: {integrity: sha512-qnEovoOp5Np2JDGonIDL6Ayihw0RhnRh6vxPuHo4RDn1UOzwEo4AeIfpL6UGIrsceWrCMiVPgwRjbHu4vYFc3g==}
 
-  '@mdn/browser-compat-data@6.0.23':
-    resolution: {integrity: sha512-LdoI2lPd0bHn3IL4kJ2hxmh4kLE59GarffTR2oqllXc/LIWJNolznUk2lmzUxfColwM07Q3PbN38+ZqHdzmf3A==}
+  '@mdn/browser-compat-data@6.0.24':
+    resolution: {integrity: sha512-Z26Qu1EyLb9cQuEP7nB/0W9EsTvDtJpYkOVPf4hWiyIA/qTgqwDoMPzh5azkz2uhUlSYY6TAokR+2TT7958urg==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2420,7 +2420,7 @@ snapshots:
     dependencies:
       buffer: 6.0.3
 
-  '@mdn/browser-compat-data@6.0.23': {}
+  '@mdn/browser-compat-data@6.0.24': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
