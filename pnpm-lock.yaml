@@ -15,8 +15,8 @@ importers:
         specifier: 6.0.23
         version: 6.0.23
       astro:
-        specifier: 5.9.3
-        version: 5.9.3(@types/node@24.0.2)(rollup@4.43.0)(typescript@5.8.3)(yaml@2.8.0)
+        specifier: 5.9.4
+        version: 5.9.4(@types/node@24.0.3)(rollup@4.43.0)(typescript@5.8.3)(yaml@2.8.0)
       postcss-html:
         specifier: ^1.8.0
         version: 1.8.0
@@ -423,8 +423,8 @@ packages:
   '@oslojs/encoding@1.1.0':
     resolution: {integrity: sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ==}
 
-  '@rollup/pluginutils@5.1.4':
-    resolution: {integrity: sha512-USm05zrsFxYLPdWWq+K3STlWiT/3ELn3RcV5hJMghpeAIhxfsUIg6mt12CBJBInWMV4VneoV7SfGv8xIwo2qNQ==}
+  '@rollup/pluginutils@5.2.0':
+    resolution: {integrity: sha512-qWJ2ZTbmumwiLFomfzTyt5Kng4hwPi9rwCYN4SHb6eaRU1KNO4ccxINHr/VhH4GgPlt1XfSTLX2LBTme8ne4Zw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
@@ -580,8 +580,8 @@ packages:
   '@types/nlcst@2.0.3':
     resolution: {integrity: sha512-vSYNSDe6Ix3q+6Z7ri9lyWqgGhJTmzRjZRqyq15N0Z/1/UnVsno9G/N40NBijoYx2seFDIl0+B2mgAb9mezUCA==}
 
-  '@types/node@24.0.2':
-    resolution: {integrity: sha512-Kv1shWMfCUnzbQTosAHrF2p8AzccoLODqJ0XqGPRA/mGVZR86KCk8I+fyh6B5+kcLtAKS9BquXUxVO79jU9UGg==}
+  '@types/node@24.0.3':
+    resolution: {integrity: sha512-R4I/kzCYAdRLzfiCabn9hxWfbuHS573x+r0dJMkkzThEa7pbrcDWK+9zu3e7aBOouf+rQAciqPFMnxwr0aWgKg==}
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
@@ -664,8 +664,8 @@ packages:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
 
-  astro@5.9.3:
-    resolution: {integrity: sha512-VReZrpUa/3rfeiVvsQ1A2M3ujDPI+pDGIYOMtXPEZwut8tZoEyealXXLjitgCsJ+3dunKGZbg4Eak6i+r0vniw==}
+  astro@5.9.4:
+    resolution: {integrity: sha512-AEulm16C9IijMYrFb3VIFx9z17p/wfDSHUHdbbvSEX+rBca64xV+f67tnsql3s4CE8u2cwYpdX+5yH7l53W4iA==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1478,8 +1478,8 @@ packages:
   postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
 
-  postcss@8.5.5:
-    resolution: {integrity: sha512-d/jtm+rdNT8tpXuHY5MMtcbJFBkhXE6593XVR9UoGCH8jSFGci7jGvMGH5RYd5PBJW+00NZQt6gf7CbagJCrhg==}
+  postcss@8.5.6:
+    resolution: {integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==}
     engines: {node: ^10 || ^12 || >=14}
 
   prettier@2.8.7:
@@ -2100,8 +2100,8 @@ packages:
       typescript: ^4.9.4 || ^5.0.2
       zod: ^3
 
-  zod@3.25.64:
-    resolution: {integrity: sha512-hbP9FpSZf7pkS7hRVUrOjhwKJNyampPgtXKc3AN6DsWtoHsg2Sb4SQaS4Tcay380zSwd2VPo9G9180emBACp5g==}
+  zod@3.25.67:
+    resolution: {integrity: sha512-idA2YXwpCdqUSKRCACDE6ItZD9TZzy3OZMtpfLoh6oPR47lipysRrJfjzMqFxQ3uJuUPyUeWe1r9vLH33xO/Qw==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -2436,7 +2436,7 @@ snapshots:
 
   '@oslojs/encoding@1.1.0': {}
 
-  '@rollup/pluginutils@5.1.4(rollup@4.43.0)':
+  '@rollup/pluginutils@5.2.0(rollup@4.43.0)':
     dependencies:
       '@types/estree': 1.0.8
       estree-walker: 2.0.2
@@ -2551,7 +2551,7 @@ snapshots:
 
   '@types/fontkit@2.0.8':
     dependencies:
-      '@types/node': 24.0.2
+      '@types/node': 24.0.3
 
   '@types/hast@3.0.4':
     dependencies:
@@ -2567,7 +2567,7 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
-  '@types/node@24.0.2':
+  '@types/node@24.0.3':
     dependencies:
       undici-types: 7.8.0
 
@@ -2663,7 +2663,7 @@ snapshots:
 
   astral-regex@2.0.0: {}
 
-  astro@5.9.3(@types/node@24.0.2)(rollup@4.43.0)(typescript@5.8.3)(yaml@2.8.0):
+  astro@5.9.4(@types/node@24.0.3)(rollup@4.43.0)(typescript@5.8.3)(yaml@2.8.0):
     dependencies:
       '@astrojs/compiler': 2.12.2
       '@astrojs/internal-helpers': 0.6.1
@@ -2671,7 +2671,7 @@ snapshots:
       '@astrojs/telemetry': 3.3.0
       '@capsizecss/unpack': 2.4.0
       '@oslojs/encoding': 1.1.0
-      '@rollup/pluginutils': 5.1.4(rollup@4.43.0)
+      '@rollup/pluginutils': 5.2.0(rollup@4.43.0)
       acorn: 8.15.0
       aria-query: 5.3.2
       axobject-query: 4.1.0
@@ -2718,14 +2718,14 @@ snapshots:
       unist-util-visit: 5.0.0
       unstorage: 1.16.0
       vfile: 6.0.3
-      vite: 6.3.5(@types/node@24.0.2)(yaml@2.8.0)
-      vitefu: 1.0.6(vite@6.3.5(@types/node@24.0.2)(yaml@2.8.0))
+      vite: 6.3.5(@types/node@24.0.3)(yaml@2.8.0)
+      vitefu: 1.0.6(vite@6.3.5(@types/node@24.0.3)(yaml@2.8.0))
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.3
-      zod: 3.25.64
-      zod-to-json-schema: 3.24.5(zod@3.25.64)
-      zod-to-ts: 1.2.0(typescript@5.8.3)(zod@3.25.64)
+      zod: 3.25.67
+      zod-to-json-schema: 3.24.5(zod@3.25.67)
+      zod-to-ts: 1.2.0(typescript@5.8.3)(zod@3.25.67)
     optionalDependencies:
       sharp: 0.33.5
     transitivePeerDependencies:
@@ -3738,18 +3738,18 @@ snapshots:
     dependencies:
       htmlparser2: 8.0.2
       js-tokens: 9.0.1
-      postcss: 8.5.5
-      postcss-safe-parser: 6.0.0(postcss@8.5.5)
+      postcss: 8.5.6
+      postcss-safe-parser: 6.0.0(postcss@8.5.6)
 
   postcss-resolve-nested-selector@0.1.6: {}
 
-  postcss-safe-parser@6.0.0(postcss@8.5.5):
+  postcss-safe-parser@6.0.0(postcss@8.5.6):
     dependencies:
-      postcss: 8.5.5
+      postcss: 8.5.6
 
-  postcss-safe-parser@7.0.1(postcss@8.5.5):
+  postcss-safe-parser@7.0.1(postcss@8.5.6):
     dependencies:
-      postcss: 8.5.5
+      postcss: 8.5.6
 
   postcss-selector-parser@7.1.0:
     dependencies:
@@ -3758,7 +3758,7 @@ snapshots:
 
   postcss-value-parser@4.2.0: {}
 
-  postcss@8.5.5:
+  postcss@8.5.6:
     dependencies:
       nanoid: 3.3.11
       picocolors: 1.1.1
@@ -4057,9 +4057,9 @@ snapshots:
       micromatch: 4.0.8
       normalize-path: 3.0.0
       picocolors: 1.1.1
-      postcss: 8.5.5
+      postcss: 8.5.6
       postcss-resolve-nested-selector: 0.1.6
-      postcss-safe-parser: 7.0.1(postcss@8.5.5)
+      postcss-safe-parser: 7.0.1(postcss@8.5.6)
       postcss-selector-parser: 7.1.0
       postcss-value-parser: 4.2.0
       resolve-from: 5.0.0
@@ -4229,22 +4229,22 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vite@6.3.5(@types/node@24.0.2)(yaml@2.8.0):
+  vite@6.3.5(@types/node@24.0.3)(yaml@2.8.0):
     dependencies:
       esbuild: 0.25.5
       fdir: 6.4.6(picomatch@4.0.2)
       picomatch: 4.0.2
-      postcss: 8.5.5
+      postcss: 8.5.6
       rollup: 4.43.0
       tinyglobby: 0.2.14
     optionalDependencies:
-      '@types/node': 24.0.2
+      '@types/node': 24.0.3
       fsevents: 2.3.3
       yaml: 2.8.0
 
-  vitefu@1.0.6(vite@6.3.5(@types/node@24.0.2)(yaml@2.8.0)):
+  vitefu@1.0.6(vite@6.3.5(@types/node@24.0.3)(yaml@2.8.0)):
     optionalDependencies:
-      vite: 6.3.5(@types/node@24.0.2)(yaml@2.8.0)
+      vite: 6.3.5(@types/node@24.0.3)(yaml@2.8.0)
 
   volar-service-css@0.0.62(@volar/language-service@2.4.14):
     dependencies:
@@ -4434,15 +4434,15 @@ snapshots:
 
   yoctocolors@2.1.1: {}
 
-  zod-to-json-schema@3.24.5(zod@3.25.64):
+  zod-to-json-schema@3.24.5(zod@3.25.67):
     dependencies:
-      zod: 3.25.64
+      zod: 3.25.67
 
-  zod-to-ts@1.2.0(typescript@5.8.3)(zod@3.25.64):
+  zod-to-ts@1.2.0(typescript@5.8.3)(zod@3.25.67):
     dependencies:
       typescript: 5.8.3
-      zod: 3.25.64
+      zod: 3.25.67
 
-  zod@3.25.64: {}
+  zod@3.25.67: {}
 
   zwitch@2.0.4: {}
