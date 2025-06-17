@@ -1,0 +1,166 @@
+---
+import Property, {PropertyProp} from './Property.astro';
+
+interface PropertiesAstroProps {
+  properties: {
+    [year: string]: PropertyProp[];
+  };
+}
+
+const { properties } = Astro.props as PropertiesAstroProps;
+---
+
+{Object.entries(properties).reverse().map(([key, properties]) => (
+  <section class="properties-of-year" id={`year-${key}`}>
+    <header class="year-header">
+      <h2 class="year-title">
+        <span class="year-number">{key}</span>
+        <span class="year-label">year</span>
+      </h2>
+      <div class="year-stats">
+        <span class="properties-count">{properties.length} features</span>
+      </div>
+    </header>
+
+    <div class="properties-grid">
+      {properties.map((property: PropertyProp) => (
+        <Property property={property} />
+      ))}
+    </div>
+  </section>
+))}
+
+<style>
+  .properties-of-year {
+    background: var(--color-background-section);
+    backdrop-filter: blur(20px);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid rgb(148 163 184 / 20%);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-lg);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .properties-of-year::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+    border-radius: var(--border-radius-xl) var(--border-radius-xl) 0 0;
+  }
+
+  .properties-of-year:hover {
+    box-shadow: var(--shadow-xl);
+  }
+
+  .year-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgb(148 163 184 / 10%);
+  }
+
+  .year-title {
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .year-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+  }
+
+  .year-label {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .year-stats {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .properties-count {
+    background: var(--color-primary);
+    color: var(--color-text-white);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-lg);
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-md);
+  }
+
+  .properties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  /* Темная тема */
+  @media (prefers-color-scheme: dark) {
+    .properties-of-year {
+      border: 1px solid rgb(71 85 105 / 30%);
+    }
+
+    .year-header {
+      border-bottom: 2px solid rgb(71 85 105 / 20%);
+    }
+  }
+
+  /* Адаптивность */
+  @media (width <= 768px) {
+    .properties-of-year {
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .year-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .year-number {
+      font-size: 2rem;
+    }
+
+    .properties-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  @media (width <= 480px) {
+    .properties-of-year {
+      padding: 1rem;
+    }
+
+    .year-header {
+      margin-bottom: 1rem;
+    }
+
+    .year-number {
+      font-size: 1.75rem;
+    }
+  }
+</style>

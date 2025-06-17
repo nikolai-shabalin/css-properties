@@ -1,0 +1,325 @@
+<section class="css-eras">
+  <h2 class="eras-title">
+    <span class="title-icon">🎯</span>
+    Filter by CSS eras
+  </h2>
+  
+  <div class="eras-grid">
+    <button type="button" class="era-button css3" data-era="CSS3" title="CSS3 (2009-2012)">
+      <span class="era-icon">🎨</span>
+      <div class="era-info">
+        <span class="era-name">CSS3</span>
+        <span class="era-period">2009-2012</span>
+      </div>
+    </button>
+    
+    <button type="button" class="era-button css4" data-era="CSS4" title="CSS4 (2013-2018)">
+      <span class="era-icon">⚡</span>
+      <div class="era-info">
+        <span class="era-name">CSS4</span>
+        <span class="era-period">2013-2018</span>
+      </div>
+    </button>
+    
+    <button type="button" class="era-button css5" data-era="CSS5" title="CSS5 (2019-2025)">
+      <span class="era-icon">🚀</span>
+      <div class="era-info">
+        <span class="era-name">CSS5</span>
+        <span class="era-period">2019-2025</span>
+      </div>
+    </button>
+    
+    <button type="button" class="era-button reset" data-action="reset" title="Show all years">
+      <span class="era-icon">🔄</span>
+      <div class="era-info">
+        <span class="era-name">Reset</span>
+        <span class="era-period">all years</span>
+      </div>
+    </button>
+  </div>
+</section>
+
+<style>
+  .css-eras {
+    background: var(--color-background-section);
+    backdrop-filter: blur(20px);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid rgb(148 163 184 / 20%);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 2rem;
+  }
+  
+  .eras-title {
+    margin: 0 0 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .title-icon {
+    font-size: 1.5rem;
+    background: var(--color-primary);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .eras-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  
+  .era-button {
+    background: var(--color-background-item);
+    border: 1px solid rgb(148 163 184 / 15%);
+    border-radius: var(--border-radius-lg);
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .era-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    opacity: 0%;
+    transition: opacity var(--transition-normal);
+  }
+  
+  .era-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .era-button:hover::before {
+    opacity: 100%;
+  }
+  
+  .era-button:active {
+    transform: translateY(0);
+  }
+  
+  .era-button.active {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .era-button.active::before {
+    opacity: 100%;
+  }
+  
+  .css3::before {
+    background: linear-gradient(90deg, #ec4899, #f97316);
+  }
+  
+  .css4::before {
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  }
+  
+  .css5::before {
+    background: linear-gradient(90deg, var(--color-secondary), var(--color-success));
+  }
+  
+  .reset::before {
+    background: linear-gradient(90deg, #6b7280, #374151);
+  }
+  
+  .era-icon {
+    font-size: 1.5rem;
+    background: var(--color-primary);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .css3 .era-icon {
+    background: linear-gradient(135deg, #ec4899, #f97316);
+  }
+  
+  .css4 .era-icon {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  }
+  
+  .css5 .era-icon {
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-success));
+  }
+  
+  .reset .era-icon {
+    background: linear-gradient(135deg, #6b7280, #374151);
+  }
+  
+  .era-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .era-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  
+  .era-period {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+  
+  /* Темная тема */
+  @media (prefers-color-scheme: dark) {
+    .css-eras {
+      border: 1px solid rgb(71 85 105 / 30%);
+    }
+    
+    .era-button {
+      border: 1px solid rgb(71 85 105 / 30%);
+    }
+  }
+  
+  /* Адаптивность */
+  @media (width <= 768px) {
+    .css-eras {
+      padding: 1.5rem;
+    }
+    
+    .eras-title {
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+    }
+    
+    .title-icon {
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.25rem;
+    }
+    
+    .eras-grid {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+    }
+    
+    .era-button {
+      padding: 1rem;
+      gap: 0.75rem;
+    }
+    
+    .era-icon {
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.25rem;
+    }
+  }
+  
+  @media (width <= 480px) {
+    .css-eras {
+      padding: 1rem;
+    }
+    
+    .eras-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    
+    .era-button {
+      padding: 0.75rem;
+      flex-direction: column;
+      text-align: center;
+      gap: 0.5rem;
+    }
+    
+    .era-info {
+      align-items: center;
+    }
+    
+    .era-name {
+      font-size: 0.9rem;
+    }
+    
+    .era-period {
+      font-size: 0.7rem;
+    }
+  }
+</style>
+
+<script>
+  const EAR_YEARS = {
+    CSS3: [2009, 2010, 2011, 2012],
+    CSS4: [2013, 2014, 2015, 2016, 2017, 2018],
+    CSS5: [2019, 2020, 2021, 2022, 2023, 2024, 2025]
+  };
+  
+  const eraSection = document.querySelector('.css-eras');
+  const sections = document.querySelectorAll('.properties-of-year');
+  const buttons = document.querySelectorAll('.era-button');
+
+  if (eraSection) {
+    eraSection.addEventListener('click', (event) => {
+      const button = event.target as HTMLElement;
+      const buttonElement = button.closest('.era-button') as HTMLButtonElement;
+
+      if (buttonElement) {
+        // Убираем активный класс у всех кнопок
+        buttons.forEach(btn => btn.classList.remove('active'));
+        
+        if (buttonElement.dataset.action === 'reset') {
+          sections.forEach((section) => {
+            const htmlSection = section as HTMLElement;
+            htmlSection.style.display = 'flex';
+          });
+          return;
+        }
+
+        // Добавляем активный класс к выбранной кнопке
+        buttonElement.classList.add('active');
+
+        const era = buttonElement.dataset.era;
+        if (era && EAR_YEARS[era]) {
+          const years = EAR_YEARS[era];
+          let firstVisibleSection: Element | null = null;
+
+          sections.forEach((section) => {
+            const htmlSection = section as HTMLElement;
+            const sectionYear = parseInt(htmlSection.id.replace('year-', ''), 10);
+            if (years.includes(sectionYear)) {
+              htmlSection.style.display = 'flex';
+              if (!firstVisibleSection) {
+                firstVisibleSection = section;
+              }
+            } else {
+              htmlSection.style.display = 'none';
+            }
+          });
+
+          if (firstVisibleSection) {
+            (firstVisibleSection as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      }
+    });
+  }
+</script>
