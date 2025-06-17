@@ -1,0 +1,53 @@
+---
+import Base from '../../layouts/BaseEn.astro';
+import Github from '../../components/GithubEn.astro';
+import ScrollToTop from '../../components/ScrollToTopEn.astro';
+import SelectYear from '../../components/SelectYearEn.astro';
+import CssEra from '../../components/CssEraEn.astro';
+import Properties from '../../components/PropertiesEn.astro';
+import YearlyChart from '../../components/YearlyChartEn.astro';
+import Hero from '../../components/HeroEn.astro';
+import {data} from '../../data/data.js';
+
+const listYears = Object.keys(data).reverse();
+---
+
+<Base>
+  <main class="main">
+    <Hero />
+
+    <YearlyChart />
+
+    <section class="controls">
+      <SelectYear listYears={listYears} />
+      <CssEra />
+    </section>
+
+    <Properties properties={data} />
+  </main>
+  <Github />
+  <ScrollToTop />
+</Base>
+
+<style>
+  .main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .controls {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (width <= 768px) {
+    .controls {
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+  }
+</style>
