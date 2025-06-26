@@ -25,11 +25,9 @@ const t = useTranslations(lang);
       </div>
     </header>
 
-    <div class="properties-grid">
-      {properties.map((property: PropertyProp) => (
-        <Property property={property} />
-      ))}
-    </div>
+    {properties.map((property: PropertyProp) => (
+      <Property property={property} />
+    ))}
   </section>
 ))}
 
@@ -45,6 +43,10 @@ const t = useTranslations(lang);
     transition: transform var(--transition-normal), box-shadow var(--transition-normal);
     position: relative;
     overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    align-items: stretch;
   }
 
   .properties-of-year::before {
@@ -63,6 +65,7 @@ const t = useTranslations(lang);
   }
 
   .year-header {
+    grid-column: 1/-1;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -111,13 +114,6 @@ const t = useTranslations(lang);
     box-shadow: var(--shadow-md);
   }
 
-  .properties-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    align-items: stretch;
-  }
-
   /* Темная тема */
   @media (prefers-color-scheme: dark) {
     .properties-of-year {
@@ -134,6 +130,9 @@ const t = useTranslations(lang);
     .properties-of-year {
       padding: 1.5rem;
       margin-bottom: 1.5rem;
+      
+      grid-template-columns: 1fr;
+      gap: 1rem;
     }
 
     .year-header {
@@ -148,8 +147,6 @@ const t = useTranslations(lang);
     }
 
     .properties-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
     }
   }
 
