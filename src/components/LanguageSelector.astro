@@ -77,18 +77,24 @@ const languagesJson = JSON.stringify(languages);
           if (langIndex !== -1) {
             pathSegments.splice(langIndex, 1);
           }
-          const newPath = basePath + (pathSegments.length > 0 ? '/' + pathSegments.join('/') : '/');
+          // Убираем дублирование css-properties
+          const filteredSegments = pathSegments.filter(segment => segment !== 'css-properties');
+          const newPath = basePath + (filteredSegments.length > 0 ? '/' + filteredSegments.join('/') : '/');
           newUrl.pathname = newPath;
         } else {
           // Для других языков добавляем или заменяем код языка
           if (langIndex === -1) {
             // Если сейчас русский, добавляем код языка после базового пути
-            const newPath = basePath + '/' + lang + (pathSegments.length > 0 ? '/' + pathSegments.join('/') : '/');
+            // Убираем дублирование css-properties
+            const filteredSegments = pathSegments.filter(segment => segment !== 'css-properties');
+            const newPath = basePath + '/' + lang + (filteredSegments.length > 0 ? '/' + filteredSegments.join('/') : '/');
             newUrl.pathname = newPath;
           } else {
             // Если уже есть код языка, заменяем его
             pathSegments[langIndex] = lang;
-            const newPath = basePath + '/' + pathSegments.join('/');
+            // Убираем дублирование css-properties
+            const filteredSegments = pathSegments.filter(segment => segment !== 'css-properties');
+            const newPath = basePath + '/' + filteredSegments.join('/');
             newUrl.pathname = newPath;
           }
         }
