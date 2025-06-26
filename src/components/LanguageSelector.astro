@@ -16,6 +16,9 @@ const languageMeta = {
   ko: { flag: '🇰🇷', code: 'ko' },
   zh: { flag: '🇨🇳', code: 'zh' },
 };
+
+// Передаем языки в клиентский скрипт
+const languagesJson = JSON.stringify(languages);
 ---
 
 <div class="language-selector">
@@ -28,46 +31,69 @@ const languageMeta = {
   </select>
 </div>
 
-<script>
+<script define:vars={{ languagesJson }}>
+  // Получаем языки из серверного кода
+  const languages = JSON.parse(languagesJson);
+
   document.addEventListener('DOMContentLoaded', function() {
-    const select = document.getElementById('language-select') as HTMLSelectElement;
+    const select = document.getElementById('language-select');
     if (select) {
       select.addEventListener('change', function() {
         var lang = select.value;
-        console.log('Changing language to:', lang);
-        console.log('Current path:', window.location.pathname);
-        
-        const currentPath = window.location.pathname;
-        const pathSegments = currentPath.split('/').filter(Boolean);
-        const allLangs = ['ru','en','es','fr','de','it','pt','ja','ko','zh'];
-        
+        // Используем Web API для работы с URL
+        const url = new URL(window.location.href);
+        const pathSegments = url.pathname.split('/').filter(Boolean);
+        const allLangs = Object.keys(languages);
+
+        // Определяем базовый путь динамически
+        let basePath = '';
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+          // Локальная разработка
+          basePath = '';
+        } else {
+          // GitHub Pages
+          basePath = '/css-properties';
+        }
+
         // Определяем текущий язык из URL
         let currentLang = 'ru'; // по умолчанию
-        if (pathSegments.length > 0 && allLangs.includes(pathSegments[0])) {
-          currentLang = pathSegments[0];
+        let langIndex = -1;
+
+        // Ищем код языка в сегментах пути
+        for (let i = 0; i < pathSegments.length; i++) {
+          if (allLangs.includes(pathSegments[i])) {
+            currentLang = pathSegments[i];
+            langIndex = i;
+            break;
+          }
         }
-        
+
+        // Создаем новый URL
+        const newUrl = new URL(window.location.href);
+
         // Если выбран русский язык
         if (lang === 'ru') {
           // Убираем код языка из URL, если он есть
-          if (currentLang !== 'ru') {
-            const newSegments = pathSegments.slice(1);
-            const newPath = newSegments.length > 0 ? '/' + newSegments.join('/') : '/';
-            window.location.href = newPath;
+          if (langIndex !== -1) {
+            pathSegments.splice(langIndex, 1);
           }
+          const newPath = basePath + (pathSegments.length > 0 ? '/' + pathSegments.join('/') : '/');
+          newUrl.pathname = newPath;
         } else {
           // Для других языков добавляем или заменяем код языка
-          if (currentLang === 'ru') {
-            // Если сейчас русский, добавляем код языка
-            const newPath = '/' + lang + (pathSegments.length > 0 ? '/' + pathSegments.join('/') : '/');
-            window.location.href = newPath;
+          if (langIndex === -1) {
+            // Если сейчас русский, добавляем код языка после базового пути
+            const newPath = basePath + '/' + lang + (pathSegments.length > 0 ? '/' + pathSegments.join('/') : '/');
+            newUrl.pathname = newPath;
           } else {
             // Если уже есть код языка, заменяем его
-            pathSegments[0] = lang;
-            const newPath = '/' + pathSegments.join('/');
-            window.location.href = newPath;
+            pathSegments[langIndex] = lang;
+            const newPath = basePath + '/' + pathSegments.join('/');
+            newUrl.pathname = newPath;
           }
         }
+
+        window.location.href = newUrl.toString();
       });
     }
   });
@@ -112,4 +138,4 @@ const languageMeta = {
     color: var(--color-text);
     font-size: 12px;
   }
-</style> 
+</style>

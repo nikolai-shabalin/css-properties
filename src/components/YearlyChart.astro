@@ -279,7 +279,6 @@ const subtitle = t('yearly.chart.subtitle').replace('{start}', startYear.toStrin
     bars.forEach(bar => {
       if (!(bar instanceof HTMLElement)) return;
 
-      const year = bar.dataset.year;
       const count = bar.dataset.count;
 
       // Показываем количество при наведении
@@ -288,12 +287,6 @@ const subtitle = t('yearly.chart.subtitle').replace('{start}', startYear.toStrin
         if (fill && count) {
           fill.setAttribute('data-count', count);
         }
-      });
-
-      // Добавляем клик для будущей функциональности (переход к году)
-      bar.addEventListener('click', () => {
-        // Здесь можно добавить логику для перехода к определенному году
-        console.log(`Clicked on year ${year} with ${count} features`);
       });
     });
   });
