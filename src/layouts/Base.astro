@@ -1,10 +1,15 @@
 ---
 import Head from '../components/Head.astro';
+import LanguageSelector from '../components/LanguageSelector.astro';
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
 ---
 <!DOCTYPE html>
-<html lang="ru">
+<html lang={lang}>
   <Head />
   <body>
+    <LanguageSelector />
     <slot></slot>
   </body>
 </html>

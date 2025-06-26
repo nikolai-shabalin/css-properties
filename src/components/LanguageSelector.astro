@@ -1,0 +1,115 @@
+---
+import { languages } from '../i18n/ui';
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+const languageMeta = {
+  ru: { flag: '🇷🇺', code: 'ru' },
+  en: { flag: '🇬🇧', code: 'en' },
+  es: { flag: '🇪🇸', code: 'es' },
+  fr: { flag: '🇫🇷', code: 'fr' },
+  de: { flag: '🇩🇪', code: 'de' },
+  it: { flag: '🇮🇹', code: 'it' },
+  pt: { flag: '🇵🇹', code: 'pt' },
+  ja: { flag: '🇯🇵', code: 'ja' },
+  ko: { flag: '🇰🇷', code: 'ko' },
+  zh: { flag: '🇨🇳', code: 'zh' },
+};
+---
+
+<div class="language-selector">
+  <select id="language-select">
+    {Object.entries(languages).map(([code]) => (
+      <option value={code} selected={code === lang}>
+        {languageMeta[code]?.flag} {languageMeta[code]?.code}
+      </option>
+    ))}
+  </select>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const select = document.getElementById('language-select') as HTMLSelectElement;
+    if (select) {
+      select.addEventListener('change', function() {
+        var lang = select.value;
+        console.log('Changing language to:', lang);
+        console.log('Current path:', window.location.pathname);
+        
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/').filter(Boolean);
+        const allLangs = ['ru','en','es','fr','de','it','pt','ja','ko','zh'];
+        
+        // Определяем текущий язык из URL
+        let currentLang = 'ru'; // по умолчанию
+        if (pathSegments.length > 0 && allLangs.includes(pathSegments[0])) {
+          currentLang = pathSegments[0];
+        }
+        
+        // Если выбран русский язык
+        if (lang === 'ru') {
+          // Убираем код языка из URL, если он есть
+          if (currentLang !== 'ru') {
+            const newSegments = pathSegments.slice(1);
+            const newPath = newSegments.length > 0 ? '/' + newSegments.join('/') : '/';
+            window.location.href = newPath;
+          }
+        } else {
+          // Для других языков добавляем или заменяем код языка
+          if (currentLang === 'ru') {
+            // Если сейчас русский, добавляем код языка
+            const newPath = '/' + lang + (pathSegments.length > 0 ? '/' + pathSegments.join('/') : '/');
+            window.location.href = newPath;
+          } else {
+            // Если уже есть код языка, заменяем его
+            pathSegments[0] = lang;
+            const newPath = '/' + pathSegments.join('/');
+            window.location.href = newPath;
+          }
+        }
+      });
+    }
+  });
+</script>
+
+<style>
+  .language-selector {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+  }
+
+  #language-select {
+    padding: 4px 8px;
+    border: 1px solid var(--color-accent);
+    border-radius: 6px;
+    background: rgb(255 255 255 / 10%);
+    color: var(--color-text);
+    font-size: 12px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    min-width: 80px;
+    max-width: 90px;
+  }
+
+  #language-select:hover {
+    background: rgb(255 255 255 / 20%);
+    border-color: var(--color-primary);
+    transform: scale(1.05);
+  }
+
+  #language-select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgb(var(--color-primary-rgb), 0.2);
+  }
+
+  #language-select option {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-size: 12px;
+  }
+</style> 

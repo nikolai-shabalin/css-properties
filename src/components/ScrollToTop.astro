@@ -1,10 +1,14 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
+
 <div class="scroll-to-top-fab">
-  <button class="scroll-to-top-button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Прокрутить наверх">
+  <button class="scroll-to-top-button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label={t('scroll.top')}>
     <span class="scroll-icon">⬆️</span>
-    <span class="scroll-text">Наверх</span>
+    <span class="scroll-text">{t('scroll.top')}</span>
   </button>
 </div>
 

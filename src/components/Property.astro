@@ -1,4 +1,6 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
 export type PropertyProp = {
   name: string;
   date: string;
@@ -14,6 +16,8 @@ interface Props {
 }
 
 const { property } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 function getPropertyIcon(type: string, name: string) {
   if (type === '@') return '📋';
@@ -47,7 +51,7 @@ const prefixClass = prefixContent ? `property-name__prefix property-name__prefix
       </span>
     </h3>
     <time class="property-date" datetime={property.date}>
-      {new Date(property.date).toLocaleDateString('ru-RU', {
+      {new Date(property.date).toLocaleDateString(lang === 'ru' ? 'ru-RU' : lang, {
         day: 'numeric',
         month: 'long',
         year: 'numeric'
@@ -58,16 +62,16 @@ const prefixClass = prefixContent ? `property-name__prefix property-name__prefix
   <div class="property-links">
     {property.specUrl && (
       <a href={property.specUrl} class="property-link spec-link" target="_blank" rel="noopener">
-        📄 Спецификация
+        📄 {t('property.spec')}
       </a>
     )}
     {property.mdnUrl && (
       <a href={property.mdnUrl} class="property-link mdn-link" target="_blank" rel="noopener">
-        📚 MDN
+        📚 {t('property.docs')}
       </a>
     )}
     <a href={`https://caniuse.com/?search=${property.name}`} class="property-link caniuse-link" target="_blank" rel="noopener">
-      🌐 Can I Use
+      🌐 {t('property.browser')}
     </a>
   </div>
 </article>

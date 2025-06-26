@@ -1,14 +1,18 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import '../styles/global.css';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 <head>
   <meta charset="UTF-8">
-  <title>Список всех CSS-свойств</title>
+  <title>{t('head.title')}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" href="favicons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="favicons/apple.png">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="keywords" content="css, properties, types, at-rules">
-  <meta name="description" content="Список всех CSS-свойств с датами их появления">
+  <meta name="description" content={t('head.description')}>
 </head>

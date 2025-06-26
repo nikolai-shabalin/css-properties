@@ -1,13 +1,15 @@
 ---
-const {listYears} = Astro.props;
-interface Props {
-  listYears: string[];
-}
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { data } from '../data/data.js';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const listYears = Object.keys(data).reverse();
 ---
 
 <div class="year-selector">
   <h2 class="selector-title">
-    🕒 Быстрая навигация по годам
+    🕒 {t('select.year')}
   </h2>
 
   <div class="years-grid">

@@ -1,5 +1,6 @@
 ---
 import Property, {PropertyProp} from './Property.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 interface PropertiesAstroProps {
   properties: {
@@ -8,17 +9,19 @@ interface PropertiesAstroProps {
 }
 
 const { properties } = Astro.props as PropertiesAstroProps;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-{Object.entries(properties).reverse().map(([key, properties]) => (
+{Object.entries(properties || {}).reverse().map(([key, properties]) => (
   <section class="properties-of-year" id={`year-${key}`}>
     <header class="year-header">
       <h2 class="year-title">
         <span class="year-number">{key}</span>
-        <span class="year-label">год</span>
+        <span class="year-label">{t('properties.year')}</span>
       </h2>
       <div class="year-stats">
-        <span class="properties-count">{properties.length} свойств</span>
+        <span class="properties-count">{properties.length}&nbsp;{t('properties.count')}</span>
       </div>
     </header>
 

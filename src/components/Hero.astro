@@ -1,25 +1,28 @@
 ---
 import {data} from '../data/data.js';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <header class="hero">
   <div class="hero-content">
     <h1 class="title">
-      <span class="title-gradient">CSS Properties</span>
+      <span class="title-gradient">{t('hero.title')}</span>
       <span class="title-accent">✨</span>
     </h1>
     <p class="subtitle">
-      Полный справочник CSS-свойств с датами их появления и ссылками на документацию. 
-      Изучите эволюцию веб-стилей от истоков до наших дней.
+      {t('hero.subtitle')}
     </p>
     <div class="stats">
       <div class="stat-item">
         <span class="stat-number">{Object.values(data).flat().length}</span>
-        <span class="stat-label">свойств</span>
+        <span class="stat-label">{t('hero.properties')}</span>
       </div>
       <div class="stat-item">
         <span class="stat-number">{Object.keys(data).length}</span>
-        <span class="stat-label">лет истории</span>
+        <span class="stat-label">{t('hero.years')}</span>
       </div>
     </div>
   </div>

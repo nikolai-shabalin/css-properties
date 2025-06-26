@@ -7,9 +7,7 @@ import CssEra from '../components/CssEra.astro';
 import Properties from '../components/Properties.astro';
 import YearlyChart from '../components/YearlyChart.astro';
 import Hero from '../components/Hero.astro';
-import {data} from '../data/data.js';
-
-const listYears = Object.keys(data).reverse();
+import { data } from '../data/data.js';
 ---
 
 <Base>
@@ -19,7 +17,7 @@ const listYears = Object.keys(data).reverse();
     <YearlyChart />
 
     <section class="controls">
-      <SelectYear listYears={listYears} />
+      <SelectYear />
       <CssEra />
     </section>
 
