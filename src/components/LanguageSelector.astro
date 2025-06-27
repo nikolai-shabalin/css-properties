@@ -22,7 +22,7 @@ const languagesJson = JSON.stringify(languages);
 ---
 
 <div class="language-selector">
-  <select id="language-select">
+  <select class="language-select">
     {Object.entries(languages).map(([code]) => (
       <option value={code} selected={code === lang}>
         {languageMeta[code]?.flag} {languageMeta[code]?.code}
@@ -36,7 +36,7 @@ const languagesJson = JSON.stringify(languages);
   const languages = JSON.parse(languagesJson);
 
   document.addEventListener('DOMContentLoaded', function() {
-    const select = document.getElementById('language-select');
+    const select = document.querySelector('.language-select');
     if (select) {
       select.addEventListener('change', function() {
         var lang = select.value;
@@ -113,7 +113,7 @@ const languagesJson = JSON.stringify(languages);
     z-index: 1000;
   }
 
-  #language-select {
+  .language-select {
     padding: 4px 8px;
     border: 1px solid var(--color-accent);
     border-radius: 6px;
@@ -127,19 +127,19 @@ const languagesJson = JSON.stringify(languages);
     max-width: 90px;
   }
 
-  #language-select:hover {
+  .language-select:hover {
     background: rgb(255 255 255 / 20%);
     border-color: var(--color-primary);
     transform: scale(1.05);
   }
 
-  #language-select:focus {
+  .language-select:focus {
     outline: none;
     border-color: var(--color-primary);
     box-shadow: 0 0 0 2px rgb(var(--color-primary-rgb), 0.2);
   }
 
-  #language-select option {
+  .language-select option {
     background: var(--color-bg);
     color: var(--color-text);
     font-size: 12px;
