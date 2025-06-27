@@ -36,7 +36,7 @@ const subtitle = t('yearly.chart.subtitle').replace('{start}', startYear.toStrin
         {yearData.map((item, index) => (
           <a href={`#year-${item.year}`} class="bar-container" data-year={item.year} data-count={item.count} style={`--bar-height: ${(item.count / maxCount) * 100}%; --delay: ${index * 0.05}s`}>
             <div class="bar">
-              <div class="bar-fill"></div>
+              <div class="bar-fill" data-count={item.count}></div>
             </div>
             <div class="bar-label">
               <span class="year">{item.year}</span>
@@ -267,27 +267,4 @@ const subtitle = t('yearly.chart.subtitle').replace('{start}', startYear.toStrin
       border: 1px solid rgb(71 85 105 / 20%);
     }
   }
-
-  /* Адаптивность */
 </style>
-
-<script>
-  // Добавляем интерактивность к графику
-  document.addEventListener('DOMContentLoaded', () => {
-    const bars = document.querySelectorAll('.bar-container');
-
-    bars.forEach(bar => {
-      if (!(bar instanceof HTMLElement)) return;
-
-      const count = bar.dataset.count;
-
-      // Показываем количество при наведении
-      bar.addEventListener('mouseenter', () => {
-        const fill = bar.querySelector('.bar-fill');
-        if (fill && count) {
-          fill.setAttribute('data-count', count);
-        }
-      });
-    });
-  });
-</script>
