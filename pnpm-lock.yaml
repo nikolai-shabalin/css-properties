@@ -12,20 +12,20 @@ importers:
         specifier: 0.9.4
         version: 0.9.4(typescript@5.8.3)
       '@mdn/browser-compat-data':
-        specifier: 6.0.27
-        version: 6.0.27
+        specifier: 6.0.28
+        version: 6.0.28
       astro:
-        specifier: 5.10.1
-        version: 5.10.1(@types/node@24.0.4)(rollup@4.44.1)(typescript@5.8.3)(yaml@2.8.0)
+        specifier: 5.11.0
+        version: 5.11.0(@types/node@24.0.4)(rollup@4.44.1)(typescript@5.8.3)(yaml@2.8.0)
       postcss-html:
         specifier: ^1.8.0
         version: 1.8.0
       stylelint:
-        specifier: ^16.21.0
-        version: 16.21.0(typescript@5.8.3)
+        specifier: ^16.21.1
+        version: 16.21.1(typescript@5.8.3)
       stylelint-config-standard:
         specifier: ^38.0.0
-        version: 38.0.0(stylelint@16.21.0(typescript@5.8.3))
+        version: 38.0.0(stylelint@16.21.1(typescript@5.8.3))
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -405,8 +405,8 @@ packages:
   '@keyv/serialize@1.0.3':
     resolution: {integrity: sha512-qnEovoOp5Np2JDGonIDL6Ayihw0RhnRh6vxPuHo4RDn1UOzwEo4AeIfpL6UGIrsceWrCMiVPgwRjbHu4vYFc3g==}
 
-  '@mdn/browser-compat-data@6.0.27':
-    resolution: {integrity: sha512-s5kTuDih5Ysb7DS2T2MhvneFLvDS0NwnLY5Jv6dL+zBXbcNVcyFcGdjwn3rttiHvcbb/qF02HP9ywufdwHZbIw==}
+  '@mdn/browser-compat-data@6.0.28':
+    resolution: {integrity: sha512-UE4uV0VK+HfGyXCNdq3Lyy0xNJ6bJI9Y8XtVnnv7+oFda3xtV3PQJIMPHEtC+ou1qrrHdrtaLNQ9cJSj4hi94Q==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -661,8 +661,8 @@ packages:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
 
-  astro@5.10.1:
-    resolution: {integrity: sha512-DJVmt+51jU1xmgmAHCDwuUgcG/5aVFSU+tcX694acAZqPVt8EMUAmUZcJDX36Z7/EztnPph9HR3pm72jS2EgHQ==}
+  astro@5.11.0:
+    resolution: {integrity: sha512-MEICntERthUxJPSSDsDiZuwiCMrsaYy3fnDhp4c6ScUfldCB8RBnB/myYdpTFXpwYBy6SgVsHQ1H4MuuA7ro/Q==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1666,8 +1666,8 @@ packages:
     peerDependencies:
       stylelint: ^16.18.0
 
-  stylelint@16.21.0:
-    resolution: {integrity: sha512-ki3PpJGG7xhm3WtINoWGnlvqAmbqSexoRMbEMJzlwewSIOqPRKPlq452c22xAdEJISVi80r+I7KL9GPUiwFgbg==}
+  stylelint@16.21.1:
+    resolution: {integrity: sha512-WCXdXnYK2tpCbebgMF0Bme3YZH/Rh/UXerj75twYo4uLULlcrLwFVdZTvTEF8idFnAcW21YUDJFyKOfaf6xJRw==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -2417,7 +2417,7 @@ snapshots:
     dependencies:
       buffer: 6.0.3
 
-  '@mdn/browser-compat-data@6.0.27': {}
+  '@mdn/browser-compat-data@6.0.28': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -2658,7 +2658,7 @@ snapshots:
 
   astral-regex@2.0.0: {}
 
-  astro@5.10.1(@types/node@24.0.4)(rollup@4.44.1)(typescript@5.8.3)(yaml@2.8.0):
+  astro@5.11.0(@types/node@24.0.4)(rollup@4.44.1)(typescript@5.8.3)(yaml@2.8.0):
     dependencies:
       '@astrojs/compiler': 2.12.2
       '@astrojs/internal-helpers': 0.6.1
@@ -4014,16 +4014,16 @@ snapshots:
     dependencies:
       ansi-regex: 6.1.0
 
-  stylelint-config-recommended@16.0.0(stylelint@16.21.0(typescript@5.8.3)):
+  stylelint-config-recommended@16.0.0(stylelint@16.21.1(typescript@5.8.3)):
     dependencies:
-      stylelint: 16.21.0(typescript@5.8.3)
+      stylelint: 16.21.1(typescript@5.8.3)
 
-  stylelint-config-standard@38.0.0(stylelint@16.21.0(typescript@5.8.3)):
+  stylelint-config-standard@38.0.0(stylelint@16.21.1(typescript@5.8.3)):
     dependencies:
-      stylelint: 16.21.0(typescript@5.8.3)
-      stylelint-config-recommended: 16.0.0(stylelint@16.21.0(typescript@5.8.3))
+      stylelint: 16.21.1(typescript@5.8.3)
+      stylelint-config-recommended: 16.0.0(stylelint@16.21.1(typescript@5.8.3))
 
-  stylelint@16.21.0(typescript@5.8.3):
+  stylelint@16.21.1(typescript@5.8.3):
     dependencies:
       '@csstools/css-parser-algorithms': 3.0.5(@csstools/css-tokenizer@3.0.4)
       '@csstools/css-tokenizer': 3.0.4
