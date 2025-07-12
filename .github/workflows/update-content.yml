@@ -31,10 +31,13 @@ jobs:
       - name: Update @mdn/browser-compat-data
         run: pnpm add -DE @mdn/browser-compat-data@latest
 
+      - name: Run create:data
+        run: pnpm create:data
+
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add package.json pnpm-lock.yaml
+          git add .
           git commit -m "Update: $(date +'%Y-%m-%d')" || echo "No changes to commit"
           git push
