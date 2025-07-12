@@ -42,7 +42,8 @@ export const ui = {
     'css.era.reset': 'Сбросить',
     'css.era.allYears': 'все года',
     'css.era.resetTitle': 'Показать все года',
-    'properties.year': 'год'
+    'properties.year': 'год',
+    'generated.at': 'Последнее обновление информации'
   },
   en: {
     'nav.home': 'Home',
@@ -70,7 +71,8 @@ export const ui = {
     'css.era.reset': 'Reset',
     'css.era.allYears': 'all years',
     'css.era.resetTitle': 'Show all years',
-    'properties.year': 'year'
+    'properties.year': 'year',
+    'generated.at': 'Last updated'
   },
   es: {
     'nav.home': 'Inicio',
@@ -98,7 +100,8 @@ export const ui = {
     'css.era.reset': 'Restablecer',
     'css.era.allYears': 'todos los años',
     'css.era.resetTitle': 'Mostrar todos los años',
-    'properties.year': 'año'
+    'properties.year': 'año',
+    'generated.at': 'Última actualización'
   },
   fr: {
     'nav.home': 'Accueil',
@@ -126,7 +129,8 @@ export const ui = {
     'css.era.reset': 'Réinitialiser',
     'css.era.allYears': 'toutes les années',
     'css.era.resetTitle': 'Afficher toutes les années',
-    'properties.year': 'an'
+    'properties.year': 'an',
+    'generated.at': 'Dernière mise à jour'
   },
   de: {
     'nav.home': 'Startseite',
@@ -154,7 +158,8 @@ export const ui = {
     'css.era.reset': 'Zurücksetzen',
     'css.era.allYears': 'alle Jahre',
     'css.era.resetTitle': 'Alle Jahre anzeigen',
-    'properties.year': 'Jahr'
+    'properties.year': 'Jahr',
+    'generated.at': 'Letzte Aktualisierung'
   },
   it: {
     'nav.home': 'Home',
@@ -182,7 +187,8 @@ export const ui = {
     'css.era.reset': 'Ripristina',
     'css.era.allYears': 'tutti gli anni',
     'css.era.resetTitle': 'Mostra tutti gli anni',
-    'properties.year': 'anno'
+    'properties.year': 'anno',
+    'generated.at': 'Ultimo aggiornamento'
   },
   pt: {
     'nav.home': 'Início',
@@ -210,7 +216,8 @@ export const ui = {
     'css.era.reset': 'Redefinir',
     'css.era.allYears': 'todos os anos',
     'css.era.resetTitle': 'Mostrar todos os anos',
-    'properties.year': 'ano'
+    'properties.year': 'ano',
+    'generated.at': 'Última atualização'
   },
   ja: {
     'nav.home': 'ホーム',
@@ -238,7 +245,8 @@ export const ui = {
     'css.era.reset': 'リセット',
     'css.era.allYears': 'すべての年',
     'css.era.resetTitle': 'すべての年を表示',
-    'properties.year': '年'
+    'properties.year': '年',
+    'generated.at': '最終更新日'
   },
   ko: {
     'nav.home': '홈',
@@ -266,7 +274,8 @@ export const ui = {
     'css.era.reset': '초기화',
     'css.era.allYears': '모든 연도',
     'css.era.resetTitle': '모든 연도 표시',
-    'properties.year': '년'
+    'properties.year': '년',
+    'generated.at': '최종 업데이트'
   },
   zh: {
     'nav.home': '首页',
@@ -294,6 +303,7 @@ export const ui = {
     'css.era.reset': '重置',
     'css.era.allYears': '所有年份',
     'css.era.resetTitle': '显示所有年份',
-    'properties.year': '年'
+    'properties.year': '年',
+    'generated.at': '最后更新'
   }
 } as const; 

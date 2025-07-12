@@ -4,6 +4,7 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const generatedAt = new Date().toLocaleDateString(lang);
 ---
 
 <header class="hero">
@@ -24,6 +25,9 @@ const t = useTranslations(lang);
         <span class="stat-number">{Object.keys(data).length}</span>
         <span class="stat-label">{t('hero.years')}</span>
       </div>
+    </div>
+    <div class="generated-date">
+      {t('generated.at')}: {generatedAt}
     </div>
   </div>
 </header>
@@ -127,6 +131,13 @@ const t = useTranslations(lang);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 500;
+  }
+  
+  .generated-date {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    text-align: center;
   }
   
   /* Темная тема */
