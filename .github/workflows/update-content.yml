@@ -2,7 +2,7 @@ name: Updatу cotent and
 
 on:
   schedule:
-    - cron: '0 3 * * *' # Каждый день в 3:00 UTC
+    - cron: '10 13 * * *' # Каждый день в 16:10 МСК
   workflow_dispatch:
 
 jobs:
