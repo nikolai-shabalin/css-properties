@@ -2,7 +2,7 @@ name: Update content
 
 on:
   schedule:
-    - cron: '10 13 * * *' # Каждый день в 16:10 МСК
+    - cron: '0 21 * * *' # Каждый день в 00:00 МСК
   workflow_dispatch:
 
 jobs:
@@ -43,5 +43,5 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Update: $(date +'%Y-%m-%d')"
-            git push
+            git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
           fi
