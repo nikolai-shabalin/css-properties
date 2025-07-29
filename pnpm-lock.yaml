@@ -15,17 +15,17 @@ importers:
         specifier: 6.0.35
         version: 6.0.35
       astro:
-        specifier: 5.11.0
-        version: 5.11.0(@types/node@24.0.13)(rollup@4.45.0)(typescript@5.8.3)(yaml@2.8.0)
+        specifier: 5.12.4
+        version: 5.12.4(@types/node@24.0.13)(rollup@4.45.0)(typescript@5.8.3)(yaml@2.8.0)
       postcss-html:
         specifier: ^1.8.0
         version: 1.8.0
       stylelint:
-        specifier: ^16.21.1
-        version: 16.21.1(typescript@5.8.3)
+        specifier: ^16.22.0
+        version: 16.22.0(typescript@5.8.3)
       stylelint-config-standard:
         specifier: ^38.0.0
-        version: 38.0.0(stylelint@16.21.1(typescript@5.8.3))
+        version: 38.0.0(stylelint@16.22.0(typescript@5.8.3))
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -56,8 +56,8 @@ packages:
       prettier-plugin-astro:
         optional: true
 
-  '@astrojs/markdown-remark@6.3.2':
-    resolution: {integrity: sha512-bO35JbWpVvyKRl7cmSJD822e8YA8ThR/YbUsciWNA7yTcqpIAL2hJDToWP5KcZBWxGT6IOdOkHSXARSNZc4l/Q==}
+  '@astrojs/markdown-remark@6.3.3':
+    resolution: {integrity: sha512-DDRtD1sPvAuA7ms2btc9A7/7DApKqgLMNrE6kh5tmkfy8utD0Z738gqd3p5aViYYdUtHIyEJ1X4mCMxfCfu15w==}
 
   '@astrojs/prism@3.3.0':
     resolution: {integrity: sha512-q8VwfU/fDZNoDOf+r7jUnMC2//H2l0TuQ6FkGJL8vD8nw/q5KiL3DS1KKBI3QhI9UQhpJ5dc7AtqfbXWuOgLCQ==}
@@ -667,8 +667,8 @@ packages:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
 
-  astro@5.11.0:
-    resolution: {integrity: sha512-MEICntERthUxJPSSDsDiZuwiCMrsaYy3fnDhp4c6ScUfldCB8RBnB/myYdpTFXpwYBy6SgVsHQ1H4MuuA7ro/Q==}
+  astro@5.12.4:
+    resolution: {integrity: sha512-ns+/KpfWToKvVf2DJTj4EIa4U59/XVBXeeq6VZUr5DXe6OZJFs8NfJi+W20nRm5nduIeBZGRzaoxPFq9lm4WEg==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1672,8 +1672,8 @@ packages:
     peerDependencies:
       stylelint: ^16.18.0
 
-  stylelint@16.21.1:
-    resolution: {integrity: sha512-WCXdXnYK2tpCbebgMF0Bme3YZH/Rh/UXerj75twYo4uLULlcrLwFVdZTvTEF8idFnAcW21YUDJFyKOfaf6xJRw==}
+  stylelint@16.22.0:
+    resolution: {integrity: sha512-SVEMTdjKNV4ollUrIY9ordZ36zHv2/PHzPjfPMau370MlL2VYXeLgSNMMiEbLGRO8RmD2R8/BVUeF2DfnfkC0w==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -2149,7 +2149,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@astrojs/markdown-remark@6.3.2':
+  '@astrojs/markdown-remark@6.3.3':
     dependencies:
       '@astrojs/internal-helpers': 0.6.1
       '@astrojs/prism': 3.3.0
@@ -2667,11 +2667,11 @@ snapshots:
 
   astral-regex@2.0.0: {}
 
-  astro@5.11.0(@types/node@24.0.13)(rollup@4.45.0)(typescript@5.8.3)(yaml@2.8.0):
+  astro@5.12.4(@types/node@24.0.13)(rollup@4.45.0)(typescript@5.8.3)(yaml@2.8.0):
     dependencies:
       '@astrojs/compiler': 2.12.2
       '@astrojs/internal-helpers': 0.6.1
-      '@astrojs/markdown-remark': 6.3.2
+      '@astrojs/markdown-remark': 6.3.3
       '@astrojs/telemetry': 3.3.0
       '@capsizecss/unpack': 2.4.0
       '@oslojs/encoding': 1.1.0
@@ -2714,6 +2714,7 @@ snapshots:
       rehype: 13.0.2
       semver: 7.7.2
       shiki: 3.7.0
+      smol-toml: 1.4.1
       tinyexec: 0.3.2
       tinyglobby: 0.2.14
       tsconfck: 3.1.6(typescript@5.8.3)
@@ -4024,16 +4025,16 @@ snapshots:
     dependencies:
       ansi-regex: 6.1.0
 
-  stylelint-config-recommended@16.0.0(stylelint@16.21.1(typescript@5.8.3)):
+  stylelint-config-recommended@16.0.0(stylelint@16.22.0(typescript@5.8.3)):
     dependencies:
-      stylelint: 16.21.1(typescript@5.8.3)
+      stylelint: 16.22.0(typescript@5.8.3)
 
-  stylelint-config-standard@38.0.0(stylelint@16.21.1(typescript@5.8.3)):
+  stylelint-config-standard@38.0.0(stylelint@16.22.0(typescript@5.8.3)):
     dependencies:
-      stylelint: 16.21.1(typescript@5.8.3)
-      stylelint-config-recommended: 16.0.0(stylelint@16.21.1(typescript@5.8.3))
+      stylelint: 16.22.0(typescript@5.8.3)
+      stylelint-config-recommended: 16.0.0(stylelint@16.22.0(typescript@5.8.3))
 
-  stylelint@16.21.1(typescript@5.8.3):
+  stylelint@16.22.0(typescript@5.8.3):
     dependencies:
       '@csstools/css-parser-algorithms': 3.0.5(@csstools/css-tokenizer@3.0.4)
       '@csstools/css-tokenizer': 3.0.4
