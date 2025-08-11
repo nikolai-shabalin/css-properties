@@ -296,7 +296,7 @@ const t = useTranslations(lang);
         if (buttonElement.dataset.action === 'reset') {
           sections.forEach((section) => {
             const htmlSection = section as HTMLElement;
-            htmlSection.style.display = 'flex';
+            htmlSection.style.display = 'grid';
           });
           return;
         }
@@ -313,7 +313,7 @@ const t = useTranslations(lang);
             const htmlSection = section as HTMLElement;
             const sectionYear = parseInt(htmlSection.id.replace('year-', ''), 10);
             if (years.includes(sectionYear)) {
-              htmlSection.style.display = 'flex';
+              htmlSection.style.display = 'grid';
               if (!firstVisibleSection) {
                 firstVisibleSection = section;
               }
