@@ -7,7 +7,6 @@ const t = useTranslations(lang);
 
 <section class="css-eras">
   <h2 class="eras-title">
-    <span class="title-icon">🎯</span>
     {t('css.era.title')}
   </h2>
 
@@ -67,7 +66,8 @@ const t = useTranslations(lang);
     gap: 0.75rem;
   }
 
-  .title-icon {
+  .eras-title::before {
+    content: "🎯";
     font-size: 1.5rem;
     background: var(--color-primary);
     width: 2.5rem;

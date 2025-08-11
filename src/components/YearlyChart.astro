@@ -25,41 +25,37 @@ const subtitle = t('yearly.chart.subtitle').replace('{start}', startYear.toStrin
 ---
 
 <section class="yearly-chart">
-  <div class="chart-header">
-    <h2 class="chart-title">{t('yearly.chart.title')}</h2>
-    <p class="chart-subtitle">{subtitle}</p>
+  <h2 class="chart-title">{t('yearly.chart.title')}</h2>
+  <p class="chart-subtitle">{subtitle}</p>
+
+  <div class="chart-content">
+    <div class="chart-bars">
+      {yearData.map((item, index) => (
+        <a href={`#year-${item.year}`} class="bar-container" data-year={item.year} data-count={item.count} style={`--bar-height: ${(item.count / maxCount) * 100}%; --delay: ${index * 0.05}s`}>
+          <div class="bar">
+            <div class="bar-fill" data-count={item.count}></div>
+          </div>
+          <div class="bar-label">
+            <span class="year">{item.year}</span>
+            <span class="count">{item.count}</span>
+          </div>
+        </a>
+      ))}
+    </div>
   </div>
 
-  <div class="chart-container">
-    <div class="chart-content">
-      <div class="chart-bars">
-        {yearData.map((item, index) => (
-          <a href={`#year-${item.year}`} class="bar-container" data-year={item.year} data-count={item.count} style={`--bar-height: ${(item.count / maxCount) * 100}%; --delay: ${index * 0.05}s`}>
-            <div class="bar">
-              <div class="bar-fill" data-count={item.count}></div>
-            </div>
-            <div class="bar-label">
-              <span class="year">{item.year}</span>
-              <span class="count">{item.count}</span>
-            </div>
-          </a>
-        ))}
-      </div>
+  <div class="chart-stats">
+    <div class="stat">
+      <span class="stat-label">{t('yearly.chart.totalYears')}</span>
+      <span class="stat-value">{years.length}</span>
     </div>
-
-    <div class="chart-stats">
-      <div class="stat">
-        <span class="stat-label">{t('yearly.chart.totalYears')}</span>
-        <span class="stat-value">{years.length}</span>
-      </div>
-      <div class="stat">
-        <span class="stat-label">{t('yearly.chart.totalFeatures')}</span>
-        <span class="stat-value">{Object.values(data).flat().length}</span>
-      </div>
-      <div class="stat">
-        <span class="stat-label">{t('yearly.chart.mostActiveYear')}</span>
-        <span class="stat-value">{yearData.reduce((max, item) => item.count > max.count ? item : max).year}</span>
-      </div>
+    <div class="stat">
+      <span class="stat-label">{t('yearly.chart.totalFeatures')}</span>
+      <span class="stat-value">{Object.values(data).flat().length}</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">{t('yearly.chart.mostActiveYear')}</span>
+      <span class="stat-value">{yearData.reduce((max, item) => item.count > max.count ? item : max).year}</span>
     </div>
   </div>
 </section>
@@ -77,12 +73,8 @@ const subtitle = t('yearly.chart.subtitle').replace('{start}', startYear.toStrin
     overflow: visible;
   }
 
-  .chart-header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-
   .chart-title {
+    text-align: center;
     font-size: 2rem;
     font-weight: 700;
     margin: 0 0 0.5rem;
@@ -93,14 +85,10 @@ const subtitle = t('yearly.chart.subtitle').replace('{start}', startYear.toStrin
 
   .chart-subtitle {
     font-size: 1rem;
+    text-align: center;
     color: var(--color-text-light);
     margin: 0;
-  }
-
-  .chart-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    margin-bottom: 3rem;
   }
 
   .chart-content {
@@ -111,6 +99,7 @@ const subtitle = t('yearly.chart.subtitle').replace('{start}', startYear.toStrin
     padding: 3rem 2rem 2rem;
     border: 1px solid rgb(148 163 184 / 10%);
     overflow: visible;
+    margin-bottom: 2rem;
   }
 
   .chart-bars {

@@ -8,28 +8,26 @@ const generatedAt = new Date().toLocaleDateString(lang);
 ---
 
 <header class="hero">
-  <div class="hero-content">
-    <h1 class="title">
-      <span class="title-gradient">{t('hero.title')}</span>
-      <span class="title-accent">✨</span>
-    </h1>
-    <p class="subtitle">
-      {t('hero.subtitle')}
-    </p>
-    <div class="stats">
-      <div class="stat-item">
-        <span class="stat-number">{Object.values(data).flat().length}</span>
-        <span class="stat-label">{t('hero.properties')}</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">{Object.keys(data).length}</span>
-        <span class="stat-label">{t('hero.years')}</span>
-      </div>
+  <h1 class="title">
+    <span class="title-gradient">{t('hero.title')}</span>
+    ✨
+  </h1>
+  <p class="subtitle">
+    {t('hero.subtitle')}
+  </p>
+  <div class="stats">
+    <div class="stat-item">
+      <span class="stat-number">{Object.values(data).flat().length}</span>
+      <span class="stat-label">{t('hero.properties')}</span>
     </div>
-    <div class="generated-date">
-      {t('generated.at')}: {generatedAt}
+    <div class="stat-item">
+      <span class="stat-number">{Object.keys(data).length}</span>
+      <span class="stat-label">{t('hero.years')}</span>
     </div>
   </div>
+  <p class="generated-date">
+    {t('generated.at')}: {generatedAt}
+  </p]>
 </header>
 
 <style>
@@ -65,11 +63,7 @@ const generatedAt = new Date().toLocaleDateString(lang);
     );
     pointer-events: none;
   }
-  
-  .hero-content {
-    position: relative;
-    z-index: 1;
-  }
+
   
   .title {
     font-size: clamp(2.5rem, 5vw, 4rem);
@@ -88,10 +82,6 @@ const generatedAt = new Date().toLocaleDateString(lang);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: var(--shadow-glow);
-  }
-  
-  .title-accent {
-    font-size: 0.8em;
   }
   
   .subtitle {
@@ -135,6 +125,7 @@ const generatedAt = new Date().toLocaleDateString(lang);
   
   .generated-date {
     margin-top: 1.5rem;
+    margin-bottom: ;
     font-size: 0.95rem;
     color: var(--color-text-muted);
     text-align: center;
