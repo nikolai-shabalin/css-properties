@@ -28,6 +28,25 @@ const subtitle = t('yearly.chart.subtitle').replace('{start}', startYear.toStrin
   <h2 class="chart-title">{t('yearly.chart.title')}</h2>
   <p class="chart-subtitle">{subtitle}</p>
 
+  <div class="chart-controls" role="group" aria-label="Сортировка">
+    <button class="sort-button active" id="sortByYear" title="Сортировать по годам" aria-pressed="true" aria-label="Сортировать по годам">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="8" width="3" height="10" rx="1" fill="currentColor"></rect>
+        <rect x="8.5" y="4" width="3" height="14" rx="1" fill="currentColor"></rect>
+        <rect x="14" y="12" width="3" height="6" rx="1" fill="currentColor"></rect>
+        <rect x="19.5" y="6" width="3" height="12" rx="1" fill="currentColor"></rect>
+      </svg>
+    </button>
+    <button class="sort-button" id="sortByCount" title="Сортировать по количеству" aria-pressed="false" aria-label="Сортировать по количеству">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="4" width="3" height="14" rx="1" fill="currentColor"></rect>
+        <rect x="8.5" y="7" width="3" height="11" rx="1" fill="currentColor"></rect>
+        <rect x="14" y="10" width="3" height="8" rx="1" fill="currentColor"></rect>
+        <rect x="19.5" y="13" width="3" height="5" rx="1" fill="currentColor"></rect>
+      </svg>
+    </button>
+  </div>
+
   <div class="chart-content">
     <div class="chart-bars">
       {yearData.map((item, index) => (
@@ -100,6 +119,40 @@ const subtitle = t('yearly.chart.subtitle').replace('{start}', startYear.toStrin
     border: 1px solid rgb(148 163 184 / 10%);
     overflow: visible;
     margin-bottom: 2rem;
+  }
+
+  .chart-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin: 0 0 1rem;
+  }
+
+  .sort-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(148 163 184 / 30%);
+    background: rgb(255 255 255 / 40%);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  }
+
+  .sort-button:hover {
+    background: rgb(255 255 255 / 60%);
+  }
+
+  .sort-button.active {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgb(79 70 229 / 20%);
+  }
+
+  .sort-button svg {
+    width: 20px;
+    height: 20px;
   }
 
   .chart-bars {
@@ -255,5 +308,57 @@ const subtitle = t('yearly.chart.subtitle').replace('{start}', startYear.toStrin
     .chart-stats {
       border: 1px solid rgb(71 85 105 / 20%);
     }
+
+    .sort-button {
+      background: rgb(15 23 42 / 40%);
+      border: 1px solid rgb(71 85 105 / 40%);
+    }
+
+    .sort-button:hover {
+      background: rgb(15 23 42 / 60%);
+    }
   }
 </style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const barsContainer = document.querySelector('.chart-bars');
+    if (!barsContainer) return;
+
+    const sortByYearBtn = document.getElementById('sortByYear');
+    const sortByCountBtn = document.getElementById('sortByCount');
+
+    const nodes = Array.from(barsContainer.children);
+    const sortByYearNodes = [...nodes].sort((a, b) => parseInt(b.getAttribute('data-year')) - parseInt(a.getAttribute('data-year')));
+    const sortByCountNodes = [...nodes].sort((a, b) => {
+      const diff = parseInt(b.getAttribute('data-count')) - parseInt(a.getAttribute('data-count'));
+      return diff !== 0 ? diff : (parseInt(b.getAttribute('data-year')) - parseInt(a.getAttribute('data-year')));
+    });
+
+    function applyOrder(ordered) {
+      ordered.forEach((node, idx) => {
+        node.style.setProperty('--delay', `${idx * 0.05}s`);
+        barsContainer.appendChild(node);
+      });
+    }
+
+    function setActive(activeBtn) {
+      [sortByYearBtn, sortByCountBtn].forEach(btn => {
+        if (!btn) return;
+        const isActive = btn === activeBtn;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', String(isActive));
+      });
+    }
+
+    sortByYearBtn?.addEventListener('click', () => {
+      applyOrder(sortByYearNodes);
+      setActive(sortByYearBtn);
+    });
+
+    sortByCountBtn?.addEventListener('click', () => {
+      applyOrder(sortByCountNodes);
+      setActive(sortByCountBtn);
+    });
+  });
+</script>
