@@ -117,7 +117,7 @@ const languagesJson = JSON.stringify(languages);
     padding: 4px 8px;
     border: 1px solid var(--color-accent);
     border-radius: 6px;
-    background: rgb(255 255 255 / 10%);
+    background: var(--color-background-overlay);
     color: var(--color-text);
     font-size: 12px;
     cursor: pointer;
@@ -128,7 +128,7 @@ const languagesJson = JSON.stringify(languages);
   }
 
   .language-select:hover {
-    background: rgb(255 255 255 / 20%);
+    background: var(--color-background-section);
     border-color: var(--color-primary);
     transform: scale(1.05);
   }
@@ -140,8 +140,32 @@ const languagesJson = JSON.stringify(languages);
   }
 
   .language-select option {
-    background: var(--color-bg);
+    background: var(--color-background-item);
     color: var(--color-text);
     font-size: 12px;
+  }
+
+  /* Стили для тёмной темы */
+  @media (prefers-color-scheme: dark) {
+    .language-select {
+      background: var(--color-background-item);
+      border-color: var(--color-accent);
+      color: var(--color-text);
+      backdrop-filter: blur(10px);
+    }
+
+    .language-select:hover {
+      background: var(--color-background-section);
+      border-color: var(--color-primary);
+    }
+
+    .language-select option {
+      background: var(--color-background-item);
+      color: var(--color-text);
+    }
+
+    .language-select option:hover {
+      background: var(--color-background-section);
+    }
   }
 </style>
