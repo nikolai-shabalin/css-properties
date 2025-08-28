@@ -1,5 +1,5 @@
 {
-  "name": "css-properties",
+  "name": "css-properties-list",
   "version": "5.0.0",
   "description": "List of all CSS properties added to browsers",
   "main": "app.js",
