@@ -3,13 +3,17 @@
   "version": "4.0.0",
   "description": "List of all CSS properties added to browsers",
   "main": "app.js",
+  "bin": {
+    "cssp": "./cli.js"
+  },
   "scripts": {
     "create:data": "node src/data/createData.js",
     "dev": "astro dev",
     "build": "pnpm run lint:css && astro check && astro build",
     "preview": "astro preview",
     "lint:css": "stylelint \"src/**/*.{css,astro}\"",
-    "lint:css:fix": "stylelint \"src/**/*.{css,astro}\" --fix"
+    "lint:css:fix": "stylelint \"src/**/*.{css,astro}\" --fix",
+    "cli": "node cli.js"
   },
   "keywords": [],
   "author": {
