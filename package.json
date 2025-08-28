@@ -4,7 +4,7 @@
   "description": "List of all CSS properties added to browsers",
   "main": "app.js",
   "bin": {
-    "cssp": "./cli.js"
+    "cssp": "cli.js"
   },
   "scripts": {
     "create:data": "node src/data/createData.js",
