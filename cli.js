@@ -9,72 +9,52 @@ const colors = {
     error: 'redBright',
     warning: 'yellow',
     info: 'blue',
-    highlight: 'magenta',
-    reset: 'reset'
+    highlight: 'magenta'
 };
 
-const args = process.argv.slice(2);
-const command = args[0];
+const { argv: [, , command, ...args] } = process;
 
-function getPropertiesByYear(year) {
-    if (!data[year]) {
-        console.log(styleText(colors.error, `❌ Свойства за ${year} год не найдены`));
-        return [];
-    }
-    return data[year];
-}
+const getPropertiesByYear = year => data[year] || [];
 
-function searchProperties(searchText) {
-    const results = [];
+const searchProperties = searchText => {
     const searchLower = searchText.toLowerCase();
+    return Object.entries(data).flatMap(([year, properties]) =>
+        properties
+            .filter(property => property.name.toLowerCase().includes(searchLower))
+            .map(property => ({ ...property, year: +year }))
+    );
+};
 
-    for (const [year, properties] of Object.entries(data)) {
-        for (const property of properties) {
-            if (property.name.toLowerCase().includes(searchLower)) {
-                results.push({
-                    ...property,
-                    year: parseInt(year)
-                });
-            }
-        }
-    }
+const displayProperties = (properties, title) => {
+    console.log(`\n${styleText(colors.title, title)} ${styleText(colors.info, `(найдено: ${properties.length})`)}`);
 
-    return results;
-}
-
-function displayProperties(properties, title) {
     if (properties.length === 0) {
-        console.log(`\n${styleText(colors.title, title)}`);
         console.log(styleText(colors.warning, 'Свойства не найдены'));
         return;
     }
 
-    console.log(`\n${styleText(colors.title, title)} ${styleText(colors.info, `(найдено: ${properties.length})`)}`);
     console.log(styleText(colors.highlight, '─'.repeat(80)));
-                properties.forEach((property, index) => {
-        const type = property.type || 'N/A';
-        const date = property.date || 'N/A';
 
-        console.log(`${styleText(colors.highlight, `${index + 1}.`)} ${styleText(colors.title, property.name)}`);
+    properties.forEach((property, index) => {
+        const { name, type = 'N/A', date = 'N/A', mdnUrl, specUrl } = property;
+
+        console.log(`${styleText(colors.highlight, `${index + 1}.`)} ${styleText(colors.title, name)}`);
         console.log(`   ${styleText(colors.info, 'Тип:')} ${type} | ${styleText(colors.info, 'Дата:')} ${date}`);
-        if (property.mdnUrl) {
-            console.log(`   ${styleText(colors.success, 'MDN:')} ${property.mdnUrl}`);
-        }
-        if (property.specUrl && property.specUrl.length > 0) {
-            if (Array.isArray(property.specUrl)) {
-                property.specUrl.forEach((url, i) => {
-                    const specLabel = property.specUrl.length > 1 ? `Спецификация ${i + 1}` : 'Спецификация';
-                    console.log(`   ${styleText(colors.warning, specLabel)}: ${url}`);
-                });
-            } else {
-                console.log(`   ${styleText(colors.warning, 'Спецификация:')} ${property.specUrl}`);
-            }
+
+        if (mdnUrl) console.log(`   ${styleText(colors.success, 'MDN:')} ${mdnUrl}`);
+
+        if (specUrl?.length) {
+            const urls = Array.isArray(specUrl) ? specUrl : [specUrl];
+            urls.forEach((url, i) => {
+                const label = urls.length > 1 ? `Спецификация ${i + 1}` : 'Спецификация';
+                console.log(`   ${styleText(colors.warning, label)}: ${url}`);
+            });
         }
         console.log('');
     });
-}
+};
 
-function showHelp() {
+const showHelp = () => {
     console.log(`
 ${styleText(colors.title, '📋 CSS Properties CLI - Справочник по CSS свойствам')}
 
@@ -99,17 +79,15 @@ ${styleText(colors.info, 'Для получения справки:')}
   npx cssp --help
   npx cssp -h
 `);
-}
+};
 
-function main() {
-    // Показать справку если нет аргументов или есть --help или -h
-    if (args.length === 0 || args.includes('--help') || args.includes('-h')) {
+const main = () => {
+    if (!args.length || args.includes('--help') || args.includes('-h')) {
         showHelp();
-
         return;
     }
 
-    if (command === '-y' || command === '-s') {
+    if (['-y', '-s'].includes(command)) {
         console.log(styleText(colors.error, `❌ Ошибка: флаг ${command} должен использоваться с командой list`));
         console.log(styleText(colors.info, 'Пример: npx cssp list -y 2007'));
         showHelp();
@@ -117,38 +95,28 @@ function main() {
     }
 
     if (command === 'list') {
-        const yearFlag = args.indexOf('--year');
-        const yearFlagShort = args.indexOf('-y');
-        const searchFlag = args.indexOf('--search');
-        const searchFlagShort = args.indexOf('-s');
+        const flags = {
+            year: args.findIndex(arg => ['--year', '-y'].includes(arg)),
+            search: args.findIndex(arg => ['--search', '-s'].includes(arg))
+        };
 
-        if ((yearFlag !== -1 && args[yearFlag + 1]) || (yearFlagShort !== -1 && args[yearFlagShort + 1])) {
-            const yearIndex = yearFlag !== -1 ? yearFlag : yearFlagShort;
-            const year = args[yearIndex + 1];
+        if (flags.year !== -1 && args[flags.year + 1]) {
+            const year = args[flags.year + 1];
             const properties = getPropertiesByYear(year);
             displayProperties(properties, `CSS свойства за ${year} год`);
             return;
         }
 
-        if ((searchFlag !== -1 && args[searchFlag + 1]) || (searchFlagShort !== -1 && args[searchFlagShort + 1])) {
-            const searchIndex = searchFlag !== -1 ? searchFlag : searchFlagShort;
-            const searchText = args[searchIndex + 1];
+        if (flags.search !== -1 && args[flags.search + 1]) {
+            const searchText = args[flags.search + 1];
             const properties = searchProperties(searchText);
             displayProperties(properties, `Результаты поиска по "${searchText}"`);
             return;
         }
 
-        const allProperties = [];
-        for (const [year, properties] of Object.entries(data)) {
-            for (const property of properties) {
-                allProperties.push({
-                    ...property,
-                    year: parseInt(year)
-                });
-            }
-        }
-
-        allProperties.sort((a, b) => a.year - b.year);
+        const allProperties = Object.entries(data).flatMap(([year, properties]) =>
+            properties.map(property => ({ ...property, year: +year }))
+        ).toSorted((a, b) => a.year - b.year);
 
         const limitedProperties = allProperties.slice(0, 20);
         displayProperties(limitedProperties, 'CSS свойства (первые 20)');
@@ -157,14 +125,11 @@ function main() {
             console.log(`\n... и еще ${allProperties.length - 20} свойств`);
             console.log('Используйте флаги --year или --search для более точного поиска');
         }
-
         return;
-
     }
 
     console.log(styleText(colors.error, `❌ Неизвестная команда: ${command}`));
     showHelp();
-}
+};
 
-// Запуск CLI
 main();
