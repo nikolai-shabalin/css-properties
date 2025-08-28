@@ -1,6 +1,6 @@
 {
   "name": "css-properties",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "List of all CSS properties added to browsers",
   "main": "app.js",
   "bin": {
