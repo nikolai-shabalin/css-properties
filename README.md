@@ -11,17 +11,17 @@
 Проект включает CLI-интерфейс для быстрого поиска CSS свойств прямо из терминала:
 
 ```bash
-# Показать все свойства за 2007 год
-npx cssp list --year 2007
-npx cssp list -y 2007
+# Показать все свойства за 2007 год (без установки)
+npx css-properties-list list --year 2007
+npx css-properties-list list -y 2007
 
 # Найти свойства, содержащие "border"
-npx cssp list --search border
-npx cssp list -s border
+npx css-properties-list list --search border
+npx css-properties-list list -s border
 
 # Показать справку
-npx cssp --help
-npx cssp -h
+npx css-properties-list --help
+npx css-properties-list -h
 ```
 
 ### Доступные команды:
@@ -29,6 +29,12 @@ npx cssp -h
 - `--year, -y <год>` - фильтр по году
 - `--search, -s <текст>` - поиск по названию
 - `--help, -h` - показать справку
+
+### Установка и запуск CLI глобально
+```bash
+npm i -g css-properties-list
+cssp --help
+```
 
 ## Для контрибьютеров
 [Почитайте небольшой документ как правильнее контрибьютить в проект.](./CONTRIBUTING.md)
@@ -43,10 +49,10 @@ pnpm i
 
 3. Запустить проект
 ```bash
-pnpm dev
+npm run dev
 ```
 
-4. Запустить CLI
+4. Запустить CLI (локально из репозитория)
 ```bash
-pnpm cli
+npm run cli
 ```

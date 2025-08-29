@@ -59,7 +59,7 @@ const showHelp = () => {
 ${styleText(colors.title, '📋 CSS Properties CLI - Справочник по CSS свойствам')}
 
 ${styleText(colors.info, 'Использование:')}
-  npx cssp <команда> [флаги]
+  npx css-properties-list <команда> [флаги]
 
 ${styleText(colors.info, 'Команды:')}
   ${styleText(colors.highlight, 'list')}                    Показать список CSS свойств
@@ -69,15 +69,15 @@ ${styleText(colors.info, 'Флаги:')}
   ${styleText(colors.highlight, '--search, -s <текст>')}   Найти свойства по названию
 
 ${styleText(colors.info, 'Примеры:')}
-  npx cssp list --year 2007
-  npx cssp list -y 2007
-  npx cssp list --search border
-  npx cssp list -s border
-  npx cssp list
+  npx css-properties-list list --year 2007
+  npx css-properties-list list -y 2007
+  npx css-properties-list list --search border
+  npx css-properties-list list -s border
+  npx css-properties-list list
 
 ${styleText(colors.info, 'Для получения справки:')}
-  npx cssp --help
-  npx cssp -h
+  npx css-properties-list --help
+  npx css-properties-list -h
 `);
 };
 
@@ -89,7 +89,7 @@ const main = () => {
 
     if (['-y', '-s'].includes(command)) {
         console.log(styleText(colors.error, `❌ Ошибка: флаг ${command} должен использоваться с командой list`));
-        console.log(styleText(colors.info, 'Пример: npx cssp list -y 2007'));
+        console.log(styleText(colors.info, 'Пример: npx css-properties-list list -y 2007'));
         showHelp();
         return;
     }
