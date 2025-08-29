@@ -1,8 +1,9 @@
 ---
-import { languages } from '../i18n/ui';
-import { getLangFromUrl } from '../i18n/utils';
+import { languages, ui } from '../i18n/ui';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const languageMeta = {
   ru: { flag: '🇷🇺', code: 'ru' },
@@ -22,7 +23,10 @@ const languagesJson = JSON.stringify(languages);
 ---
 
 <div class="language-selector">
-  <select class="language-select">
+  <select
+    class="language-select"
+    aria-label={t('language.selector.label')}
+  >
     {Object.entries(languages).map(([code]) => (
       <option value={code} selected={code === lang}>
         {languageMeta[code]?.flag} {languageMeta[code]?.code}
@@ -35,7 +39,7 @@ const languagesJson = JSON.stringify(languages);
   // Получаем языки из серверного кода
   const languages = JSON.parse(languagesJson);
 
-  document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
     const select = document.querySelector('.language-select');
     if (select) {
       select.addEventListener('change', function() {
