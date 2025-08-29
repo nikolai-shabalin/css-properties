@@ -2,7 +2,7 @@
   "name": "css-properties-list",
   "version": "5.0.2",
   "description": "List of all CSS properties added to browsers",
-  "main": "app.js",
+  "exports": "./src/data/data.js",
   "bin": {
     "cssp": "cli.js"
   },
