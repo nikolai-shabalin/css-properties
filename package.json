@@ -6,6 +6,9 @@
   "bin": {
     "cssp": "cli.js"
   },
+  "files": [
+    "./src/data/data.js"
+  ],
   "scripts": {
     "create:data": "node src/data/createData.js",
     "dev": "astro dev",
