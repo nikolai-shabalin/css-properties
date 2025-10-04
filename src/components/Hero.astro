@@ -7,7 +7,7 @@ const t = useTranslations(lang);
 const generatedAt = new Date().toLocaleDateString(lang);
 ---
 
-<header class="hero">
+<header class="hero" id="hero">
   <h1 class="title">
     <span class="title-gradient">{t('hero.title')}</span>
     ✨
@@ -43,7 +43,7 @@ const generatedAt = new Date().toLocaleDateString(lang);
     position: relative;
     overflow: hidden;
   }
-  
+
   .hero::before {
     content: '';
     position: absolute;
@@ -64,7 +64,7 @@ const generatedAt = new Date().toLocaleDateString(lang);
     pointer-events: none;
   }
 
-  
+
   .title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
@@ -76,14 +76,14 @@ const generatedAt = new Date().toLocaleDateString(lang);
     gap: 1rem;
     flex-wrap: wrap;
   }
-  
+
   .title-gradient {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: var(--shadow-glow);
   }
-  
+
   .subtitle {
     font-size: 1.25rem;
     color: var(--color-text-light);
@@ -93,28 +93,28 @@ const generatedAt = new Date().toLocaleDateString(lang);
     margin-right: auto;
     line-height: 1.6;
   }
-  
+
   .stats {
     display: flex;
     justify-content: center;
     gap: 3rem;
     flex-wrap: wrap;
   }
-  
+
   .stat-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
   }
-  
+
   .stat-number {
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--color-primary);
     line-height: 1;
   }
-  
+
   .stat-label {
     font-size: 0.9rem;
     color: var(--color-text-muted);
@@ -122,7 +122,7 @@ const generatedAt = new Date().toLocaleDateString(lang);
     letter-spacing: 0.1em;
     font-weight: 500;
   }
-  
+
   .generated-date {
     margin-top: 1.5rem;
     margin-bottom: 0;
@@ -130,35 +130,35 @@ const generatedAt = new Date().toLocaleDateString(lang);
     color: var(--color-text-muted);
     text-align: center;
   }
-  
+
   /* Темная тема */
   @media (prefers-color-scheme: dark) {
     .hero {
       border: 1px solid rgb(71 85 105 / 30%);
     }
   }
-  
+
   /* Адаптивность */
   @media (width <= 768px) {
     .hero {
       margin-bottom: 2rem;
       padding: 2rem 1rem;
     }
-    
+
     .title {
       font-size: 2.5rem;
     }
-    
+
     .subtitle {
       font-size: 1.1rem;
     }
-    
+
     .stats {
       gap: 2rem;
     }
-    
+
     .stat-number {
       font-size: 2rem;
     }
   }
-</style> 
+</style>
