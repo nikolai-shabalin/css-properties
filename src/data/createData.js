@@ -4,33 +4,40 @@ import fs from 'node:fs';
 const { css, browsers } = bcd;
 let groupedData = {};
 
+// Предкэш таблицы дат релизов: browser -> version -> release_date (строка YYYY-MM-DD)
+const releaseDateCache = {};
+for (const [browserKey, browserData] of Object.entries(browsers)) {
+  const releases = browserData?.releases || {};
+  const versionToDate = {};
+  for (const [version, info] of Object.entries(releases)) {
+    if (info && info.release_date) versionToDate[version] = info.release_date;
+  }
+  releaseDateCache[browserKey] = versionToDate;
+}
+
 const getMinDate = (browserVersionsSupportingProperty) => {
-  const releaseDates = [];
+  let minDate = null; // строки YYYY-MM-DD сравниваются лексикографически корректно
   for (let { name, version } of browserVersionsSupportingProperty) {
-    const releaseInfo = browsers[name]?.['releases'][version];
-    if (releaseInfo?.release_date) {
-      releaseDates.push(releaseInfo.release_date);
+    const date = releaseDateCache[name]?.[version];
+    if (!date) continue;
+    if (minDate === null || date < minDate) {
+      minDate = date;
     }
   }
-  if (releaseDates.length === 0) {
-    return false;
-  }
-  const minDate = releaseDates.reduce((minDate, current) => {
-    const currentDate = new Date(current);
-    return currentDate < minDate ? currentDate : minDate;
-  }, new Date(releaseDates[0]));
-  return minDate.toISOString().split('T')[0];
+  return minDate || false;
 };
 
 const getBrowserSupport = (compat) => {
   const supportedBrowsers = [];
   for (let [browser, supportData] of Object.entries(compat.support || {})) {
-    if (typeof supportData === "string" || !supportData) continue;
-    const versionAdded = Array.isArray(supportData.version_added)
-      ? supportData.version_added[0]
-      : supportData.version_added;
-    if (versionAdded) {
-      supportedBrowsers.push({ name: browser, version: versionAdded });
+    if (!supportData) continue;
+    const items = Array.isArray(supportData) ? supportData : [supportData];
+    for (const item of items) {
+      const v = item && item.version_added;
+      if (typeof v === 'string') { // игнорируем true/false/undefined и неточные записи
+        supportedBrowsers.push({ name: browser, version: v });
+        break; // берём первый валидный вариант
+      }
     }
   }
   return supportedBrowsers;
@@ -38,6 +45,7 @@ const getBrowserSupport = (compat) => {
 
 const extractData = (properties, parent = null) => {
   for (let [propertyName, propertyData] of Object.entries(properties)) {
+    if (propertyName === '__compat') continue; // пропускаем служебный ключ
     const compat = propertyData.__compat;
     if (!compat) continue;
 
@@ -45,7 +53,7 @@ const extractData = (properties, parent = null) => {
     const date = getMinDate(browserSupport);
     if (!date) continue;
 
-    const year = date.split("-")[0];
+    const year = date.slice(0, 4);
 
     const name = propertyName.includes('_') && compat.description
       ? compat.description.replace(/<\/?code>|&lt;|&gt;/g, '')
@@ -70,11 +78,12 @@ const extractData = (properties, parent = null) => {
 };
 
 for (const cssKey in css) {
+  if (!Object.prototype.hasOwnProperty.call(css, cssKey)) continue;
   extractData(css[cssKey]);
 }
 
 for (const year in groupedData) {
-  groupedData[year].sort((a, b) => b.date.localeCompare(a.date));
+  groupedData[year].sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
 fs.writeFileSync('./src/data/data.js', `export const data = ${JSON.stringify(groupedData)};`);
