@@ -36,5 +36,8 @@
   "type": "module",
   "engines": {
     "node": "22"
+  },
+  "dependencies": {
+    "compute-baseline": "^0.4.0"
   }
 }

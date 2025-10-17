@@ -1,4 +1,5 @@
 import bcd from '@mdn/browser-compat-data' with { type: 'json' };
+import { getStatus } from 'compute-baseline';
 import fs from 'node:fs';
 
 const { css, browsers } = bcd;
@@ -42,6 +43,23 @@ const getBrowserSupport = (compat) => {
   return supportedBrowsers;
 };
 
+const getBaselineStatus = (bcdKey) => {
+  try {
+    const status = getStatus(null, bcdKey);
+    return {
+      baseline: status.baseline,
+      baseline_low_date: status.baseline_low_date || null,
+      baseline_high_date: status.baseline_high_date || null
+    };
+  } catch (error) {
+    return {
+      baseline: false,
+      baseline_low_date: null,
+      baseline_high_date: null
+    };
+  }
+};
+
 // Используем стек для обхода (вместо рекурсии)
 const extractData = (properties, parent = null) => {
   const stack = Object.entries(properties).map(([name, data]) => [name, data, parent]);
@@ -69,13 +87,21 @@ const extractData = (properties, parent = null) => {
       ? compat.description.replace(/<\/?code>|<|>/g, '')
       : propertyName;
 
+    // Создаем BCD ключ для получения baseline статуса
+    const bcdKey = currentParent 
+      ? `css.properties.${currentParent}.${propertyName}`
+      : `css.properties.${propertyName}`;
+    
+    const baselineStatus = getBaselineStatus(bcdKey);
+
     const entry = {
       name,
       date,
       type: currentParent ? "Значение" : "Свойство",
       parent: currentParent || null,
       mdnUrl: compat.mdn_url || null,
-      specUrl: compat.spec_url || null
+      specUrl: compat.spec_url || null,
+      baseline: baselineStatus
     };
 
     if (!groupedData[year]) groupedData[year] = [];

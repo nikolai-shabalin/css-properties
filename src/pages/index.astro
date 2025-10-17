@@ -7,6 +7,7 @@ import CssEra from '../components/CssEra.astro';
 import Properties from '../components/Properties.astro';
 import YearlyChart from '../components/YearlyChart.astro';
 import Hero from '../components/Hero.astro';
+import BaselineFilter from '../components/BaselineFilter.astro';
 import { data } from '../data/data.js';
 ---
 
@@ -19,6 +20,7 @@ import { data } from '../data/data.js';
     <section class="controls">
       <SelectYear />
       <CssEra />
+      <BaselineFilter />
     </section>
 
     <Properties properties={data} />

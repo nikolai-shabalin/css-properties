@@ -7,6 +7,7 @@ import CssEra from '../../components/CssEra.astro';
 import Properties from '../../components/Properties.astro';
 import YearlyChart from '../../components/YearlyChart.astro';
 import Hero from '../../components/Hero.astro';
+import BaselineFilter from '../../components/BaselineFilter.astro';
 import { languages, defaultLang } from '../../i18n/ui';
 import { data } from '../../data/data.js';
 
@@ -27,6 +28,7 @@ export async function getStaticPaths() {
     <section class="controls">
       <SelectYear />
       <CssEra />
+      <BaselineFilter />
     </section>
     <Properties properties={data} />
   </main>

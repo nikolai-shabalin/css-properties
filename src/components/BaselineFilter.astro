@@ -1,0 +1,213 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+export type FilterOption = {
+  value: string;
+  label: string;
+  icon: string;
+  class: string;
+}
+
+interface Props {
+  selectedFilter?: string;
+  onFilterChange?: (filter: string) => void;
+}
+
+const { selectedFilter = 'all', onFilterChange } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const filterOptions: FilterOption[] = [
+  { value: 'all', label: 'Все', icon: '🔍', class: 'filter-all' },
+  { value: 'high', label: 'Widely Available', icon: '✅', class: 'filter-high' },
+  { value: 'low', label: 'Newly Available', icon: '🆕', class: 'filter-low' },
+  { value: 'limited', label: 'Limited', icon: '⚠️', class: 'filter-limited' }
+];
+---
+
+<div class="baseline-filter">
+  <h3 class="filter-title">Фильтр по Baseline статусу</h3>
+  <div class="filter-options">
+    {filterOptions.map(option => (
+      <button 
+        class={`filter-option ${option.class} ${selectedFilter === option.value ? 'active' : ''}`}
+        data-filter={option.value}
+        title={option.label}
+      >
+        <span class="filter-icon">{option.icon}</span>
+        <span class="filter-label">{option.label}</span>
+      </button>
+    ))}
+  </div>
+</div>
+
+<style>
+  .baseline-filter {
+    background: var(--color-background-item);
+    border: 1px solid rgb(148 163 184 / 15%);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .filter-title {
+    margin: 0 0 1rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .filter-options {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-md);
+    background: var(--color-background);
+    color: var(--color-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+  }
+
+  .filter-option:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .filter-icon {
+    font-size: 1rem;
+  }
+
+  .filter-label {
+    white-space: nowrap;
+  }
+
+  .filter-option.active {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .filter-all.active {
+    background: linear-gradient(135deg, #6b7280, #4b5563);
+    color: white;
+    border-color: #374151;
+  }
+
+  .filter-high.active {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border-color: #047857;
+  }
+
+  .filter-low.active {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    border-color: #1d4ed8;
+  }
+
+  .filter-limited.active {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    border-color: #b45309;
+  }
+
+  /* Темная тема */
+  @media (prefers-color-scheme: dark) {
+    .baseline-filter {
+      border: 1px solid rgb(71 85 105 / 30%);
+    }
+
+    .filter-option {
+      background: var(--color-background);
+      border-color: rgb(71 85 105 / 20%);
+    }
+  }
+
+  /* Адаптивность */
+  @media (width <= 480px) {
+    .baseline-filter {
+      padding: 1rem;
+    }
+
+    .filter-options {
+      gap: 0.5rem;
+    }
+
+    .filter-option {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .filter-label {
+      display: none;
+    }
+
+    .filter-icon {
+      font-size: 1.1rem;
+    }
+  }
+</style>
+
+<script>
+  // Обработка кликов по фильтрам
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterOptions = document.querySelectorAll('.filter-option');
+    
+    filterOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        const filterValue = (option as HTMLElement).dataset.filter;
+        
+        // Убираем активный класс со всех опций
+        filterOptions.forEach(opt => opt.classList.remove('active'));
+        
+        // Добавляем активный класс к выбранной опции
+        option.classList.add('active');
+        
+        // Фильтруем свойства
+        if (filterValue) {
+          filterProperties(filterValue);
+        }
+      });
+    });
+  });
+
+  function filterProperties(filterValue: string) {
+    const properties = document.querySelectorAll('.property');
+    
+    properties.forEach(property => {
+      const element = property as HTMLElement;
+      const baselineBadge = property.querySelector('.baseline-badge');
+      
+      if (filterValue === 'all') {
+        element.style.display = 'grid';
+        return;
+      }
+      
+      if (!baselineBadge) {
+        element.style.display = 'none';
+        return;
+      }
+      
+      const baselineClass = Array.from(baselineBadge.classList).find(cls => 
+        cls.startsWith('baseline-') && cls !== 'baseline-badge'
+      );
+      
+      if (baselineClass === `baseline-${filterValue}`) {
+        element.style.display = 'grid';
+      } else {
+        element.style.display = 'none';
+      }
+    });
+  }
+</script>

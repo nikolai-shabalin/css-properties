@@ -9,6 +9,11 @@ export type PropertyProp = {
   specUrl?: string;
   mdnUrl?: string;
   year: string;
+  baseline?: {
+    baseline: string | false;
+    baseline_low_date?: string | null;
+    baseline_high_date?: string | null;
+  };
 }
 
 interface Props {
@@ -31,7 +36,24 @@ function getPropertyIcon(type: string, name: string) {
   return '⚙️';
 }
 
+function getBaselineInfo(baseline: PropertyProp['baseline']) {
+  if (!baseline || baseline.baseline === false) {
+    return { label: 'Limited', class: 'baseline-limited', icon: '⚠️' };
+  }
+  
+  if (baseline.baseline === 'high') {
+    return { label: 'Widely Available', class: 'baseline-high', icon: '✅' };
+  }
+  
+  if (baseline.baseline === 'low') {
+    return { label: 'Newly Available', class: 'baseline-low', icon: '🆕' };
+  }
+  
+  return { label: 'Unknown', class: 'baseline-unknown', icon: '❓' };
+}
+
 const propertyIcon = getPropertyIcon(property.type, property.name);
+const baselineInfo = getBaselineInfo(property.baseline);
 
 const isAtType = property.type === '@';
 const hasParent = Boolean(property.parent);
@@ -50,13 +72,21 @@ const prefixClass = prefixContent ? `property-name__prefix property-name__prefix
         {property.name}
       </span>
     </h3>
-    <time class="property-date" datetime={property.date}>
-      {new Date(property.date).toLocaleDateString(lang === 'ru' ? 'ru-RU' : lang, {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-      })}
-    </time>
+    <div class="property-meta">
+      <time class="property-date" datetime={property.date}>
+        {new Date(property.date).toLocaleDateString(lang === 'ru' ? 'ru-RU' : lang, {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        })}
+      </time>
+      {property.baseline && (
+        <span class={`baseline-badge ${baselineInfo.class}`} title={`Baseline: ${baselineInfo.label}`}>
+          <span class="baseline-badge__icon">{baselineInfo.icon}</span>
+          <span class="baseline-badge__label">{baselineInfo.label}</span>
+        </span>
+      )}
+    </div>
   </div>
 
   <div class="property-links">
@@ -90,6 +120,7 @@ const prefixClass = prefixContent ? `property-name__prefix property-name__prefix
     gap: 2rem 1rem;
     position: relative;
     padding: 1.5rem;
+    padding-top: 3rem; /* Резервируем место для baseline метки */
   }
 
   .property::before {
@@ -163,6 +194,13 @@ const prefixClass = prefixContent ? `property-name__prefix property-name__prefix
     font-weight: 600;
   }
 
+  .property-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
   .property-date {
     color: var(--color-text-light);
     font-size: 0.875rem;
@@ -175,6 +213,60 @@ const prefixClass = prefixContent ? `property-name__prefix property-name__prefix
   .property-date::before {
     content: '📅';
     font-size: 0.8em;
+  }
+
+  .baseline-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: 2px solid transparent;
+    transition: all var(--transition-fast);
+    z-index: 1;
+  }
+
+  .baseline-badge__icon {
+    font-size: 1em;
+  }
+
+  .baseline-badge__label {
+    display: none; /* Скрываем текст, оставляем только иконку */
+  }
+
+  .baseline-high {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border-color: #047857;
+  }
+
+  .baseline-low {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    border-color: #1d4ed8;
+  }
+
+  .baseline-limited {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    border-color: #b45309;
+  }
+
+  .baseline-unknown {
+    background: linear-gradient(135deg, #6b7280, #4b5563);
+    color: white;
+    border-color: #374151;
+  }
+
+  .baseline-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
   }
 
   .property-links {
@@ -257,6 +349,16 @@ const prefixClass = prefixContent ? `property-name__prefix property-name__prefix
 
     .property-name {
       font-size: 1rem;
+    }
+
+    .property-meta {
+      gap: 0.75rem;
+    }
+
+    .baseline-badge {
+      width: 1.5rem;
+      height: 1.5rem;
+      font-size: 0.75rem;
     }
 
     .property-links {
