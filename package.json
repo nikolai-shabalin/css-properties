@@ -15,8 +15,7 @@
     "build": "pnpm run lint:css && astro check && astro build",
     "preview": "astro preview",
     "lint:css": "stylelint \"src/**/*.{css,astro}\"",
-    "lint:css:fix": "stylelint \"src/**/*.{css,astro}\" --fix",
-    "cli": "node cli.js"
+    "lint:css:fix": "stylelint \"src/**/*.{css,astro}\" --fix"
   },
   "keywords": [],
   "author": {
