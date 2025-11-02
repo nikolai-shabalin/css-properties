@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import Github from '../../components/Github.astro';
+import ScrollToTop from '../../components/ScrollToTop.astro';
+import ThemeContent from '../../components/ThemeContent.astro';
+import { languages, defaultLang } from '../../i18n/ui';
+
+export async function getStaticPaths() {
+  return Object.keys(languages)
+    .filter((lang) => lang !== defaultLang)
+    .map((lang) => ({
+      params: { lang },
+    }));
+}
+---
+
+<Base>
+  <ThemeContent />
+  <Github />
+  <ScrollToTop />
+</Base>

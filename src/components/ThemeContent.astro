@@ -1,0 +1,268 @@
+---
+import { themedProperties } from '../data/themes.js';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const entries = Object.entries(themedProperties);
+const totalGroups = entries.length;
+const totalProperties = entries.reduce((sum, [, items]) => sum + items.length, 0);
+
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
+const formatSpecUrls = (specUrl: string | string[] | null | undefined) => {
+  if (!specUrl) return [];
+  return Array.isArray(specUrl) ? specUrl : [specUrl];
+};
+---
+
+<main class="themes">
+  <section class="themes__intro">
+    <h1 class="themes__title">{t('themes.title')}</h1>
+    <p class="themes__description">{t('themes.description')}</p>
+    <div class="themes__stats">
+      <span class="themes__stat">
+        <strong>{totalGroups}</strong>
+        <span>{t('themes.totalGroups')}</span>
+      </span>
+      <span class="themes__stat">
+        <strong>{totalProperties}</strong>
+        <span>{t('themes.totalProperties')}</span>
+      </span>
+    </div>
+  </section>
+
+  {entries.map(([groupName, items]) => (
+    <section class="theme" id={slugify(groupName)}>
+      <header class="theme__header">
+        <h2 class="theme__name">{groupName}</h2>
+        <span class="theme__count">{items.length}&nbsp;{t('themes.propertiesCount')}</span>
+      </header>
+
+      <ul class="theme__list">
+        {items.map((item) => {
+          const specLinks = formatSpecUrls(item.specUrl);
+          return (
+            <li class="theme__item">
+              <div class="theme__summary">
+                {item.mdnUrl ? (
+                  <a class="theme__link" href={item.mdnUrl} target="_blank" rel="noopener">
+                    {item.name}
+                  </a>
+              ) : (
+                <span class="theme__name-text">{item.name}</span>
+              )}
+              <time class="theme__year" datetime={item.date}>{item.year}</time>
+            </div>
+
+            <div class="theme__references">
+              {specLinks.map((spec, index) => (
+                <a class="theme__reference" href={spec} target="_blank" rel="noopener">
+                  🔖 {t('themes.specLink')} {specLinks.length > 1 ? index + 1 : ''}
+                </a>
+              ))}
+              {item.mdnUrl && (
+                <a class="theme__reference" href={item.mdnUrl} target="_blank" rel="noopener">
+                  📚 MDN
+                </a>
+              )}
+            </div>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  ))}
+</main>
+
+<style>
+  .themes {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .themes__intro {
+    background: var(--color-background-section);
+    padding: 2rem;
+    border-radius: var(--border-radius-xl);
+    border: 1px solid rgb(148 163 184 / 20%);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .themes__title {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .themes__description {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .themes__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .themes__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+  }
+
+  .themes__stat strong {
+    font-size: 1.75rem;
+    color: var(--color-text);
+  }
+
+  .theme {
+    background: var(--color-background-section);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid rgb(148 163 184 / 16%);
+    box-shadow: var(--shadow-md);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .theme__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid rgb(148 163 184 / 20%);
+    padding-bottom: 1rem;
+  }
+
+  .theme__name {
+    margin: 0;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 600;
+  }
+
+  .theme__count {
+    background: var(--color-primary);
+    color: var(--color-text-white);
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--border-radius-lg);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .theme__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .theme__item {
+    background: var(--color-background-item);
+    border: 1px solid rgb(148 163 184 / 20%);
+    border-radius: var(--border-radius-lg);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  }
+
+  .theme__item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .theme__summary {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .theme__link,
+  .theme__name-text {
+    font-weight: 600;
+    color: var(--color-text);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+
+  .theme__link:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  .theme__year {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .theme__references {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .theme__reference {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: var(--border-radius-md);
+    background: var(--color-background-overlay);
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: background var(--transition-normal), color var(--transition-normal);
+  }
+
+  .theme__reference:hover {
+    background: var(--color-primary);
+    color: var(--color-text-white);
+  }
+
+  @media (width <= 768px) {
+    .themes {
+      padding: 1.5rem 1rem 3rem;
+      gap: 2rem;
+    }
+
+    .themes__intro {
+      padding: 1.5rem;
+    }
+
+    .theme {
+      padding: 1.5rem;
+    }
+
+    .theme__list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

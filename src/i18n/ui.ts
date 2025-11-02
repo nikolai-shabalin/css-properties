@@ -44,6 +44,12 @@ export const ui = {
     'css.era.resetTitle': 'Показать все года',
     'properties.year': 'год',
     'generated.at': 'Последнее обновление информации',
+    'themes.title': 'CSS-свойства по темам',
+    'themes.description': 'Просматривайте все CSS-свойства, сгруппированные по областям применения.',
+    'themes.totalGroups': 'групп',
+    'themes.totalProperties': 'свойств',
+    'themes.propertiesCount': 'свойств',
+    'themes.specLink': 'Спецификация',
     'language.selector.label': 'Выберите язык'
   },
   en: {
@@ -74,6 +80,12 @@ export const ui = {
     'css.era.resetTitle': 'Show all years',
     'properties.year': 'year',
     'generated.at': 'Last updated',
+    'themes.title': 'CSS properties by theme',
+    'themes.description': 'Browse every CSS property grouped by area of use.',
+    'themes.totalGroups': 'groups',
+    'themes.totalProperties': 'properties',
+    'themes.propertiesCount': 'properties',
+    'themes.specLink': 'Spec',
     'language.selector.label': 'Select language'
   },
   es: {
@@ -104,6 +116,12 @@ export const ui = {
     'css.era.resetTitle': 'Mostrar todos los años',
     'properties.year': 'año',
     'generated.at': 'Última actualización',
+    'themes.title': 'Propiedades CSS por tema',
+    'themes.description': 'Explora cada propiedad CSS agrupada por área de uso.',
+    'themes.totalGroups': 'grupos',
+    'themes.totalProperties': 'propiedades',
+    'themes.propertiesCount': 'propiedades',
+    'themes.specLink': 'Especificación',
     'language.selector.label': 'Seleccionar idioma'
   },
   fr: {
@@ -134,6 +152,12 @@ export const ui = {
     'css.era.resetTitle': 'Afficher toutes les années',
     'properties.year': 'an',
     'generated.at': 'Dernière mise à jour',
+    'themes.title': 'Propriétés CSS par thème',
+    'themes.description': "Parcourez chaque propriété CSS regroupée par domaine d'utilisation.",
+    'themes.totalGroups': 'groupes',
+    'themes.totalProperties': 'propriétés',
+    'themes.propertiesCount': 'propriétés',
+    'themes.specLink': 'Spécification',
     'language.selector.label': 'Sélectionner la langue'
   },
   de: {
@@ -164,6 +188,12 @@ export const ui = {
     'css.era.resetTitle': 'Alle Jahre anzeigen',
     'properties.year': 'Jahr',
     'generated.at': 'Letzte Aktualisierung',
+    'themes.title': 'CSS-Eigenschaften nach Themen',
+    'themes.description': 'Entdecke alle CSS-Eigenschaften nach Einsatzgebiet gruppiert.',
+    'themes.totalGroups': 'Gruppen',
+    'themes.totalProperties': 'Eigenschaften',
+    'themes.propertiesCount': 'Eigenschaften',
+    'themes.specLink': 'Spezifikation',
     'language.selector.label': 'Sprache auswählen'
   },
   it: {
@@ -194,6 +224,12 @@ export const ui = {
     'css.era.resetTitle': 'Mostra tutti gli anni',
     'properties.year': 'anno',
     'generated.at': 'Ultimo aggiornamento',
+    'themes.title': 'Proprietà CSS per tema',
+    'themes.description': 'Esplora tutte le proprietà CSS raggruppate per area di utilizzo.',
+    'themes.totalGroups': 'gruppi',
+    'themes.totalProperties': 'proprietà',
+    'themes.propertiesCount': 'proprietà',
+    'themes.specLink': 'Specifica',
     'language.selector.label': 'Seleziona lingua'
   },
   pt: {
@@ -224,6 +260,12 @@ export const ui = {
     'css.era.resetTitle': 'Mostrar todos os anos',
     'properties.year': 'ano',
     'generated.at': 'Última atualização',
+    'themes.title': 'Propriedades CSS por tema',
+    'themes.description': 'Navegue por todas as propriedades CSS agrupadas por área de uso.',
+    'themes.totalGroups': 'grupos',
+    'themes.totalProperties': 'propriedades',
+    'themes.propertiesCount': 'propriedades',
+    'themes.specLink': 'Especificação',
     'language.selector.label': 'Selecionar idioma'
   },
   ja: {
@@ -254,6 +296,12 @@ export const ui = {
     'css.era.resetTitle': 'すべての年を表示',
     'properties.year': '年',
     'generated.at': '最終更新日',
+    'themes.title': 'テーマ別のCSSプロパティ',
+    'themes.description': '用途別にグループ化されたすべてのCSSプロパティを確認できます。',
+    'themes.totalGroups': 'グループ',
+    'themes.totalProperties': 'プロパティ',
+    'themes.propertiesCount': 'プロパティ',
+    'themes.specLink': '仕様',
     'language.selector.label': '言語を選択'
   },
   ko: {
@@ -284,6 +332,12 @@ export const ui = {
     'css.era.resetTitle': '모든 연도 표시',
     'properties.year': '년',
     'generated.at': '최종 업데이트',
+    'themes.title': '테마별 CSS 속성',
+    'themes.description': '용도에 따라 묶은 모든 CSS 속성을 살펴보세요.',
+    'themes.totalGroups': '그룹',
+    'themes.totalProperties': '속성',
+    'themes.propertiesCount': '속성',
+    'themes.specLink': '명세',
     'language.selector.label': '언어 선택'
   },
   zh: {
@@ -314,6 +368,12 @@ export const ui = {
     'css.era.resetTitle': '显示所有年份',
     'properties.year': '年',
     'generated.at': '最后更新',
+    'themes.title': '按主题分类的 CSS 属性',
+    'themes.description': '按使用场景分组浏览所有 CSS 属性。',
+    'themes.totalGroups': '组',
+    'themes.totalProperties': '属性',
+    'themes.propertiesCount': '属性',
+    'themes.specLink': '规范',
     'language.selector.label': '选择语言'
   }
 } as const;
