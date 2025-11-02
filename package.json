@@ -1,6 +1,6 @@
 {
   "name": "css-properties-list",
-  "version": "5.0.4",
+  "version": "5.0.5",
   "description": "List of all CSS properties added to browsers",
   "exports": "./src/data/data.js",
   "bin": {
