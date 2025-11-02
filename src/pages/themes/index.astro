@@ -1,0 +1,151 @@
+---
+import Base from '../../layouts/Base.astro';
+import Github from '../../components/Github.astro';
+import ScrollToTop from '../../components/ScrollToTop.astro';
+import { themeGroups, totalProperties } from '../../data/themes.js';
+---
+
+<Base>
+  <main class="themes-page">
+    <header class="page-header">
+      <h1>Группы CSS-свойств</h1>
+      <p>
+        Собрали {totalProperties} CSS-свойств из Browser Compat Data и разбили их по тематическим
+        категориям, чтобы быстрее ориентироваться в экосистеме.
+      </p>
+    </header>
+
+    <section class="groups">
+      {themeGroups.map((group) => (
+        <article class="group" id={group.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}> 
+          <header class="group-header">
+            <h2>{group.name}</h2>
+            <span class="badge">{group.properties.length}</span>
+          </header>
+          <ul class="property-list">
+            {group.properties.map((property) => (
+              <li>
+                <code>{property}</code>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </section>
+  </main>
+  <Github />
+  <ScrollToTop />
+</Base>
+
+<style>
+  .themes-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .page-header h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .page-header p {
+    color: var(--color-text-muted, #a0a0a0);
+    max-width: 720px;
+    line-height: 1.6;
+  }
+
+  .groups {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .group {
+    background: var(--color-background-section, rgb(255 255 255 / 5%));
+    border: 1px solid var(--color-border, rgb(255 255 255 / 10%));
+    border-radius: 16px;
+    padding: 1.5rem;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 40px rgb(15 23 42 / 12%);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .group:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 50px rgb(15 23 42 / 16%);
+  }
+
+  .group-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .group-header h2 {
+    font-size: 1.35rem;
+    margin: 0;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary-text, #0f172a);
+    background: var(--color-primary, #38bdf8);
+    border-radius: 999px;
+  }
+
+  .property-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .property-list li {
+    background: var(--color-background-item, rgb(148 163 184 / 12%));
+    border-radius: 12px;
+    padding: 0.4rem 0.75rem;
+  }
+
+  code {
+    font-family: var(--font-mono, 'JetBrains Mono', 'Fira Code', monospace);
+    font-size: 0.85rem;
+    color: var(--color-text, #e2e8f0);
+  }
+
+  @media (width <= 768px) {
+    .themes-page {
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .group {
+      padding: 1.25rem;
+    }
+
+    .group-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .badge {
+      align-self: flex-start;
+    }
+
+    .property-list {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+  }
+</style>
