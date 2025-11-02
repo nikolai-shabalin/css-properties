@@ -1,0 +1,139 @@
+---
+import Base from '../layouts/Base.astro';
+import Github from '../components/Github.astro';
+import ScrollToTop from '../components/ScrollToTop.astro';
+import { topics } from '../data/topics.js';
+---
+
+<Base>
+  <main class="main">
+    <header class="intro">
+      <h1>CSS-свойства по темам</h1>
+      <p>
+        Полный перечень свойств из архива проекта, распределённый по основным направлениям CSS.
+        Для удобства навигации используйте список тем и раскрывайте интересующие категории.
+      </p>
+    </header>
+
+    <section class="topics">
+      {topics.map((group) => (
+        <article class="topic" id={group.theme.toLowerCase().replace(/[^a-z0-9]+/g, '-')}> 
+          <details open>
+            <summary>{group.theme}</summary>
+            <ul>
+              {group.items.map((item) => (
+                <li>
+                  {item.mdnUrl ? (
+                    <a href={item.mdnUrl} target="_blank" rel="noopener noreferrer">
+                      {item.name}
+                    </a>
+                  ) : (
+                    <span>{item.name}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </details>
+        </article>
+      ))}
+    </section>
+  </main>
+  <Github />
+  <ScrollToTop />
+</Base>
+
+<style>
+  .main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .intro h1 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    margin-bottom: 1rem;
+  }
+
+  .intro p {
+    color: var(--color-text-muted, #4b5563);
+    line-height: 1.6;
+    max-width: 70ch;
+  }
+
+  .topics {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .topic details {
+    background: var(--color-surface, #fff);
+    border: 1px solid var(--color-border, rgb(148 163 184 / 30%));
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgb(15 23 42 / 8%);
+    padding: 1rem 1.25rem;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .topic details[open] {
+    box-shadow: 0 18px 40px rgb(15 23 42 / 12%);
+  }
+
+  .topic summary {
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1.125rem;
+    list-style: none;
+  }
+
+  .topic summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .topic ul {
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+    columns: 1;
+    gap: 0.75rem;
+  }
+
+  .topic li {
+    margin-bottom: 0.4rem;
+  }
+
+  .topic a {
+    color: var(--color-accent, #2563eb);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .topic a:hover,
+  .topic a:focus {
+    color: var(--color-accent-strong, #1d4ed8);
+    text-decoration: underline;
+  }
+
+  @media (width >= 768px) {
+    .topics {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .topic ul {
+      columns: 2;
+    }
+  }
+
+  @media (width >= 1200px) {
+    .topics {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .topic ul {
+      columns: 3;
+    }
+  }
+</style>
