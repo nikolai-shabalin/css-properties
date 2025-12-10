@@ -111,10 +111,12 @@ body::after {
 }
 
 body::before {
-  background:
+  /* stylelint-disable declaration-property-value-no-unknown */
+  background-image:
     radial-gradient(600px 400px at 10% 10%, rgb(79 70 229 / 18%), transparent 60%),
     radial-gradient(500px 350px at 90% 20%, rgb(14 165 233 / 16%), transparent 60%),
     radial-gradient(700px 500px at 50% 110%, rgb(245 158 11 / 12%), transparent 60%);
+  /* stylelint-enable declaration-property-value-no-unknown */
   filter: blur(30px);
 }
 
@@ -190,7 +192,7 @@ body::after {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-background-overlay);
+  background-color: var(--color-background-overlay);
   border-radius: var(--border-radius-md);
 }
 
