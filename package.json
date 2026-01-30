@@ -25,7 +25,7 @@
   "license": "ISC",
   "devDependencies": {
     "@astrojs/check": "0.9.6",
-    "@mdn/browser-compat-data": "7.2.5",
+    "@mdn/browser-compat-data": "7.3.0",
     "astro": "5.16.6",
     "postcss-html": "^1.8.0",
     "stylelint": "^16.26.1",
