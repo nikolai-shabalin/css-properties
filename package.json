@@ -26,10 +26,10 @@
   "devDependencies": {
     "@astrojs/check": "0.9.6",
     "@mdn/browser-compat-data": "7.3.0",
-    "astro": "5.16.6",
-    "postcss-html": "^1.8.0",
-    "stylelint": "^16.26.1",
-    "stylelint-config-standard": "39.0.1",
+    "astro": "5.17.1",
+    "postcss-html": "^1.8.1",
+    "stylelint": "^17.1.0",
+    "stylelint-config-standard": "40.0.0",
     "typescript": "5.9.3"
   },
   "type": "module",

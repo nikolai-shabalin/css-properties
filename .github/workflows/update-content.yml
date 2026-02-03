@@ -2,7 +2,7 @@ name: Update content
 
 on:
   schedule:
-    - cron: '0 21 * * *' # Каждый день в 00:00 МСК
+    - cron: '0 21 * * 1' # Раз в неделю по понедельникам в 00:00 МСК
   workflow_dispatch:
 
 jobs:
