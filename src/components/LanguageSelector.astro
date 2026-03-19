@@ -1,5 +1,5 @@
 ---
-import { languages, ui } from '../i18n/ui';
+import { languages } from '../i18n/ui';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -18,11 +18,10 @@ const languageMeta = {
   zh: { flag: '🇨🇳', code: 'zh' },
 };
 
-// Передаем языки в клиентский скрипт
 const languagesJson = JSON.stringify(languages);
 ---
 
-<div class="language-selector">
+<div class="language-selector" data-languages={languagesJson}>
   <select
     class="language-select"
     aria-label={t('language.selector.label')}
@@ -35,77 +34,78 @@ const languagesJson = JSON.stringify(languages);
   </select>
 </div>
 
-<script define:vars={{ languagesJson }}>
-  // Получаем языки из серверного кода
-  const languages = JSON.parse(languagesJson);
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.language-selector') as HTMLDivElement | null;
+    const select = document.querySelector('.language-select') as HTMLSelectElement | null;
 
-    document.addEventListener('DOMContentLoaded', function() {
-    const select = document.querySelector('.language-select');
-    if (select) {
-      select.addEventListener('change', function() {
-        var lang = select.value;
-        // Используем Web API для работы с URL
-        const url = new URL(window.location.href);
-        const pathSegments = url.pathname.split('/').filter(Boolean);
-        const allLangs = Object.keys(languages);
+    if (!container || !select) {
+      return;
+    }
 
-        // Определяем базовый путь динамически
-        let basePath = '';
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-          // Локальная разработка
-          basePath = '';
-        } else {
-          // GitHub Pages
-          basePath = '/css-properties';
+    const languages = JSON.parse(container.dataset.languages || '{}');
+
+    select.addEventListener('change', function() {
+      var lang = select.value;
+      // Используем Web API для работы с URL
+      const url = new URL(window.location.href);
+      const pathSegments = url.pathname.split('/').filter(Boolean);
+      const allLangs = Object.keys(languages);
+
+      // Определяем базовый путь динамически
+      let basePath = '';
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        // Локальная разработка
+        basePath = '';
+      } else {
+        // GitHub Pages
+        basePath = '/css-properties';
+      }
+
+      // Определяем текущий язык из URL
+      let langIndex = -1;
+
+      // Ищем код языка в сегментах пути
+      for (let i = 0; i < pathSegments.length; i++) {
+        if (allLangs.includes(pathSegments[i])) {
+          langIndex = i;
+          break;
         }
+      }
 
-        // Определяем текущий язык из URL
-        let currentLang = 'ru'; // по умолчанию
-        let langIndex = -1;
+      // Создаем новый URL
+      const newUrl = new URL(window.location.href);
 
-        // Ищем код языка в сегментах пути
-        for (let i = 0; i < pathSegments.length; i++) {
-          if (allLangs.includes(pathSegments[i])) {
-            currentLang = pathSegments[i];
-            langIndex = i;
-            break;
-          }
+      // Если выбран русский язык
+      if (lang === 'ru') {
+        // Убираем код языка из URL, если он есть
+        if (langIndex !== -1) {
+          pathSegments.splice(langIndex, 1);
         }
-
-        // Создаем новый URL
-        const newUrl = new URL(window.location.href);
-
-        // Если выбран русский язык
-        if (lang === 'ru') {
-          // Убираем код языка из URL, если он есть
-          if (langIndex !== -1) {
-            pathSegments.splice(langIndex, 1);
-          }
+        // Убираем дублирование css-properties
+        const filteredSegments = pathSegments.filter(segment => segment !== 'css-properties');
+        const newPath = basePath + (filteredSegments.length > 0 ? '/' + filteredSegments.join('/') : '/');
+        newUrl.pathname = newPath;
+      } else {
+        // Для других языков добавляем или заменяем код языка
+        if (langIndex === -1) {
+          // Если сейчас русский, добавляем код языка после базового пути
           // Убираем дублирование css-properties
           const filteredSegments = pathSegments.filter(segment => segment !== 'css-properties');
-          const newPath = basePath + (filteredSegments.length > 0 ? '/' + filteredSegments.join('/') : '/');
+          const newPath = basePath + '/' + lang + (filteredSegments.length > 0 ? '/' + filteredSegments.join('/') : '/');
           newUrl.pathname = newPath;
         } else {
-          // Для других языков добавляем или заменяем код языка
-          if (langIndex === -1) {
-            // Если сейчас русский, добавляем код языка после базового пути
-            // Убираем дублирование css-properties
-            const filteredSegments = pathSegments.filter(segment => segment !== 'css-properties');
-            const newPath = basePath + '/' + lang + (filteredSegments.length > 0 ? '/' + filteredSegments.join('/') : '/');
-            newUrl.pathname = newPath;
-          } else {
-            // Если уже есть код языка, заменяем его
-            pathSegments[langIndex] = lang;
-            // Убираем дублирование css-properties
-            const filteredSegments = pathSegments.filter(segment => segment !== 'css-properties');
-            const newPath = basePath + '/' + filteredSegments.join('/');
-            newUrl.pathname = newPath;
-          }
+          // Если уже есть код языка, заменяем его
+          pathSegments[langIndex] = lang;
+          // Убираем дублирование css-properties
+          const filteredSegments = pathSegments.filter(segment => segment !== 'css-properties');
+          const newPath = basePath + '/' + filteredSegments.join('/');
+          newUrl.pathname = newPath;
         }
+      }
 
-        window.location.href = newUrl.toString();
-      });
-    }
+      window.location.href = newUrl.toString();
+    });
   });
 </script>
 
