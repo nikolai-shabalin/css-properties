@@ -6,7 +6,7 @@ export type PropertyProp = {
   date: string;
   type: string;
   parent?: string | null;
-  specUrl?: string;
+  specUrl?: string | string[];
   mdnUrl?: string;
   year: string;
 }
@@ -35,6 +35,12 @@ const propertyIcon = getPropertyIcon(property.type, property.name);
 
 const isAtType = property.type === '@';
 const hasParent = Boolean(property.parent);
+const specUrls = Array.isArray(property.specUrl)
+  ? property.specUrl
+  : property.specUrl
+    ? [property.specUrl]
+    : [];
+const hasMultipleSpecUrls = specUrls.length > 1;
 
 const prefixContent = hasParent ? property.parent : !isAtType ? property.type : null;
 const prefixModifier = hasParent ? 'parent' : !isAtType ? 'type' : '';
@@ -60,8 +66,19 @@ const prefixClass = prefixContent ? `property-name__prefix property-name__prefix
   </div>
 
   <div class="property-links">
-    {property.specUrl && (
-      <a href={property.specUrl} class="property-link spec-link" target="_blank" rel="noopener">
+    {hasMultipleSpecUrls ? (
+      <span class="spec-links-group">
+        <span class="spec-links-label">{t('property.spec')}:</span>
+        {specUrls.map((specUrl, index) => (
+          <>
+            <a href={specUrl} class="property-link spec-link spec-link-index" target="_blank" rel="noopener">
+              {index + 1}
+            </a>
+          </>
+        ))}
+      </span>
+    ) : specUrls[0] && (
+      <a href={specUrls[0]} class="property-link spec-link" target="_blank" rel="noopener">
         📄 {t('property.spec')}
       </a>
     )}
@@ -196,6 +213,27 @@ const prefixClass = prefixContent ? `property-name__prefix property-name__prefix
     font-weight: 500;
     transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
     border: 1px solid transparent;
+  }
+
+  .spec-links-group {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .spec-links-label {
+    color: var(--color-text-light);
+  }
+
+  .spec-link-index {
+    color: var(--color-text-white);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .spec-link-index:hover {
+    text-decoration: underline;
   }
 
   .spec-link {
