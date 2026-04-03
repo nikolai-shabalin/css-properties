@@ -6,7 +6,8 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 // Подготавливаем данные для графика
-const years = Object.keys(data).sort((a, b) => parseInt(b) - parseInt(a));
+type YearKey = keyof typeof data;
+const years = Object.keys(data).sort((a, b) => parseInt(b) - parseInt(a)) as YearKey[];
 const yearData = years.map(year => ({
   year: parseInt(year),
   count: data[year].length,

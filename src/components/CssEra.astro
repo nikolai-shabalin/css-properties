@@ -274,11 +274,13 @@ const t = useTranslations(lang);
 </style>
 
 <script>
-  const EAR_YEARS = {
+  const EAR_YEARS: Record<'CSS3' | 'CSS4' | 'CSS5', number[]> = {
     CSS3: [2009, 2010, 2011, 2012],
     CSS4: [2013, 2014, 2015, 2016, 2017, 2018],
     CSS5: [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]
   };
+
+  type EraKey = keyof typeof EAR_YEARS;
 
   const eraSection = document.querySelector('.css-eras');
   const sections = document.querySelectorAll('.properties-of-year');
@@ -304,8 +306,8 @@ const t = useTranslations(lang);
         // Добавляем активный класс к выбранной кнопке
         buttonElement.classList.add('active');
 
-        const era = buttonElement.dataset.era;
-        if (era && EAR_YEARS[era]) {
+        const era = buttonElement.dataset.era as EraKey | undefined;
+        if (era && era in EAR_YEARS) {
           const years = EAR_YEARS[era];
           let firstVisibleSection: Element | null = null;
 

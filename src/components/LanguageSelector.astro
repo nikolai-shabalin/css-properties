@@ -16,7 +16,9 @@ const languageMeta = {
   ja: { flag: '🇯🇵', code: 'ja' },
   ko: { flag: '🇰🇷', code: 'ko' },
   zh: { flag: '🇨🇳', code: 'zh' },
-};
+} as const;
+
+type LangCode = keyof typeof languageMeta;
 
 const languagesJson = JSON.stringify(languages);
 ---
@@ -26,11 +28,14 @@ const languagesJson = JSON.stringify(languages);
     class="language-select"
     aria-label={t('language.selector.label')}
   >
-    {Object.entries(languages).map(([code]) => (
+    {Object.entries(languages).map(([code]) => {
+      const c = code as LangCode;
+      return (
       <option value={code} selected={code === lang}>
-        {languageMeta[code]?.flag} {languageMeta[code]?.code}
+        {languageMeta[c]?.flag} {languageMeta[c]?.code}
       </option>
-    ))}
+      );
+    })}
   </select>
 </div>
 
