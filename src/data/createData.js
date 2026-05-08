@@ -3,6 +3,28 @@ import fs from 'node:fs';
 
 const { css, browsers } = bcd;
 const groupedData = {};
+const namedHtmlEntities = {
+  amp: '&',
+  apos: "'",
+  gt: '>',
+  lt: '<',
+  nbsp: ' ',
+  quot: '"'
+};
+
+const decodeHtmlEntities = (value) => value.replace(/&(#x[\da-f]+|#\d+|[a-z]+);/gi, (entity, code) => {
+  if (code.startsWith('#x')) {
+    return String.fromCodePoint(parseInt(code.slice(2), 16));
+  }
+
+  if (code.startsWith('#')) {
+    return String.fromCodePoint(parseInt(code.slice(1), 10));
+  }
+
+  return namedHtmlEntities[code.toLowerCase()] ?? entity;
+});
+
+const getDescriptionText = (description) => decodeHtmlEntities(description.replace(/<[^>]+>/g, ''));
 
 // Кэшируем даты релизов
 const releaseDateCache = new Map();
@@ -66,8 +88,8 @@ const extractData = (properties, parent = null) => {
 
     const year = date.slice(0, 4);
     const name = propertyName.includes('_') && compat.description
-      ? compat.description.replace(/<\/?code>|<|>/g, '')
-      : propertyName;
+      ? getDescriptionText(compat.description)
+      : decodeHtmlEntities(propertyName);
 
     const entry = {
       name,
