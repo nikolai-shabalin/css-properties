@@ -3,3 +3,4 @@ allowBuilds:
   sharp: true
 minimumReleaseAgeExclude:
   - '@mdn/browser-compat-data@8.0.0'
+  - stylelint@17.13.0
