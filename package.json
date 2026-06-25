@@ -25,11 +25,11 @@
   "license": "ISC",
   "devDependencies": {
     "@astrojs/check": "0.9.9",
-    "@mdn/browser-compat-data": "8.0.2",
-    "astro": "6.4.4",
+    "@mdn/browser-compat-data": "8.0.4",
+    "astro": "7.0.3",
     "postcss": "8.5.15",
     "postcss-html": "^1.8.1",
-    "stylelint": "^17.13.0",
+    "stylelint": "^17.14.0",
     "stylelint-config-standard": "40.0.0",
     "typescript": "6.0.3"
   },
