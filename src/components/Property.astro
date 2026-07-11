@@ -69,7 +69,7 @@ const prefixClass = prefixContent ? `property-name__prefix property-name__prefix
     {hasMultipleSpecUrls ? (
       <span class="spec-links-group">
         <span class="spec-links-label">{t('property.spec')}:</span>
-        {specUrls.map((specUrl, index) => (
+        {specUrls.map((specUrl: string | URL | null | undefined, index: number) => (
           <>
             <a href={specUrl} class="property-link spec-link spec-link-index" target="_blank" rel="noopener">
               {index + 1}
