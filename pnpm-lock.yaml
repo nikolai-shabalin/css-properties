@@ -12,8 +12,8 @@ importers:
         specifier: 0.9.9
         version: 0.9.9(prettier@3.9.5)(typescript@6.0.3)
       '@mdn/browser-compat-data':
-        specifier: 8.0.6
-        version: 8.0.6
+        specifier: 8.0.7
+        version: 8.0.7
       astro:
         specifier: 7.0.7
         version: 7.0.7(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.2)(yaml@2.9.0)
@@ -633,8 +633,8 @@ packages:
   '@keyv/serialize@1.1.1':
     resolution: {integrity: sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==}
 
-  '@mdn/browser-compat-data@8.0.6':
-    resolution: {integrity: sha512-MSn1Xz9EQyV7A/6Rx8HFCxUFKbcU7VSfo9lcxzd32658YTy0U42NBf3CRiXiSBmTFVB8quj1FrhRfnXmf2JLOQ==}
+  '@mdn/browser-compat-data@8.0.7':
+    resolution: {integrity: sha512-8/oqL9veg9C6d0wKprPmt+ZCmfNKBG4AcphWh50E9r1IflJHZfZKHu7c5G7ObupYG6azAXr3KdBX0EssnjCPSQ==}
 
   '@napi-rs/wasm-runtime@1.1.6':
     resolution: {integrity: sha512-ZLv/JdUfkvOy9eCnnBaGfiO+XimbjebAeO+MRQqD/B+FR1tnRN0tpKSJHRbE8sFfS6aqsXZ67TQjfwfsxULVbg==}
@@ -2594,7 +2594,7 @@ snapshots:
 
   '@keyv/serialize@1.1.1': {}
 
-  '@mdn/browser-compat-data@8.0.6': {}
+  '@mdn/browser-compat-data@8.0.7': {}
 
   '@napi-rs/wasm-runtime@1.1.6(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)':
     dependencies:
