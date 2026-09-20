@@ -80,7 +80,7 @@ const subtitle = t('yearly.chart.subtitle').replace('{start}', startYear.toStrin
   </div>
 </section>
 
-<style>
+<style is:global>
   .yearly-chart {
     margin-bottom: 4rem;
     padding: 3rem 2rem;
@@ -276,14 +276,14 @@ const subtitle = t('yearly.chart.subtitle').replace('{start}', startYear.toStrin
     border: 1px solid rgb(148 163 184 / 10%);
   }
 
-  .stat {
+  .chart-stats .stat {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
   }
 
-  .stat-label {
+  .chart-stats .stat-label {
     font-size: 0.85rem;
     color: var(--color-text-muted);
     text-transform: uppercase;
@@ -291,7 +291,7 @@ const subtitle = t('yearly.chart.subtitle').replace('{start}', startYear.toStrin
     font-weight: 500;
   }
 
-  .stat-value {
+  .chart-stats .stat-value {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--color-primary);

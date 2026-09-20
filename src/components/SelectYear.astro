@@ -21,7 +21,7 @@ const listYears = Object.keys(data).reverse();
   </div>
 </div>
 
-<style>
+<style is:global>
   .year-selector {
     background: var(--color-background-section);
     backdrop-filter: blur(20px);
@@ -92,7 +92,7 @@ const listYears = Object.keys(data).reverse();
     transform: translateY(0);
   }
 
-  .year-number {
+  .year-selector .year-number {
     font-size: 1rem;
     display: block;
   }

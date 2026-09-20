@@ -30,7 +30,7 @@ const generatedAt = new Date().toLocaleDateString(lang);
   </p>
 </header>
 
-<style>
+<style is:global>
   .hero {
     text-align: center;
     margin-bottom: 4rem;
@@ -101,21 +101,21 @@ const generatedAt = new Date().toLocaleDateString(lang);
     flex-wrap: wrap;
   }
 
-  .stat-item {
+  .hero .stat-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
   }
 
-  .stat-number {
+  .hero .stat-number {
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--color-primary);
     line-height: 1;
   }
 
-  .stat-label {
+  .hero .stat-label {
     font-size: 0.9rem;
     color: var(--color-text-muted);
     text-transform: uppercase;
@@ -157,7 +157,7 @@ const generatedAt = new Date().toLocaleDateString(lang);
       gap: 2rem;
     }
 
-    .stat-number {
+    .hero .stat-number {
       font-size: 2rem;
     }
   }

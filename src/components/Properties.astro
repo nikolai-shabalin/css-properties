@@ -31,7 +31,7 @@ const t = useTranslations(lang);
   </section>
 ))}
 
-<style>
+<style is:global>
   .properties-of-year {
     background: var(--color-background-section);
     backdrop-filter: blur(20px);
@@ -81,7 +81,7 @@ const t = useTranslations(lang);
     gap: 1rem;
   }
 
-  .year-number {
+  .properties-of-year .year-number {
     font-size: 2.5rem;
     font-weight: 700;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
@@ -141,7 +141,7 @@ const t = useTranslations(lang);
       margin-bottom: 1.5rem;
     }
 
-    .year-number {
+    .properties-of-year .year-number {
       font-size: 2rem;
     }
   }
@@ -155,7 +155,7 @@ const t = useTranslations(lang);
       margin-bottom: 1rem;
     }
 
-    .year-number {
+    .properties-of-year .year-number {
       font-size: 1.75rem;
     }
   }
