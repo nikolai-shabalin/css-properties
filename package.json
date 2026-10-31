@@ -24,12 +24,12 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "@astrojs/check": "0.9.10",
+    "@astrojs/check": "0.9.12",
     "@mdn/browser-compat-data": "8.1.7",
-    "astro": "7.3.3",
-    "postcss": "8.5.28",
+    "astro": "7.4.4",
+    "postcss": "8.5.32",
     "postcss-html": "^2.0.0",
-    "stylelint": "^17.15.0",
+    "stylelint": "^17.16.0",
     "stylelint-config-standard": "40.0.0",
     "typescript": "6.0.3"
   },
@@ -37,5 +37,5 @@
   "engines": {
     "node": "24"
   },
-  "packageManager": "pnpm@12.4.2"
+  "packageManager": "pnpm@12.16.1"
 }
